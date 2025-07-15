@@ -24,3 +24,28 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.prose h2 {
+  @apply text-2xl font-semibold text-gray-800 mt-6 mb-3;
+}
+
+.prose a {
+  @apply text-blue-600 underline hover:text-blue-800;
+}
+
+.prose img {
+  @apply block mx-auto mb-8 mt-8 rounded-lg shadow-md;
+  max-width: 100%;
+  height: auto;
+}
+
+.prose {
+  text-align: justify;
+}
+
+.prose ul {
+  @apply list-disc pl-6 mb-4;
+}
+.prose ol {
+  @apply list-decimal pl-6 mb-4;
+}
