@@ -9,8 +9,17 @@ const HistoryPreviewSection = () => {
             {/* Left Content - Image */}
             <div className="lg:w-1/3">
               <div className="h-64 lg:h-full bg-gray-300 relative">
-                {/* Placeholder for village head image */}
-                <div className="absolute inset-0 bg-gray-300"></div>
+                {/* image */}
+                <div className="absolute inset-0 bg-gray-300">
+                  <Image 
+                    src='/landing/images/history.png' 
+                    alt={` image`}
+                    fill
+                    priority
+                    className="object-cover w-full h-full"
+                    quality={85}
+                  />
+                </div>
               </div>
             </div>
 

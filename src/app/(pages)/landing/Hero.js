@@ -19,6 +19,7 @@ const Hero = () => {
               objectFit: 'cover'
             }}
           />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black opacity-50"></div>
         </div>
       </div>
 
