@@ -1,10 +1,25 @@
+import Image from 'next/image';
+
 const Hero = () => {
   return (
     <section className="relative h-screen bg-cover bg-center bg-no-repeat">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <div className="w-full h-full bg-gray-400"></div>
-        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+        <div className="relative w-full h-full">
+          <Image
+            src="/landing/images/background_3.png"
+            alt="Desa Belung"
+            width={1920}
+            height={1080}
+            priority
+            className="object-cover w-full h-full"
+            quality={100}
+            style={{
+              aspectRatio: '16/9',
+              objectFit: 'cover'
+            }}
+          />
+        </div>
       </div>
 
       {/* Content */}
