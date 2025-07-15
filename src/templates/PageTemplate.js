@@ -1,20 +1,20 @@
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 /**
  * Base Page Template
  * Consistent layout wrapper for all pages
  */
-export default function PageTemplate({ 
-  children, 
-  title, 
+export default function PageTemplate({
+  children,
+  title,
   description,
-  className = ""
+  className = "",
 }) {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      
+
       <main className={`flex-1 pt-20 ${className}`}>
         {/* Page Header */}
         {title && (
@@ -27,13 +27,11 @@ export default function PageTemplate({
             </div>
           </div>
         )}
-        
+
         {/* Page Content */}
-        <div className="flex-1">
-          {children}
-        </div>
+        <div className="flex-1">{children}</div>
       </main>
-      
+
       <Footer />
     </div>
   );
