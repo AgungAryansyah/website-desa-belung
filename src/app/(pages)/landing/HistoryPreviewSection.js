@@ -30,7 +30,7 @@ const HistoryPreviewSection = () => {
                 <div className="flex items-center">
                   <div className="w-6 h-6 bg-[#D9D9D9] rounded-full flex items-center justify-center mr-3">
                     <Image 
-                      src="/Landing/card_arrow_black.svg" 
+                      src="/landing/circle_arrow_black.svg" 
                       alt="Explore arrow" 
                       width={32}
                       height={32}

@@ -18,7 +18,7 @@ const ExploreCard = ({ id, title, image, link }) => {
           <h3 className="text-2xl font-semibold mb-2">{title}</h3>
           <div className="w-8 h-8 bg-transparent rounded-full flex items-center justify-start">
             <Image 
-              src="/Landing/explore_arrow.svg" 
+              src="/landing/circle_arrow_white.svg" 
               alt="Explore arrow" 
               width={32}
               height={32}

@@ -33,21 +33,6 @@ const Hero = () => {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vehicula erat molestie convallis sollicitudin. Fusce ultrices felis lacus, vel scelerisque magna efficitur a. Nam egestas tempus odio, at pellentesque nibh placerat ut. Suspendisse a feugiat tortor. Vestibulum tempus porta metus, eget faucibus ante sodales at. Cras lobortis vitae diam id maximus. Sed mauris erat, aliquet non fermentum ut, mollis id enim. Integer vel neque enim.
           </p>
           
-          {/* Navigation arrows */}
-          <div className="absolute left-4 top-1/2 transform -translate-y-1/2">
-            <button className="bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full p-3 transition-all">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-          </div>
-          <div className="absolute right-4 top-1/2 transform -translate-y-1/2">
-            <button className="bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full p-3 transition-all">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-          </div>
         </div>
       </div>
     </section>

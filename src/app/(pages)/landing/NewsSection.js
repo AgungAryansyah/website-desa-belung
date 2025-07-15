@@ -61,7 +61,7 @@ const NewsSection = () => {
                     className="inline-flex items-center text-black hover:text-green-400 font-medium"
                   >
                     <Image 
-                      src="/Landing/card_arrow_black.svg" 
+                      src="/landing/circle_arrow_black.svg" 
                       alt="Explore arrow" 
                       width={24}
                       height={24}
