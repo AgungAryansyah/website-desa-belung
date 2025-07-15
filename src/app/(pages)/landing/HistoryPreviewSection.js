@@ -1,6 +1,6 @@
 const HistoryPreviewSection = () => {
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <div className="bg-white rounded-[20px] shadow-lg overflow-hidden">
           <div className="flex flex-col lg:flex-row">
