@@ -18,14 +18,14 @@ const PotentialSection = () => {
                 </p>
                 
                 <div className="flex items-center">
-                  <div className="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center mr-3">
+                  <div className="w-6 h-6 bg-gray-600 rounded-full flex items-center justify-center mr-3">
                     <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
                     </svg>
                   </div>
                   <a 
                     href="/potensi"
-                    className="text-orange-500 font-semibold hover:text-orange-600 transition-colors"
+                    className="text-gray-600 font-semibold hover:text-gray-600 transition-colors"
                   >
                     Pelajari lebih Lanjut
                   </a>
