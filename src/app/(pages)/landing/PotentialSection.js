@@ -22,7 +22,7 @@ const PotentialSection = () => {
                 <div className="flex items-center">
                   <div className="w-6 h-6 bg-[#D9D9D9] rounded-full flex items-center justify-center mr-3">
                     <Image 
-                      src="/Landing/card_arrow_black.svg" 
+                      src="/landing/circle_arrow_black.svg" 
                       alt="Explore arrow" 
                       width={32}
                       height={32}
@@ -42,8 +42,17 @@ const PotentialSection = () => {
             {/* Right Content - Image */}
             <div className="lg:w-1/3">
               <div className="h-64 lg:h-full bg-gray-300 relative">
-                {/* Placeholder for potential image */}
-                <div className="absolute inset-0 bg-gray-300"></div>
+                {/* image */}
+                <div className="absolute inset-0 bg-gray-300">
+                  <Image 
+                    src='/landing/images/potential.png' 
+                    alt={` image`}
+                    fill
+                    priority
+                    className="object-cover w-full h-full"
+                    quality={85}
+                  />
+                </div>                
               </div>
             </div>
           </div>

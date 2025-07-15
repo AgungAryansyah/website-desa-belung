@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       <Header />
-      <main className="pt-20">
+      <main className="bg-gray-100">
         <Hero />
         <ExploreSection />
         <HistoryPreviewSection />

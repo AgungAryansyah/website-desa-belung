@@ -5,25 +5,25 @@ const ExploreSection = () => {
     {
       id: 'profil-desa',
       title: 'Profil Desa',
-      image: '/placeholder-profil-desa.jpg',
+      image: '/landing/images/background_1.png',
       link: '/profil'
     },
     {
       id: 'struktur-desa',
       title: 'Struktur Desa',
-      image: '/placeholder-struktur-desa.jpg',
+      image: '/landing/images/background_1.png',
       link: '/struktur'
     },
     {
       id: 'potensi-desa',
       title: 'Potensi Desa',
-      image: '/placeholder-potensi-desa.jpg',
+      image: '/landing/images/background_1.png',
       link: '/potensi'
     },
     {
       id: 'berita',
       title: 'Berita',
-      image: '/placeholder-berita.jpg',
+      image: '/landing/images/background_1.png',
       link: '/berita'
     }
   ];
