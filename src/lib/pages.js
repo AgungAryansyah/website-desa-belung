@@ -14,10 +14,7 @@ export const PAGES = {
     id: "profil",
     title: "Profil",
     path: "/profil",
-<<<<<<< HEAD
-=======
     description: "Profil dan informasi umum Desa Belung",
->>>>>>> main
   },
   SEJARAH: {
     id: "sejarah",

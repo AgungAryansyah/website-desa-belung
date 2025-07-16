@@ -15,11 +15,7 @@ export default function PageTemplate({
     <div className="min-h-screen flex flex-col">
       <Header />
 
-<<<<<<< HEAD
-      <main className={"bg-gray-100"}>
-=======
       <main className={`bg-gray-100`}>
->>>>>>> main
         {/* Page Header */}
 
         {/* Page Content */}
