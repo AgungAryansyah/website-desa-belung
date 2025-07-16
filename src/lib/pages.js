@@ -46,6 +46,12 @@ export const PAGES = {
     path: "/peta",
     description: "Peta wilayah dan lokasi penting",
   },
+  HOMEBERITA: {
+    id: "hoome berita",
+    title: "home berita",
+    path: "/home-berita",
+    description: "Halaman untuk melihat semua berita terkini",
+  },
 };
 
 /**

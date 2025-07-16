@@ -158,7 +158,7 @@ const beritaPerPage = {
 };
 
 export default function BeritaPage() {
-  const pageConfig = PAGES.BERITA;
+  const pageConfig = PAGES.HOMEBERITA;
 
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = 8;
