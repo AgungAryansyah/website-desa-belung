@@ -15,7 +15,7 @@ export default function PageTemplate({
     <div className="min-h-screen flex flex-col">
       <Header />
       
-      <main className={`flex-1 pt-20 ${className}`}>
+      <main className={`${className}`}>
         {/* Page Header */}
         {title && (
           <div className="bg-gray-50 py-12">
