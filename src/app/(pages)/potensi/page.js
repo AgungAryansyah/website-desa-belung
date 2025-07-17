@@ -1,25 +1,12 @@
-import PageTemplate from '../../../templates/PageTemplate';
-import { PAGES } from '../../../lib/pages';
+import ReactMarkdown from "react-markdown";
+import PageTemplate from "../../../templates/PageTemplate";
+import { PAGES } from "../../../lib/pages";
+import ContentPotensi from "./contentPotensi";
 
-export default function PotensiPage() {
-  const pageConfig = PAGES.POTENSI;
-
+export default function BeritaPage() {
   return (
-    <PageTemplate 
-      title={pageConfig.title}
-      description={pageConfig.description}
-    >
-      <div className="container mx-auto px-4 py-16">
-        {/* Page Content - To be implemented */}
-        <div className="bg-white rounded-lg shadow-md p-8">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">
-            Potensi Desa Belung
-          </h2>
-          <p className="text-gray-600">
-            Konten halaman potensi desa akan ditambahkan di sini.
-          </p>
-        </div>
-      </div>
+    <PageTemplate className="bg-gray-100 w-full">
+      <ContentPotensi />
     </PageTemplate>
   );
 }

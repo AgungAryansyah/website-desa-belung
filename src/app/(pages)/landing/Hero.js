@@ -1,10 +1,26 @@
+import Image from 'next/image';
+
 const Hero = () => {
   return (
     <section className="relative h-screen bg-cover bg-center bg-no-repeat">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <div className="w-full h-full bg-gray-400"></div>
-        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+        <div className="relative w-full h-full">
+          <Image
+            src="/landing/images/background_3.png"
+            alt="Desa Belung"
+            width={1920}
+            height={1080}
+            priority
+            className="object-cover w-full h-full"
+            quality={100}
+            style={{
+              aspectRatio: '16/9',
+              objectFit: 'cover'
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black opacity-50"></div>
+        </div>
       </div>
 
       {/* Content */}
@@ -18,21 +34,6 @@ const Hero = () => {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vehicula erat molestie convallis sollicitudin. Fusce ultrices felis lacus, vel scelerisque magna efficitur a. Nam egestas tempus odio, at pellentesque nibh placerat ut. Suspendisse a feugiat tortor. Vestibulum tempus porta metus, eget faucibus ante sodales at. Cras lobortis vitae diam id maximus. Sed mauris erat, aliquet non fermentum ut, mollis id enim. Integer vel neque enim.
           </p>
           
-          {/* Navigation arrows */}
-          <div className="absolute left-4 top-1/2 transform -translate-y-1/2">
-            <button className="bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full p-3 transition-all">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-          </div>
-          <div className="absolute right-4 top-1/2 transform -translate-y-1/2">
-            <button className="bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full p-3 transition-all">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-          </div>
         </div>
       </div>
     </section>
