@@ -7,7 +7,7 @@ services:
       context: ./pocketbase 
     container_name: belung-pocketbase 
     ports:
-      - "8090:8080"
+      - "8080:8080"
     volumes:
       - ./pocketbase/pb_data:/pb/pb_data
     restart: unless-stopped
