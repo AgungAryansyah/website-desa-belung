@@ -1,0 +1,30 @@
+version: "3.7"
+
+services:
+  belung-pocketbase:
+    image: belung-pocketbase
+    build:
+      context: ./pocketbase 
+    container_name: belung-pocketbase 
+    ports:
+      - "8090:8080"
+    volumes:
+      - ./pocketbase/pb_data:/pb/pb_data
+    restart: unless-stopped
+
+  belung-fe:
+    container_name: "belung-fe"
+    build:
+      context: .
+    ports:
+      - "3000:3000"
+    networks:
+      - belung-network
+    depends_on:
+      - belung-pocketbase
+    restart: on-failure
+
+networks:
+  belung-network:
+    name: belung-network
+    driver: bridge
