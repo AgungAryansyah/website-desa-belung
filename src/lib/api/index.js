@@ -4,6 +4,20 @@ export * from './endpoints/profile';
 export * from './endpoints/structure';
 export * from './endpoints/potential';
 
-// Export client and config for direct access if needed
-export { fetchAPI } from './client';
-export { API_CONFIG, ENDPOINTS } from './config';
+// Export client functions for direct access if needed
+export { 
+  getRecords, 
+  getRecord, 
+  createRecord, 
+  updateRecord, 
+  deleteRecord, 
+  getFileUrl,
+  authWithPassword,
+  logout,
+  isAuthenticated,
+  getCurrentUser,
+  pb 
+} from './client';
+
+// Export config
+export { POCKETBASE_CONFIG, COLLECTIONS } from './config';

@@ -1,21 +1,17 @@
-// API Configuration
-export const API_CONFIG = {
-  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL || 'https://api.example.com',
+// PocketBase Configuration
+export const POCKETBASE_CONFIG = {
+  baseURL: process.env.NEXT_PUBLIC_POCKETBASE_URL || 'http://localhost:8080',
   timeout: 10000, // 10 seconds
-  retries: 3,
 };
 
-// Common headers for API requests
-export const DEFAULT_HEADERS = {
-  'Content-Type': 'application/json',
-  'Accept': 'application/json',
-};
-
-// Endpoint configurations
-export const ENDPOINTS = {
-  NEWS: '/news',
-  PROFILE: '/profile', 
-  EVENTS: '/events',
-  STRUCTURE: '/structure',
-  POTENTIAL: '/potential',
+// Collection names for PocketBase
+export const COLLECTIONS = {
+  NEWS: 'news',
+  PROFILE: 'village_profile',
+  EVENTS: 'events',
+  STRUCTURE: 'village_structure',
+  POTENTIAL: 'village_potential',
+  TEAM_MEMBERS: 'team_members',
+  GALLERY: 'gallery',
+  DOCUMENTS: 'documents',
 };
