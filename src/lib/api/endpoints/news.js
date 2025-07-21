@@ -12,15 +12,62 @@ export async function getNews({ page = 1, limit = 10, featured = false } = {}) {
     perPage: limit,
     sort: '-created', // Sort by newest first
     filter: featured ? 'featured = true' : '',
+    expand: 'image_id', // Expand the image relation
   };
 
   const result = await getRecords(COLLECTIONS.NEWS, options);
   
-  // Transform data to include full image URLs
-  const newsWithImages = result.items.map(news => ({
-    ...news,
-    imageUrl: news.image ? getFileUrl(news, news.image) : null,
-    thumbnailUrl: news.image ? getFileUrl(news, news.image, '300x200') : null,
+  // Transform data to include full image URLs from the images collection
+  const newsWithImages = await Promise.all(result.items.map(async (news) => {
+    let imageUrl = null;
+    let thumbnailUrl = null;
+    let cover = null;
+
+    if (news.cover) {
+      try {
+        const imageRecord = await getRecord(COLLECTIONS.IMAGES, news.cover);
+        
+        if (imageRecord) {
+          // Generate URL manually using PocketBase template
+          const baseUrl = process.env.NEXT_PUBLIC_POCKETBASE_URL || 'http://localhost:8080';
+          imageUrl = `${baseUrl}/api/files/${imageRecord.collectionId}/${imageRecord.id}/${imageRecord.field}`;
+          thumbnailUrl = `${imageUrl}?thumb=300x200`;
+          cover = imageUrl
+          
+          console.log('Generated URLs manually from images collection:', {
+            baseUrl,
+            collection: COLLECTIONS.IMAGES,
+            recordId: imageRecord.id,
+            filename: imageRecord.file,
+            imageUrl,
+            thumbnailUrl,
+            cover
+          });
+        } else {
+          console.log('Image record found but no file field');
+        }
+      } catch (error) {
+        console.log(`Failed to fetch image for news ${news.id}:`, error);
+      }
+    }
+
+    const finalItem = {
+      ...news,
+      imageUrl,
+      thumbnailUrl,
+      cover,
+    };
+
+    console.log('Final processed item:', {
+      id: news.id,
+      title: news.title,
+      imageUrl: finalItem.imageUrl,
+      thumbnailUrl: finalItem.thumbnailUrl,
+      cover: finalItem.cover
+    });
+    console.log('=== END PROCESSING ===\n');
+
+    return finalItem;
   }));
 
   return {
@@ -35,12 +82,38 @@ export async function getNews({ page = 1, limit = 10, featured = false } = {}) {
  * @returns {Promise} - Promise resolving to news article
  */
 export async function getNewsById(id) {
-  const news = await getRecord(COLLECTIONS.NEWS, id);
+  const news = await getRecord(COLLECTIONS.NEWS, id, {
+    expand: 'image_id'
+  });
   
-  // Add full image URL
+  let imageUrl = null;
+  let cover = null;
+
+  // If news has image_id, fetch from images collection
+  if (news.image_id) {
+    try {
+      const imageRecord = await getRecord(COLLECTIONS.IMAGES, news.image_id);
+      if (imageRecord && imageRecord.file) {
+        const baseUrl = process.env.NEXT_PUBLIC_POCKETBASE_URL || 'http://localhost:8080';
+        imageUrl = `${baseUrl}/api/files/${COLLECTIONS.IMAGES}/${imageRecord.id}/${imageRecord.file}`;
+        cover = imageUrl;
+      }
+    } catch (error) {
+      console.warn(`Failed to fetch image for news ${news.id}:`, error);
+    }
+  }
+  
+  // Fallback to direct image field if exists
+  if (!imageUrl && news.image) {
+    const baseUrl = process.env.NEXT_PUBLIC_POCKETBASE_URL || 'http://localhost:8080';
+    imageUrl = `${baseUrl}/api/files/${COLLECTIONS.NEWS}/${news.id}/${news.image}`;
+    cover = imageUrl;
+  }
+  
   return {
     ...news,
-    imageUrl: news.image ? getFileUrl(news, news.image) : null,
+    imageUrl,
+    cover,
   };
 }
 
@@ -56,15 +129,46 @@ export async function searchNews(query, options = {}) {
     perPage: options.limit || 10,
     filter: `title ~ "${query}" || excerpt ~ "${query}" || content ~ "${query}"`,
     sort: '-created',
+    expand: 'image_id',
   };
 
   const result = await getRecords(COLLECTIONS.NEWS, searchOptions);
   
-  // Transform data to include full image URLs
-  const newsWithImages = result.items.map(news => ({
-    ...news,
-    imageUrl: news.image ? getFileUrl(news, news.image) : null,
-    thumbnailUrl: news.image ? getFileUrl(news, news.image, '300x200') : null,
+  // Transform data to include full image URLs using correct PocketBase format
+  const newsWithImages = await Promise.all(result.items.map(async (news) => {
+    let imageUrl = null;
+    let thumbnailUrl = null;
+    let cover = null;
+
+    // If news has image_id, fetch from images collection
+    if (news.image_id) {
+      try {
+        const imageRecord = await getRecord(COLLECTIONS.IMAGES, news.image_id);
+        if (imageRecord && imageRecord.file) {
+          const baseUrl = process.env.NEXT_PUBLIC_POCKETBASE_URL || 'http://localhost:8080';
+          imageUrl = `${baseUrl}/api/files/${COLLECTIONS.IMAGES}/${imageRecord.id}/${imageRecord.file}`;
+          thumbnailUrl = `${baseUrl}/api/files/${COLLECTIONS.IMAGES}/${imageRecord.id}/${imageRecord.file}?thumb=300x200`;
+          cover = imageUrl;
+        }
+      } catch (error) {
+        console.warn(`Failed to fetch image for news ${news.id}:`, error);
+      }
+    }
+    
+    // Fallback to direct image field if exists
+    if (!imageUrl && news.image) {
+      const baseUrl = process.env.NEXT_PUBLIC_POCKETBASE_URL || 'http://localhost:8080';
+      imageUrl = `${baseUrl}/api/files/${COLLECTIONS.NEWS}/${news.id}/${news.image}`;
+      thumbnailUrl = `${baseUrl}/api/files/${COLLECTIONS.NEWS}/${news.id}/${news.image}?thumb=300x200`;
+      cover = imageUrl;
+    }
+
+    return {
+      ...news,
+      imageUrl,
+      thumbnailUrl,
+      cover,
+    };
   }));
 
   return {

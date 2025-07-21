@@ -52,7 +52,7 @@ export async function getRecord(collection, id, options = {}) {
       expand,
       fields
     });
-
+    console.log(`Fetched record ${id} from ${collection}:`, record);
     return record;
   } catch (error) {
     console.error(`Error fetching record ${id} from ${collection}:`, error);
@@ -117,7 +117,20 @@ export async function deleteRecord(collection, id) {
  * @returns {string} - The file URL
  */
 export function getFileUrl(record, filename, thumb = '') {
-  return pb.files.getUrl(record, filename, { thumb });
+  const url = pb.files.getURL(record, filename, { thumb });
+  
+  // DEBUG: Log file URL generation details
+  console.log('=== FILE URL DEBUG ===');
+  console.log('Record:', record);
+  console.log('Record ID:', record?.id);
+  console.log('Record Collection:', record?.collectionId || record?.collectionName);
+  console.log('Filename:', filename);
+  console.log('Thumb:', thumb);
+  console.log('Generated URL:', url);
+  console.log('PocketBase Base URL:', pb.baseUrl);
+  console.log('========================');
+  
+  return url;
 }
 
 /**
