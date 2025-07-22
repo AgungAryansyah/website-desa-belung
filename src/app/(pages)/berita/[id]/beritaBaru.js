@@ -1,26 +1,137 @@
+"use client";
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import Image from 'next/image';
+import { getNews } from '../../../../lib/api';
+
 const BeritaBaru = () => {
+  const [latestNews, setLatestNews] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const router = useRouter();
+
+  useEffect(() => {
+    async function fetchLatestNews() {
+      try {
+        setLoading(true);
+        console.log('🔍 Fetching latest news...');
+        
+        const result = await getNews({ 
+          page: 1, 
+          limit: 4 
+        });
+        
+        setLatestNews(result.items || []);
+        
+      } catch (err) {
+        console.error('❌ Error fetching latest news:', err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchLatestNews();
+  }, []);
+
+  // Handle click to navigate to news detail
+  const handleNewsClick = (newsId) => {
+    router.push(`/berita/${newsId}`);
+  };
+
+  // Helper function to format date
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('id-ID', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    });
+  };
+
+  // Helper function to truncate title
+  const truncateTitle = (title, maxLength = 50) => {
+    if (!title) return '';
+    return title.length > maxLength ? title.substring(0, maxLength) + '...' : title;
+  };
+
   return (
     <div className="bg-white p-4 rounded-xl shadow-md">
       <h2 className="text-xl font-semibold text-gray-800 mb-4">
         Berita Terbaru
       </h2>
 
-      {[1, 2, 3, 4].map((_, idx) => (
-        <div key={idx} className="flex gap-3 mb-4">
-          <img
-            src="Berita/k39.svg"
-            alt="thumb"
-            className="w-16 h-16 object-cover rounded-md"
-          />
-          <div className="flex flex-col gap-1.5 ">
-            <h3 className="text-sm font-medium text-gray-800">
-              MMD Filkom UB di Desa Belung
-            </h3>
-            <p className="text-xs text-gray-500">🗓 5 Juli 2025</p>
-            <p className="text-xs text-gray-500">👁 Dilihat 100 kali</p>
-          </div>
+      {/* Loading State */}
+      {loading && (
+        <div className="flex justify-center items-center py-8">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600"></div>
+          <span className="ml-2 text-sm">Loading...</span>
         </div>
-      ))}
+      )}
+
+      {/* Error State */}
+      {error && (
+        <div className="text-red-500 text-sm p-4 bg-red-50 rounded-lg">
+          Error loading latest news: {error}
+        </div>
+      )}
+
+      {/* News List */}
+      {!loading && !error && latestNews.length > 0 && (
+        <div>
+          {latestNews.map((news, index) => (
+            <div 
+              key={news.id || index} 
+              className="flex gap-3 mb-4 cursor-pointer hover:bg-gray-50 p-2 rounded-lg transition-colors border border-gray-100"
+              onClick={() => handleNewsClick(news.id)}
+            >
+              <div className="w-16 h-16 overflow-hidden rounded-md bg-gray-200 flex-shrink-0">
+                {news.thumbnailUrl || news.cover ? (
+                  <Image
+                    src={news.thumbnailUrl || news.cover}
+                    alt={news.title || 'News image'}
+                    width={64}
+                    height={64}
+                    className="w-full h-full object-cover"
+                    unoptimized
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center bg-gray-200">
+                    <Image
+                      src="/berita1.svg"
+                      alt="Default news image"
+                      width={32}
+                      height={32}
+                      className="opacity-50"
+                    />
+                  </div>
+                )}
+              </div>
+              
+              <div className="flex flex-col gap-1.5 flex-1 min-w-0">
+                <h3 className="text-sm font-medium text-gray-800 leading-tight">
+                  {truncateTitle(news.title || 'Untitled')}
+                </h3>
+                <p className="text-xs text-gray-500 flex items-center gap-1">
+                  <span>🗓</span>
+                  {news.created ? formatDate(news.created) : 'No date'}
+                </p>
+                <p className="text-xs text-gray-500 flex items-center gap-1">
+                  <span>👁</span>
+                  Dilihat {news.views || 0} kali
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* No Data State */}
+      {!loading && !error && latestNews.length === 0 && (
+        <div className="text-gray-500 text-sm text-center py-8">
+          Tidak ada berita terbaru
+        </div>
+      )}
     </div>
   );
 };
