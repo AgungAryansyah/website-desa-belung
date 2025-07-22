@@ -1,31 +1,34 @@
-import Image from 'next/image';
+import Image from "next/image";
 
 const NewsSection = () => {
   const newsItems = [
     {
       id: 1,
-      title: 'MMD Filkom UB di Desa Belung',
-      excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vehicula erat molestie convallis sollicitudin. Fusce ultrices felis lacus, vel scelerisque magna efficitur ut. Nam egestas tempus odio, at pellentesque nibh placerat ut. Suspendisse a feugiat tortor.',
-      image: '/landing/images/news_1.png',
-      tag: 'FAKULTAS ILMU KOMPUTER UNIVERSITAS BRAWIJAYA MALANG',
-      date: '2025-01-10'
+      title: "MMD Filkom UB di Desa Belung",
+      excerpt:
+        "Mahasiswa Membangun Desa (MMD) Fakultas Ilmu Komputer Universitas Brawijaya hadir di Desa Belung sebagai wujud kontribusi nyata dalam pengabdian kepada masyarakat. Program ini bertujuan untuk mendampingi masyarakat desa dalam pemanfaatan teknologi dan pengembangan potensi lokal..",
+      image: "/landing/images/news_1.png",
+      tag: "FAKULTAS ILMU KOMPUTER UNIVERSITAS BRAWIJAYA MALANG",
+      date: "2025-01-10",
     },
     {
       id: 2,
-      title: 'MMD Filkom UB di Desa Belung',
-      excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vehicula erat molestie convallis sollicitudin. Fusce ultrices felis lacus, vel scelerisque magna efficitur ut. Nam egestas tempus odio, at pellentesque nibh placerat ut. Suspendisse a feugiat tortor.',
-      image: '/landing/images/news_1.png',
-      tag: 'FAKULTAS ILMU KOMPUTER UNIVERSITAS BRAWIJAYA MALANG',
-      date: '2025-01-09'
+      title: "MMD Filkom UB di Desa Belung",
+      excerpt:
+        "Mahasiswa Membangun Desa (MMD) Fakultas Ilmu Komputer Universitas Brawijaya hadir di Desa Belung sebagai wujud kontribusi nyata dalam pengabdian kepada masyarakat. Program ini bertujuan untuk mendampingi masyarakat desa dalam pemanfaatan teknologi dan pengembangan potensi lokal..",
+      image: "/landing/images/news_1.png",
+      tag: "FAKULTAS ILMU KOMPUTER UNIVERSITAS BRAWIJAYA MALANG",
+      date: "2025-01-09",
     },
     {
       id: 3,
-      title: 'MMD Filkom UB di Desa Belung',
-      excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vehicula erat molestie convallis sollicitudin. Fusce ultrices felis lacus, vel scelerisque magna efficitur ut. Nam egestas tempus odio, at pellentesque nibh placerat ut. Suspendisse a feugiat tortor.',
-      image: '/landing/images/news_1.png',
-      tag: 'FAKULTAS ILMU KOMPUTER UNIVERSITAS BRAWIJAYA MALANG',
-      date: '2025-01-08'
-    }
+      title: "MMD Filkom UB di Desa Belung",
+      excerpt:
+        "Mahasiswa Membangun Desa (MMD) Fakultas Ilmu Komputer Universitas Brawijaya hadir di Desa Belung sebagai wujud kontribusi nyata dalam pengabdian kepada masyarakat. Program ini bertujuan untuk mendampingi masyarakat desa dalam pemanfaatan teknologi dan pengembangan potensi lokal..",
+      image: "/landing/images/news_1.png",
+      tag: "FAKULTAS ILMU KOMPUTER UNIVERSITAS BRAWIJAYA MALANG",
+      date: "2025-01-08",
+    },
   ];
 
   return (
@@ -37,9 +40,12 @@ const NewsSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {newsItems.map((news) => (
-            <article key={news.id} className="bg-[#D9D9D9] rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <article
+              key={news.id}
+              className="bg-[#D9D9D9] rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
+            >
               <div className="relative aspect-video">
-                <Image 
+                <Image
                   src={news.image}
                   alt={news.title}
                   fill
@@ -53,7 +59,7 @@ const NewsSection = () => {
                   </span>
                 </div>
               </div>
-              
+
               <div className="p-6">
                 <h3 className="text-xl font-bold text-black mb-3 line-clamp-2">
                   {news.title}
@@ -61,15 +67,15 @@ const NewsSection = () => {
                 <p className="text-black text-sm leading-relaxed mb-4 line-clamp-3">
                   {news.excerpt}
                 </p>
-                
+
                 <div className="flex items-center justify-between">
-                  <a 
+                  <a
                     href="#"
                     className="inline-flex items-center text-black hover:text-green-400 font-medium"
                   >
-                    <Image 
-                      src="/landing/circle_arrow_black.svg" 
-                      alt="Explore arrow" 
+                    <Image
+                      src="/landing/circle_arrow_black.svg"
+                      alt="Explore arrow"
                       width={24}
                       height={24}
                       className="w-6 h-6 mr-2"
@@ -77,7 +83,7 @@ const NewsSection = () => {
                     Pelajari lebih Lanjut
                   </a>
                   <span className="text-gray-400 text-sm">
-                    {new Date(news.date).toLocaleDateString('id-ID')}
+                    {new Date(news.date).toLocaleDateString("id-ID")}
                   </span>
                 </div>
               </div>
@@ -86,7 +92,7 @@ const NewsSection = () => {
         </div>
 
         <div className="text-center mt-12">
-          <a 
+          <a
             href="#"
             className="inline-flex items-center bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 transition-colors"
           >

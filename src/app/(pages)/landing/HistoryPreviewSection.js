@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from "next/image";
 
 const HistoryPreviewSection = () => {
   return (
@@ -11,8 +11,8 @@ const HistoryPreviewSection = () => {
               <div className="h-64 lg:h-full bg-gray-300 relative">
                 {/* image */}
                 <div className="absolute inset-0 bg-gray-300">
-                  <Image 
-                    src='/landing/images/history.png' 
+                  <Image
+                    src="/landing/images/history.png"
                     alt={` image`}
                     fill
                     priority
@@ -30,23 +30,28 @@ const HistoryPreviewSection = () => {
                   Sejarah Desa Belung
                 </h2>
                 <p className="text-black text-lg leading-relaxed mb-8">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                  Quisque vehicula erat molestie convallis sollicitudin. Fusce 
-                  ultrices felis lacus, vel scelerisque magna efficitur ut. Nam 
-                  egestas tempus odio, at pellentesque nibh placerat ut.
+                  Desa Belung terletak di kaki Gunung Semeru, sebuah desa yang
+                  dikenal dengan kekayaan alamnya, terutama hasil pertaniannya
+                  yang melimpah seperti sayuran. Desa ini memiliki sejarah yang
+                  kaya, terbentuk pada tahun 1945 dan terus berkembang sebagai
+                  bagian penting dari wilayah administratif Kecamatan
+                  Poncokusumo, Kabupaten Malang, Jawa Timur. Secara geografis,
+                  Desa Belung memiliki koordinat 1.124582 LU dengan ketinggian
+                  sekitar ±1.000 meter di atas permukaan laut, menciptakan iklim
+                  yang sejuk dan kondusif untuk pertanian.
                 </p>
-                
+
                 <div className="flex items-center">
                   <div className="w-6 h-6 bg-[#D9D9D9] rounded-full flex items-center justify-center mr-3">
-                    <Image 
-                      src="/landing/circle_arrow_black.svg" 
-                      alt="Explore arrow" 
+                    <Image
+                      src="/landing/circle_arrow_black.svg"
+                      alt="Explore arrow"
                       width={32}
                       height={32}
                       className="w-8 h-8"
                     />
                   </div>
-                  <a 
+                  <a
                     href="/sejarah"
                     className="text-black font-semibold hover:text-gray-600 transition-colors"
                   >

@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from "next/image";
 
 const PotentialSection = () => {
   return (
@@ -13,23 +13,27 @@ const PotentialSection = () => {
                   Potensi Desa Belung
                 </h2>
                 <p className="text-black text-lg leading-relaxed mb-8">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                  Quisque vehicula erat molestie convallis sollicitudin. Fusce 
-                  ultrices felis lacus, vel scelerisque magna efficitur ut. Nam 
-                  egestas tempus odio, at pellentesque nibh placerat ut.
+                  Desa Belung memiliki beragam potensi yang menjadi kekuatan
+                  utama dalam pembangunan ekonomi dan sosial masyarakatnya.
+                  Terletak di lereng Gunung Semeru, desa ini memiliki tanah yang
+                  subur dan iklim yang sejuk, menjadikannya sangat ideal untuk
+                  pertanian, terutama sayuran dataran tinggi seperti kubis,
+                  wortel, kentang, dan daun bawang. Hasil pertanian ini tidak
+                  hanya mencukupi kebutuhan lokal, tetapi juga dipasarkan ke
+                  kota-kota besar di Jawa Timur.
                 </p>
-                
+
                 <div className="flex items-center">
                   <div className="w-6 h-6 bg-[#D9D9D9] rounded-full flex items-center justify-center mr-3">
-                    <Image 
-                      src="/landing/circle_arrow_black.svg" 
-                      alt="Explore arrow" 
+                    <Image
+                      src="/landing/circle_arrow_black.svg"
+                      alt="Explore arrow"
                       width={32}
                       height={32}
                       className="w-8 h-8"
                     />
                   </div>
-                  <a 
+                  <a
                     href="/potensi"
                     className="text-black font-semibold hover:text-gray-600 transition-colors"
                   >
@@ -44,15 +48,15 @@ const PotentialSection = () => {
               <div className="h-64 lg:h-full bg-gray-300 relative">
                 {/* image */}
                 <div className="absolute inset-0 bg-gray-300">
-                  <Image 
-                    src='/landing/images/potential.png' 
+                  <Image
+                    src="/landing/images/potential.png"
                     alt={` image`}
                     fill
                     priority
                     className="object-cover w-full h-full"
                     quality={85}
                   />
-                </div>                
+                </div>
               </div>
             </div>
           </div>
