@@ -47,8 +47,8 @@ export const PAGES = {
     description: "Peta wilayah dan lokasi penting",
   },
   HOMEBERITA: {
-    id: "hoome berita",
-    title: "home berita",
+    id: "home berita",
+    title: "Home Berita",
     path: "/home-berita",
     description: "Halaman untuk melihat semua berita terkini",
   },
