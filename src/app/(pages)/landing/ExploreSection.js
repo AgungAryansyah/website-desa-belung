@@ -1,31 +1,31 @@
-import ExploreCard from './ExploreCard';
+import ExploreCard from "./ExploreCard";
 
 const ExploreSection = () => {
   const exploreItems = [
     {
-      id: 'profil-desa',
-      title: 'Profil Desa',
-      image: '/landing/images/background_1.png',
-      link: '/profil'
+      id: "profil-desa",
+      title: "Profil Desa",
+      image: "/landing/images/background_1.png",
+      link: "/profil",
     },
     {
-      id: 'struktur-desa',
-      title: 'Struktur Desa',
-      image: '/landing/images/background_1.png',
-      link: '/struktur'
+      id: "struktur-desa",
+      title: "Struktur Desa",
+      image: "/landing/images/background_1.png",
+      link: "/struktur",
     },
     {
-      id: 'potensi-desa',
-      title: 'Potensi Desa',
-      image: '/landing/images/background_1.png',
-      link: '/potensi'
+      id: "potensi-desa",
+      title: "Potensi Desa",
+      image: "/landing/images/background_1.png",
+      link: "/potensi",
     },
     {
-      id: 'berita',
-      title: 'Berita',
-      image: '/landing/images/background_1.png',
-      link: '/berita'
-    }
+      id: "berita",
+      title: "Berita",
+      image: "/landing/images/background_1.png",
+      link: "/berita",
+    },
   ];
 
   return (
@@ -35,11 +35,15 @@ const ExploreSection = () => {
           {/* Left Content */}
           <div className="lg:w-1/2">
             <h2 className="text-4xl font-bold text-gray-800 mb-4">
-              Jelajahi<br />
+              Jelajahi
+              <br />
               Website Ini
             </h2>
             <p className="text-gray-600 text-lg leading-relaxed">
-              Pada Website ini anda bisa melihat aspek-aspek yang terkait dengan desa. Seperti......
+              Pada website ini, Anda dapat mengeksplorasi berbagai aspek penting
+              yang berkaitan dengan Desa Belung. Mulai dari informasi umum
+              hingga potensi lokal yang menjadi kebanggaan desa kami. Temukan
+              lebih banyak melalui fitur-fitur berikut:
             </p>
           </div>
 
