@@ -1,5 +1,5 @@
-import ReactMarkdown from "react-markdown";
 import Image from "next/image";
+import DOMPurify from 'dompurify';
 
 const IsiBerita = ({ berita }) => {
   if (!berita) {
@@ -10,8 +10,11 @@ const IsiBerita = ({ berita }) => {
     );
   }
 
+  // Sanitize HTML content for security
+  const sanitizedContent = berita.content ? DOMPurify.sanitize(berita.content) : '';
+
   return (
-    <div className="prose prose-lg max-w-none text-gray-800 [&_img]:rounded-lg [&_img]:shadow-md">
+    <div className="prose prose-lg max-w-none text-gray-800">
       {/* Main Image */}
       {berita.cover && (
         <div className="mb-6">
@@ -33,9 +36,12 @@ const IsiBerita = ({ berita }) => {
         </div>
       )}
 
-      {/* Content */}
-      {berita.content ? (
-        <ReactMarkdown>{berita.content}</ReactMarkdown>
+      {/* Content as Sanitized HTML */}
+      {sanitizedContent ? (
+        <div 
+          className="content-html"
+          dangerouslySetInnerHTML={{ __html: sanitizedContent }}
+        />
       ) : (
         <div className="text-gray-500">
           <p>Content not available for this article.</p>
