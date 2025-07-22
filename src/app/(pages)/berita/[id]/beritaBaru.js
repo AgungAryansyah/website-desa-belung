@@ -116,10 +116,6 @@ const BeritaBaru = () => {
                   <span>🗓</span>
                   {news.created ? formatDate(news.created) : 'No date'}
                 </p>
-                <p className="text-xs text-gray-500 flex items-center gap-1">
-                  <span>👁</span>
-                  Dilihat {news.views || 0} kali
-                </p>
               </div>
             </div>
           ))}

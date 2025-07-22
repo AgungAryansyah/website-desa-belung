@@ -134,8 +134,6 @@ export default function BeritaPage() {
                     </div>
                     <div className="flex justify-between items-center mt-4">
                       <div className="text-sm text-gray-500 flex items-center gap-1">
-                        <Image src="/banyakdilihat.svg" alt="Views" width={16} height={16} className="w-4 h-4" />
-                        <span>Dilihat {berita.views || 0} kali</span>
                       </div>
                       <span className="bg-green-600 text-white text-xs px-3 py-1 rounded-full">
                         {formatDate(berita.created)}

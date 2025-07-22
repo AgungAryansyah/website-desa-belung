@@ -24,7 +24,6 @@ const HeaderBerita = ({ berita }) => {
       </h1>
       <div className="flex items-center text-sm text-gray-500 mt-1 mb-4 gap-4">
         <span>🗓 {berita?.created ? formatDate(berita.created) : "Loading..."}</span>
-        <span className="ml-auto">👁 Dilihat {berita?.views || 0} kali</span>
       </div>
     </>
   );
