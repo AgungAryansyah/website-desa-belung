@@ -50,9 +50,15 @@ const BeritaBaru = () => {
   };
 
   // Helper function to truncate title
-  const truncateTitle = (title, maxLength = 50) => {
+  const truncateTitle = (title, maxLength = 45) => {
     if (!title) return '';
     return title.length > maxLength ? title.substring(0, maxLength) + '...' : title;
+  };
+
+  // Helper function to truncate excerpt
+  const truncateExcerpt = (excerpt, maxLength = 80) => {
+    if (!excerpt) return '';
+    return excerpt.length > maxLength ? excerpt.substring(0, maxLength) + '...' : excerpt;
   };
 
   return (
@@ -82,16 +88,17 @@ const BeritaBaru = () => {
           {latestNews.map((news, index) => (
             <div 
               key={news.id || index} 
-              className="flex gap-3 mb-4 cursor-pointer hover:bg-gray-50 p-2 rounded-lg transition-colors border border-gray-100"
+              className="flex gap-3 mb-4 cursor-pointer hover:bg-gray-50 p-3 rounded-lg transition-colors border border-gray-100 hover:border-green-200"
               onClick={() => handleNewsClick(news.id)}
             >
-              <div className="w-16 h-16 overflow-hidden rounded-md bg-gray-200 flex-shrink-0">
+              {/* Image */}
+              <div className="w-20 h-20 overflow-hidden rounded-md bg-gray-200 flex-shrink-0">
                 {news.thumbnailUrl || news.cover ? (
                   <Image
                     src={news.thumbnailUrl || news.cover}
                     alt={news.title || 'News image'}
-                    width={64}
-                    height={64}
+                    width={80}
+                    height={80}
                     className="w-full h-full object-cover"
                     unoptimized
                   />
@@ -108,14 +115,27 @@ const BeritaBaru = () => {
                 )}
               </div>
               
+              {/* Content */}
               <div className="flex flex-col gap-1.5 flex-1 min-w-0">
-                <h3 className="text-sm font-medium text-gray-800 leading-tight">
+                {/* Title */}
+                <h3 className="text-sm font-semibold text-gray-800 leading-tight line-clamp-2">
                   {truncateTitle(news.title || 'Untitled')}
                 </h3>
-                <p className="text-xs text-gray-500 flex items-center gap-1">
-                  <span>🗓</span>
-                  {news.created ? formatDate(news.created) : 'No date'}
-                </p>
+                
+                {/* Excerpt */}
+                {news.excerpt && (
+                  <p className="text-xs text-gray-600 leading-relaxed line-clamp-2">
+                    {truncateExcerpt(news.excerpt)}
+                  </p>
+                )}
+                
+                {/* Meta Information */}
+                <div className="flex flex-col gap-1 mt-auto">
+                  <p className="text-xs text-gray-500 flex items-center gap-1">
+                    <span>🗓</span>
+                    {news.created ? formatDate(news.created) : 'No date'}
+                  </p>
+                </div>
               </div>
             </div>
           ))}
