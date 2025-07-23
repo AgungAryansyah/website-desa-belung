@@ -28,13 +28,6 @@ const IsiBerita = ({ berita }) => {
           />
         </div>
       )}
-      
-      {/* Excerpt */}
-      {berita.excerpt && (
-        <div className="text-lg text-gray-600 italic mb-6 p-4 bg-gray-50 rounded-lg border-l-4 border-green-600">
-          {berita.excerpt}
-        </div>
-      )}
 
       {/* Content as Sanitized HTML */}
       {sanitizedContent ? (
