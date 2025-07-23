@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { getNavigationItems } from "../lib/pages";
 
 const Header = () => {
@@ -9,7 +10,14 @@ const Header = () => {
           {/* Logo and Title */}
           <div className="flex items-center space-x-3">
             <div className="w-12 h-12 bg-transparent rounded-lg flex items-center justify-center">
-              <img className="w-auto h-auto" src="MainFooter/Logo.svg" />
+              <Image 
+                className="w-auto h-auto" 
+                src="/MainFooter/Logo.svg" 
+                alt="Logo Desa Belung"
+                width={48}
+                height={48}
+                priority
+              />
             </div>
             <div>
               <h1 className="text-xl font-bold">Desa Belung</h1>
