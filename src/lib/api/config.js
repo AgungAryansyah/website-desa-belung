@@ -6,7 +6,7 @@ export const POCKETBASE_CONFIG = {
 
 // Collection names for PocketBase
 export const COLLECTIONS = {
-  NEWS: 'articles',
+  NEWS: 'news',
   PROFILE: 'village_profile',
   EVENTS: 'events',
   STRUCTURE: 'village_structure',
