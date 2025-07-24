@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const HeaderBerita = ({ berita }) => {
   // Helper function to format date
   const formatDate = (dateString) => {
@@ -22,7 +24,7 @@ const HeaderBerita = ({ berita }) => {
       <h1 className="text-4xl font-bold text-gray-800">
         {berita?.title || "Loading..."}
       </h1>
-      <div className="flex items-center text-sm text-gray-500 mt-1 mb-4 gap-4">
+      <div className="flex items-center text-sm text-gray-500 mt-1 mb-6 gap-4">
         <span>🗓 {berita?.created ? formatDate(berita.created) : "Loading..."}</span>
       </div>
     </>

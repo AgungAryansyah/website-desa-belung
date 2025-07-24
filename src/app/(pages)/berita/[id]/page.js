@@ -19,11 +19,9 @@ export default function DetailBeritaPage() {
     async function fetchBerita() {
       try {
         setLoading(true);
-        console.log('Fetching berita with ID:', beritaId);
         const result = await getNewsById(beritaId);
         setBerita(result);
         
-        console.log('Fetched berita detail:', result);
       } catch (err) {
         setError(err.message);
         console.error('Error fetching berita:', err);
