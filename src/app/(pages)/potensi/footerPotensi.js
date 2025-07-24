@@ -1,40 +1,33 @@
+"use client";
+import React from "react";
+
 const FooterPotensi = () => {
   return (
-    <div className="flex flex-col sm:flex-row items-center text-sm text-gray-500 border-t pt-4 sm:pt-6 mt-6 sm:mt-8 gap-4 sm:gap-6">
-      <div className="mb-2 sm:mb-0">Bagikan :</div>{" "}
-      {/* Tambah margin bawah untuk mode kolom */}
-      <div className="flex flex-wrap justify-center sm:justify-start gap-4 items-center">
-        <a href="#" className="transition hover:opacity-80">
-          <img
-            src="Berita/whatsApp.svg"
-            alt="WhatsApp"
-            className="w-7 h-7 sm:w-6 sm:h-6 object-contain"
+    <div className="container mx-auto px-6 pb-16">
+      <div className="bg-gradient-to-r from-green-600 to-blue-600 rounded-2xl p-12 text-center text-white">
+        {/* Users Icon */}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-16 h-16 mx-auto mb-6 opacity-80"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={1.5}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M3 9.75L12 4l9 5.75V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.75z"
           />
-        </a>
+        </svg>
 
-        <a href="#" className="transition hover:opacity-80">
-          <img
-            src="Berita/Facebook.svg"
-            alt="Facebook"
-            className="w-7 h-7 sm:w-6 sm:h-6 object-contain"
-          />
-        </a>
-
-        <a href="#" className="transition hover:opacity-80">
-          <img
-            src="Berita/Instagram.svg"
-            alt="Instagram"
-            className="w-7 h-7 sm:w-6 sm:h-6 object-contain"
-          />
-        </a>
-        <a href="#" className="transition hover:opacity-80">
-          <img
-            src="Berita/Tiktok.svg"
-            alt="Tiktok"
-            className="w-7 h-7 sm:w-6 sm:h-6 object-contain"
-          />
-        </a>
-        {/* Tambahkan ikon lain jika perlu */}
+        <h2 className="text-3xl font-bold mb-4">
+          Mari Bergabung Membangun Desa Belung
+        </h2>
+        <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90">
+          Dengan potensi yang melimpah, mari bersama-sama mengembangkan Desa
+          Belung menjadi desa mandiri dan sejahtera untuk generasi mendatang.
+        </p>
       </div>
     </div>
   );
