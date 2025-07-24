@@ -26,26 +26,8 @@ export async function getNews({ page = 1, limit = 10, featured = false } = {}) {
     if (news.cover) {
       try {
         const imageRecord = await getRecord(COLLECTIONS.IMAGES, news.cover);
-        
-        if (imageRecord) {
-          // Generate URL manually using PocketBase template
-          const baseUrl = process.env.NEXT_PUBLIC_POCKETBASE_URL || 'http://localhost:8080';
-          imageUrl = `${baseUrl}/api/files/${imageRecord.collectionId}/${imageRecord.id}/${imageRecord.field}`;
-          thumbnailUrl = `${imageUrl}?thumb=300x200`;
-          cover = imageUrl
-          
-          console.log('Generated URLs manually from images collection:', {
-            baseUrl,
-            collection: COLLECTIONS.IMAGES,
-            recordId: imageRecord.id,
-            filename: imageRecord.file,
-            imageUrl,
-            thumbnailUrl,
-            cover
-          });
-        } else {
-          console.log('Image record found but no file field');
-        }
+        cover = getFileUrl(imageRecord);
+        console.log(`Cover image for news ${news.id}:`, cover);
       } catch (error) {
         console.log(`Failed to fetch image for news ${news.id}:`, error);
       }
@@ -57,16 +39,6 @@ export async function getNews({ page = 1, limit = 10, featured = false } = {}) {
       thumbnailUrl,
       cover,
     };
-
-    console.log('Final processed item:', {
-      id: news.id,
-      title: news.title,
-      imageUrl: finalItem.imageUrl,
-      thumbnailUrl: finalItem.thumbnailUrl,
-      cover: finalItem.cover
-    });
-    console.log('=== END PROCESSING ===\n');
-
     return finalItem;
   }));
 
@@ -89,25 +61,13 @@ export async function getNewsById(id) {
   let imageUrl = null;
   let cover = null;
 
-  // If news has image_id, fetch from images collection
-  if (news.image_id) {
+  if (news.cover) {
     try {
-      const imageRecord = await getRecord(COLLECTIONS.IMAGES, news.image_id);
-      if (imageRecord && imageRecord.file) {
-        const baseUrl = process.env.NEXT_PUBLIC_POCKETBASE_URL || 'http://localhost:8080';
-        imageUrl = `${baseUrl}/api/files/${COLLECTIONS.IMAGES}/${imageRecord.id}/${imageRecord.file}`;
-        cover = imageUrl;
-      }
+      const imageRecord = await getRecord(COLLECTIONS.IMAGES, news.cover);
+      cover = getFileUrl(imageRecord, imageRecord.file);
     } catch (error) {
-      console.warn(`Failed to fetch image for news ${news.id}:`, error);
+      console.log(`Failed to fetch image for news ${news.id}:`, error);
     }
-  }
-  
-  // Fallback to direct image field if exists
-  if (!imageUrl && news.image) {
-    const baseUrl = process.env.NEXT_PUBLIC_POCKETBASE_URL || 'http://localhost:8080';
-    imageUrl = `${baseUrl}/api/files/${COLLECTIONS.NEWS}/${news.id}/${news.image}`;
-    cover = imageUrl;
   }
   
   return {
@@ -194,3 +154,4 @@ export async function getFeaturedNews(limit = 5) {
 export async function getLatestNews(limit = 5) {
   return getNews({ limit });
 }
+

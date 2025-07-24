@@ -1,3 +1,4 @@
+import { imageConfigDefault } from 'next/dist/shared/lib/image-config';
 import PocketBase from 'pocketbase';
 
 // Initialize PocketBase client
@@ -116,21 +117,9 @@ export async function deleteRecord(collection, id) {
  * @param {string} thumb - Optional thumbnail size (e.g., '100x100')
  * @returns {string} - The file URL
  */
-export function getFileUrl(record, filename, thumb = '') {
-  const url = pb.files.getURL(record, filename, { thumb });
-  
-  // DEBUG: Log file URL generation details
-  console.log('=== FILE URL DEBUG ===');
-  console.log('Record:', record);
-  console.log('Record ID:', record?.id);
-  console.log('Record Collection:', record?.collectionId || record?.collectionName);
-  console.log('Filename:', filename);
-  console.log('Thumb:', thumb);
-  console.log('Generated URL:', url);
-  console.log('PocketBase Base URL:', pb.baseUrl);
-  console.log('========================');
-  
-  return url;
+export function getFileUrl(record) {
+  const baseUrl = process.env.NEXT_PUBLIC_POCKETBASE_URL || 'http://localhost:8080';
+  return `${baseUrl}/api/files/${record.collectionId}/${record.id}/${record.field}`;
 }
 
 /**
