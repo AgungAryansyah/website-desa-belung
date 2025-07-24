@@ -224,7 +224,7 @@ export default function ProfilPage() {
                       Batas Utara
                     </h4>
                     <p className="text-gray-700 font-medium text-base">
-                      Desa Gubugklakah
+                      Desa Tulusbesar
                     </p>
                   </div>
 
@@ -248,7 +248,7 @@ export default function ProfilPage() {
                       Batas Timur
                     </h4>
                     <p className="text-gray-700 font-medium text-base">
-                      Desa Poncokusumo
+                      Desa Wringinanom
                     </p>
                   </div>
 
@@ -272,7 +272,7 @@ export default function ProfilPage() {
                       Batas Selatan
                     </h4>
                     <p className="text-gray-700 font-medium text-base">
-                      Desa Karanganyar
+                      Desa Wonomulyo
                     </p>
                   </div>
 
@@ -296,7 +296,7 @@ export default function ProfilPage() {
                       Batas Barat
                     </h4>
                     <p className="text-gray-700 font-medium text-base">
-                      Desa Wringinanom
+                      Desa Pulungdowo
                     </p>
                   </div>
                 </div>
@@ -306,7 +306,7 @@ export default function ProfilPage() {
                   <div className="flex items-center justify-center gap-4 mb-2">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="w-8 h-8 text-indigo-500"
+                      className="w-12 h-12 text-indigo-500"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -325,11 +325,11 @@ export default function ProfilPage() {
                     </svg>
 
                     <div>
-                      <h4 className="font-bold text-gray-900 text-2xl">
+                      <h4 className="font-bold text-indigo-600 text-2xl">
                         Luas Desa
                       </h4>
-                      <p className="text-4xl font-bold text-indigo-600 mt-2">
-                        552.12 Ha
+                      <p className="text-4xl font-bold text-indigo-600 mt-1">
+                        3050 Ha 610 m²
                       </p>
                     </div>
                   </div>
