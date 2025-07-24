@@ -4,8 +4,8 @@ const SOTBSection = () => {
     { name: 'Ketua TEKKOM', position: 'Ketua', image: '/team-2-dummy.jpg' },
     { name: 'Ketua TEKKOM', position: 'Ketua', image: '/team-3-dummy.jpg' },
     { name: 'Ketua TEKKOM', position: 'Ketua', image: '/team-4-dummy.jpg' },
-    { name: 'Ketua TEKKOM', position: 'Ketua', image: '/team-5-dummy.jpg' },
-    { name: 'Ketua TEKKOM', position: 'Ketua', image: '/team-6-dummy.jpg' },
+    { name: 'Agung', position: 'Ketua', image: '/team-5-dummy.jpg' },
+    { name: 'Cristian Gerrard', position: 'Ketua', image: '/team-6-dummy.jpg' },
   ];
 
   return (
