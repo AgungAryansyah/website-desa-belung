@@ -162,8 +162,6 @@ export default function PetaMainContent() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F5F7FA] pt-8 pb-16">
-    <div className="container mx-auto">
     <div className="bg-white rounded-lg shadow-md p-8 flex flex-col gap-6">
       {/* Breadcrumb Navigation */}
       <div className="flex items-center text-sm text-gray-600">
@@ -247,8 +245,6 @@ export default function PetaMainContent() {
           </div>
         ))}
       </div>
-    </div>
-    </div>
     </div>
   );
 }
