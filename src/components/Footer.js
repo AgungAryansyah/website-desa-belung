@@ -37,36 +37,58 @@ const Footer = () => {
                 <span>0812-1234-5678</span>
               </div>
               <div className="flex flex-wrap justify-center sm:justify-start gap-4 items-center">
-                <a href="#" className="transition hover:opacity-80">
+                <a
+                  href="https://www.facebook.com/profile.php?id=100069073334964"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition hover:opacity-80"
+                >
                   <img
-                    src="MainFooter/Fb.svg"
-                    alt="WhatsApp"
-                    className="w-7 h-7 sm:w-6 sm:h-6 object-contain"
-                  />
-                </a>
-
-                <a href="#" className="transition hover:opacity-80">
-                  <img
-                    src="MainFooter/Insta.svg"
+                    src="/MainFooter/Fb.svg"
                     alt="Facebook"
                     className="w-7 h-7 sm:w-6 sm:h-6 object-contain"
                   />
                 </a>
 
-                <a href="#" className="transition hover:opacity-80">
+                <a
+                  href="https://www.instagram.com/belung.punyacerita?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition hover:opacity-80"
+                >
                   <img
-                    src="MainFooter/Tiktok.svg"
+                    src="/MainFooter/Insta.svg"
                     alt="Instagram"
                     className="w-7 h-7 sm:w-6 sm:h-6 object-contain"
                   />
                 </a>
-                <a href="#" className="transition hover:opacity-80">
+
+                <a
+                  href="https://www.tiktok.com/@desabelung"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition hover:opacity-80"
+                >
                   <img
-                    src="MainFooter/Yt.svg"
-                    alt="Tiktok"
+                    src="/MainFooter/Tiktok.svg"
+                    alt="TikTok"
                     className="w-7 h-7 sm:w-6 sm:h-6 object-contain"
                   />
                 </a>
+
+                <a
+                  href="https://www.youtube.com/@pemdesbelung4396"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition hover:opacity-80"
+                >
+                  <img
+                    src="/MainFooter/Yt.svg"
+                    alt="YouTube"
+                    className="w-7 h-7 sm:w-6 sm:h-6 object-contain"
+                  />
+                </a>
+
                 {/* Tambahkan ikon lain jika perlu */}
               </div>
             </div>

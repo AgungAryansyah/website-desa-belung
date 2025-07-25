@@ -21,9 +21,7 @@ const FooterPotensi = () => {
           />
         </svg>
 
-        <h2 className="text-3xl font-bold mb-4">
-          Mari Bergabung Membangun Desa Belung
-        </h2>
+        <h2 className="text-3xl font-bold mb-4">Mari Membangun Desa Belung</h2>
         <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90">
           Dengan potensi yang melimpah, mari bersama-sama mengembangkan Desa
           Belung menjadi desa mandiri dan sejahtera untuk generasi mendatang.
