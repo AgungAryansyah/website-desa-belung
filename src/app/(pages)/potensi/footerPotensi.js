@@ -3,8 +3,8 @@ import React from "react";
 
 const FooterPotensi = () => {
   return (
-    <div className="container mx-auto px-6 pb-16">
-      <div className="bg-gradient-to-r from-green-600 to-blue-600 rounded-2xl p-12 text-center text-white">
+    <div className="container px-6 pb-16 mx-auto">
+      <div className="p-12 text-center text-white bg-gradient-to-r from-green-600 to-blue-600 rounded-2xl">
         {/* Users Icon */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -21,8 +21,8 @@ const FooterPotensi = () => {
           />
         </svg>
 
-        <h2 className="text-3xl font-bold mb-4">Mari Membangun Desa Belung</h2>
-        <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90">
+        <h2 className="mb-4 text-3xl font-bold">Mari Membangun Desa Belung</h2>
+        <p className="max-w-2xl mx-auto mb-8 text-lg opacity-90">
           Dengan potensi yang melimpah, mari bersama-sama mengembangkan Desa
           Belung menjadi desa mandiri dan sejahtera untuk generasi mendatang.
         </p>

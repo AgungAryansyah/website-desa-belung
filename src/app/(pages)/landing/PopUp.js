@@ -26,13 +26,26 @@ const PopUp = ({
   );
 
   const [isPlaying, setIsPlaying] = useState(true);
-  const currentSpeed = speed; // Kecepatan tidak perlu state jika tidak ada kontrol
+  const [isMobile, setIsMobile] = useState(false);
+  const currentSpeed = speed;
 
   const tickerRef = useRef(null);
   const containerRef = useRef(null);
   const animationRef = useRef(null);
   const positionRef = useRef(0);
   const isInitialized = useRef(false);
+
+  // Detect mobile screen size
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkIsMobile();
+    window.addEventListener("resize", checkIsMobile);
+
+    return () => window.removeEventListener("resize", checkIsMobile);
+  }, []);
 
   const initTicker = useCallback(() => {
     if (!tickerRef.current || !containerRef.current) return;
@@ -93,7 +106,6 @@ const PopUp = ({
     }
   }, [isPlaying, startAnimation, stopAnimation]);
 
-  // Menghapus `pauseOnHover` membuat useEffect untuk resize lebih simpel
   useEffect(() => {
     const handleResize = () => {
       stopAnimation();
@@ -109,83 +121,99 @@ const PopUp = ({
   const duplicatedNews =
     newsItems.length > 0 ? [...newsItems, ...newsItems] : [];
 
-  const styles = {
-    tickerContainer: {
-      background: `linear-gradient(90deg, ${backgroundColor} 0%, ${backgroundColor}dd 50%, ${backgroundColor} 100%)`,
-      color: textColor,
-      overflow: "hidden",
-      position: "relative",
-      boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
+  const getResponsiveStyles = () => {
+    const height = isMobile ? "45px" : "60px";
+    const labelWidth = isMobile ? "100px" : "180px";
+    const arrowSize = isMobile ? "6px" : "10px";
 
-      fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-    },
-    tickerWrapper: {
-      display: "flex",
-      alignItems: "center",
-      height: "60px",
-      position: "relative",
-    },
-    tickerLabel: {
-      background: labelColor,
-      color: "white",
-      padding: "0 20px",
-      height: "100%",
-      display: "flex",
-      alignItems: "center",
-      fontWeight: "bold",
-      fontSize: "16px",
-      textTransform: "uppercase",
-      letterSpacing: "1px",
-      position: "relative",
-      minWidth: "180px",
-      justifyContent: "center",
-      zIndex: 10,
-    },
-    labelArrow: {
-      position: "absolute",
-      right: "-10px",
-      top: "0",
-      width: "0",
-      height: "0",
-      borderLeft: `10px solid ${labelColor}`,
-      borderTop: "30px solid transparent",
-      borderBottom: "30px solid transparent",
-    },
-    tickerContent: {
-      flex: 1,
-      overflow: "hidden",
-      height: "100%",
-      position: "relative",
-    },
-    tickerItems: {
-      display: "flex",
-      alignItems: "center",
-      height: "100%",
-      whiteSpace: "nowrap",
-      position: "absolute",
-      left: 0,
-      top: 0,
-    },
-    tickerItem: {
-      display: "inline-flex",
-      alignItems: "center",
-      padding: "0 40px",
-      fontSize: "16px",
-      fontWeight: "500",
-      height: "60px",
-    },
-    separator: {
-      marginLeft: "40px",
-      color: "#1f2937",
-      fontSize: "12px",
-    },
+    return {
+      tickerContainer: {
+        background: `linear-gradient(90deg, ${backgroundColor} 0%, ${backgroundColor}dd 50%, ${backgroundColor} 100%)`,
+        color: textColor,
+        overflow: "hidden",
+        position: "relative",
+        boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
+        fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+        width: "100%",
+      },
+      tickerWrapper: {
+        display: "flex",
+        alignItems: "center",
+        height: height,
+        position: "relative",
+        width: "100%",
+      },
+      tickerLabel: {
+        background: labelColor,
+        color: "white",
+        padding: isMobile ? "0 8px" : "0 20px",
+        height: "100%",
+        display: "flex",
+        alignItems: "center",
+        fontWeight: "bold",
+        fontSize: isMobile ? "10px" : "16px",
+        textTransform: "uppercase",
+        letterSpacing: isMobile ? "0.5px" : "1px",
+        position: "relative",
+        minWidth: labelWidth,
+        maxWidth: labelWidth,
+        justifyContent: "center",
+        zIndex: 10,
+        flexShrink: 0,
+        whiteSpace: "nowrap",
+        textAlign: "center",
+      },
+      labelArrow: {
+        position: "absolute",
+        right: `-${arrowSize}`,
+        top: "0",
+        width: "0",
+        height: "0",
+        borderLeft: `${arrowSize} solid ${labelColor}`,
+        borderTop: `${parseInt(height) / 2}px solid transparent`,
+        borderBottom: `${parseInt(height) / 2}px solid transparent`,
+      },
+      tickerContent: {
+        flex: 1,
+        overflow: "hidden",
+        height: "100%",
+        position: "relative",
+        minWidth: 0,
+      },
+      tickerItems: {
+        display: "flex",
+        alignItems: "center",
+        height: "100%",
+        whiteSpace: "nowrap",
+        position: "absolute",
+        left: 0,
+        top: 0,
+      },
+      tickerItem: {
+        display: "inline-flex",
+        alignItems: "center",
+        padding: isMobile ? "0 15px" : "0 40px",
+        fontSize: isMobile ? "12px" : "16px",
+        fontWeight: "500",
+        height: "100%",
+        lineHeight: "1.4",
+      },
+      separator: {
+        marginLeft: isMobile ? "15px" : "40px",
+        color: textColor,
+        fontSize: isMobile ? "8px" : "12px",
+        opacity: 0.7,
+      },
+    };
   };
+
+  const styles = getResponsiveStyles();
 
   return (
     <div style={styles.tickerContainer}>
       <div style={styles.tickerWrapper}>
         <div style={styles.tickerLabel}>
-          {labelText}
+          {isMobile ? "BREAKING NEWS" : labelText}
           <div style={styles.labelArrow}></div>
         </div>
         <div style={styles.tickerContent} ref={containerRef}>
