@@ -1,4 +1,5 @@
 "use client";
+import Image from 'next/image';
 import { getNavigationItems } from "../lib/pages";
 import { useState, useEffect } from "react";
 
@@ -21,7 +22,7 @@ const Header = () => {
     return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
 
-  // Simulasi untuk mendapatkan path saat ini
+  // Get current path
   useEffect(() => {
     setCurrentPath(window.location.pathname);
   }, []);
@@ -31,7 +32,7 @@ const Header = () => {
     setActiveItem(item.id);
     setIsMenuOpen(false); // Close mobile menu on click
 
-    // Simulasi navigasi (ganti dengan router yang Anda gunakan)
+    // Navigation simulation (replace with your router)
     setTimeout(() => {
       window.location.href = item.path;
     }, 300);
@@ -51,25 +52,24 @@ const Header = () => {
 
   return (
     <>
-      <header className="bg-green-600 text-white relative z-50">
+      <header className="bg-green-600 text-white relative">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between py-4">
             {/* Logo and Title */}
             <div className="flex items-center space-x-3">
-              <div className="w-16 h-16 bg-transparent rounded-lg flex items-center justify-center transition-transform duration-300 hover:scale-110">
-                <img
-                  className="w-14 h-14 object-contain"
-                  src="MainFooter/Logo.svg"
+              <div className="w-12 h-12 bg-transparent rounded-lg flex items-center justify-center">
+                <Image 
+                  className="w-auto h-auto" 
+                  src="/MainFooter/Logo.svg" 
                   alt="Logo Desa Belung"
+                  width={48}
+                  height={48}
+                  priority
                 />
               </div>
               <div>
-                <h1 className="text-xl font-bold transition-all duration-300 hover:text-green-100">
-                  Desa Belung
-                </h1>
-                <p className="text-sm opacity-90 transition-opacity duration-300 hover:opacity-100">
-                  Kabupaten Malang
-                </p>
+                <h1 className="text-xl font-bold">Desa Belung</h1>
+                <p className="text-sm opacity-90">Kabupaten Malang</p>
               </div>
             </div>
 
@@ -92,7 +92,7 @@ const Header = () => {
                 >
                   {item.title}
 
-                  {/* Underline animation untuk halaman aktif */}
+                  {/* Underline animation for active page */}
                   <span
                     className={`
                       absolute bottom-0 left-0 w-full h-0.5 bg-green-100 
@@ -138,7 +138,7 @@ const Header = () => {
             </button>
           </div>
 
-          {/* Loading bar untuk transisi halaman */}
+          {/* Loading bar for page transition */}
           {activeItem && (
             <div className="absolute bottom-0 left-0 w-full h-0.5 bg-green-500">
               <div
@@ -164,16 +164,16 @@ const Header = () => {
       {/* Mobile Menu */}
       <div
         className={`
-        fixed right-0 w-80 bg-white z-45 transform transition-transform duration-300 ease-in-out
-        ${isMenuOpen ? "translate-x-0" : "translate-x-full"}
-        md:hidden
+          fixed right-0 w-80 bg-white z-50 transform transition-transform duration-300 ease-in-out
+          ${isMenuOpen ? "translate-x-0" : "translate-x-full"}
+          md:hidden
         `}
         style={{
-          top: "70px", // Mulai dari bawah header
-          height: "calc(100vh - 70px)", // Tinggi dari bawah header sampai bawah layar
+          top: "70px", // Start from below header
+          height: "calc(100vh - 70px)", // Height from below header to bottom of screen
         }}
       >
-        {/* Mobile Menu Items - Direct without header */}
+        {/* Mobile Menu Items */}
         <nav className="py-6">
           {navigationItems.map((item, index) => (
             <a
