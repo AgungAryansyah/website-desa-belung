@@ -1,33 +1,138 @@
-import ReactMarkdown from "react-markdown";
-import PageTemplate from "../../../templates/PageTemplate";
-import { PAGES } from "../../../lib/pages";
+"use client";
+import React from "react";
 
-const beritaMarkdown = `
-![Foto MMD](/Berita/k39.svg)
+export const potensiData = [
+  {
+    title: "Sumber Daya Alam",
+    icon: (
+      <svg
+        className="w-8 h-8"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
+        />
+      </svg>
+    ),
+    color: "green",
+    description:
+      "Lahan sawah yang subur dengan hasil padi berkualitas tinggi dan sayuran segar untuk kebutuhan pasar lokal.",
+    items: [
+      {
+        name: "Pertanian",
+        detail:
+          "Fokus pada budidaya komoditas utama seperti kubis, jagung, cabai, kol, dan sawi yang dikelola oleh masyarakat setempat.",
+      },
+      {
+        name: "Perkebunan",
+        detail:
+          "Hasilnya didistribusikan ke pasar-pasar di wilayah Kabupaten Malang dan sekitarnya.",
+      },
+      {
+        name: "Sumber Mata Air",
+        detail:
+          "Mata air yang terus mengalir yang dimanfaatkan oleh warga setempat",
+      },
+    ],
+  },
+  {
+    title: "Wisata Alam",
+    icon: (
+      <svg
+        className="w-8 h-8"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2-2V9z"
+        />
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"
+        />
+      </svg>
+    ),
+    color: "blue",
+    description:
+      "Pemandangan pegunungan yang indah dengan udara sejuk memberikan spot foto yang menarik.",
+    items: [
+      {
+        name: "Taman Sayur Belung",
+        detail:
+          "Menyajikan pemandangan hijau dengan berbagai jenis sayuran segar yang dibudidayakan langsung oleh warga setempat ",
+      },
+    ],
+  },
+  {
+    title: "Ekonomi Kreatif",
+    icon: (
+      <svg
+        className="w-8 h-8"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+        />
+      </svg>
+    ),
+    color: "purple",
+    description:
+      "UMKM dan industri rumahan yang mengolah hasil pertanian menjadi produk bernilai tambah.",
+    items: [
+      {
+        name: "Makanan Olahan",
+        detail: "Keripik, dodol, dan sirup dari hasil panen lokal",
+      },
+      {
+        name: "Produk Pertanian",
+        detail: "Kemasan premium untuk hasil pertanian",
+      },
+    ],
+  },
+];
 
-Lorem ipsum **dolor sit amet**, *consectetur* adipiscing elit.  
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quam ligula, semper vel magna quis, mollis mattis est. Vivamus vitae mi cursus, malesuada nisi vel, ultricies nisi. Suspendisse vehicula velit quis lectus molestie faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quam ligula, semper vel magna quis, mollis mattis est. Vivamus vitae mi cursus, malesuada nisi vel, ultricies nisi. Suspendisse vehicula velit quis lectus molestie faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quam ligula, semper vel magna quis, mollis mattis est. Vivamus vitae mi cursus, malesuada nisi vel, ultricies nisi. Suspendisse vehicula velit quis lectus molestie faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quam ligula, semper vel magna quis, mollis mattis est. Vivamus vitae mi cursus, malesuada nisi vel, ultricies nisi. Suspendisse vehicula velit quis lectus molestie faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quam ligula, semper vel magna quis, mollis mattis est. Vivamus vitae mi cursus, malesuada nisi vel, ultricies nisi. Suspendisse vehicula velit quis lectus molestie faucibus.
-
-![Foto MMD](/Berita/k39.svg)
-
-## Kegiatan 
-
-- Sosialisasi ke warga  
-- Edukasi pertanian  
-- Pelatihan digital  
-
-[Cek desain di Figma](https://www.figma.com/design/kqHIAUMNk6lUc08lxGNyv0/Website-pakde-belungs?node-id=257-476&t=DUxPbhIUO5fesadv-0)
-
-## Penutup
-
-Terima kasih atas sambutan hangat dari warga Desa Belung 🙏
-`;
-
-const IsiPotensi = () => {
-  return (
-    <div className="prose prose-lg max-w-none text-gray-800 [&_img]:rounded-lg [&_img]:shadow-md">
-      <ReactMarkdown>{beritaMarkdown}</ReactMarkdown>
-    </div>
-  );
+export const getColorClasses = (color) => {
+  const colors = {
+    green: {
+      bg: "bg-green-100",
+      text: "text-green-600",
+      hover: "hover:bg-green-50",
+      border: "border-green-200",
+    },
+    blue: {
+      bg: "bg-blue-100",
+      text: "text-blue-600",
+      hover: "hover:bg-blue-50",
+      border: "border-blue-200",
+    },
+    purple: {
+      bg: "bg-purple-100",
+      text: "text-purple-600",
+      hover: "hover:bg-purple-50",
+      border: "border-purple-200",
+    },
+    cyan: {
+      bg: "bg-cyan-100",
+      text: "text-cyan-600",
+      hover: "hover:bg-cyan-50",
+      border: "border-cyan-200",
+    },
+  };
+  return colors[color];
 };
-export default IsiPotensi;
