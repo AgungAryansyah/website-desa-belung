@@ -237,7 +237,7 @@ export default function BeritaPage() {
               {page}
             </button>
             ))}
-
+ 
             <span className="text-gray-400">...</span>
 
             {/* Last Page */}
