@@ -1,5 +1,4 @@
 import Image from "next/image";
-
 const Footer = () => {
   return (
     <footer className="bg-green-600 text-white">
@@ -8,12 +7,10 @@ const Footer = () => {
           {/* Logo and Info */}
           <div className="lg:col-span-1">
             <div className="flex items-start space-x-4 mb-6">
-              <Image
+              <img
                 className="w-24 h-24 flex-shrink-0"
-                src="/MainFooter/Logo.svg"
+                src="MainFooter/Logo.svg"
                 alt="Logo Desa Belung"
-                width={96}
-                height={96}
               />
               <div>
                 <h3 className="text-xl font-bold mb-1">
@@ -40,44 +37,59 @@ const Footer = () => {
                 <span>0812-1234-5678</span>
               </div>
               <div className="flex flex-wrap justify-center sm:justify-start gap-4 items-center">
-                <a href="#" className="transition hover:opacity-80">
-                  <Image
+                <a
+                  href="https://www.facebook.com/profile.php?id=100069073334964"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition hover:opacity-80"
+                >
+                  <img
                     src="/MainFooter/Fb.svg"
                     alt="Facebook"
-                    width={28}
-                    height={28}
                     className="w-7 h-7 sm:w-6 sm:h-6 object-contain"
                   />
                 </a>
 
-                <a href="#" className="transition hover:opacity-80">
-                  <Image
+                <a
+                  href="https://www.instagram.com/belung.punyacerita?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition hover:opacity-80"
+                >
+                  <img
                     src="/MainFooter/Insta.svg"
                     alt="Instagram"
-                    width={28}
-                    height={28}
                     className="w-7 h-7 sm:w-6 sm:h-6 object-contain"
                   />
                 </a>
 
-                <a href="#" className="transition hover:opacity-80">
-                  <Image
+                <a
+                  href="https://www.tiktok.com/@desabelung"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition hover:opacity-80"
+                >
+                  <img
                     src="/MainFooter/Tiktok.svg"
                     alt="TikTok"
-                    width={28}
-                    height={28}
                     className="w-7 h-7 sm:w-6 sm:h-6 object-contain"
                   />
                 </a>
-                <a href="#" className="transition hover:opacity-80">
-                  <Image
+
+                <a
+                  href="https://www.youtube.com/@pemdesbelung4396"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition hover:opacity-80"
+                >
+                  <img
                     src="/MainFooter/Yt.svg"
                     alt="YouTube"
-                    width={28}
-                    height={28}
                     className="w-7 h-7 sm:w-6 sm:h-6 object-contain"
                   />
                 </a>
+
+                {/* Tambahkan ikon lain jika perlu */}
               </div>
             </div>
           </div>
@@ -92,20 +104,12 @@ const Footer = () => {
                 <span>🚨</span>
                 <div>
                   <p className="font-medium">Ambulance</p>
-                  <p className="text-sm opacity-90">118</p>
                 </div>
               </div>
               <div className="flex items-center space-x-2">
-                <Image
-                  src="/MainFooter/person.svg"
-                  alt="Kepala Desa"
-                  width={24}
-                  height={24}
-                  className="w-6 h-6"
-                />
+                <img src="MainFooter/person.svg"></img>
                 <div>
-                  <p className="font-medium">Kepala Desa</p>
-                  <p className="text-sm opacity-90">0812-3456-7890</p>
+                  <p className="text-sm opacity-90">Kepala Desa</p>
                 </div>
               </div>
             </div>
@@ -115,15 +119,7 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">Jelajahi</h4>
             <div className="space-y-3">
-              <a href="#" className="block text-sm opacity-90 hover:opacity-100 transition-opacity">
-                Website Jual Beli Sayur Desa
-              </a>
-              <a href="#" className="block text-sm opacity-90 hover:opacity-100 transition-opacity">
-                Portal Informasi Desa
-              </a>
-              <a href="#" className="block text-sm opacity-90 hover:opacity-100 transition-opacity">
-                Layanan Administrasi Online
-              </a>
+              <p className="text-sm opacity-90">Website Jual Beli Sayur Desa</p>
             </div>
           </div>
         </div>

@@ -114,8 +114,8 @@ const ContentPotensi = () => {
             Ragam Potensi Unggulan
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Empat sektor utama yang menjadi kekuatan Desa Belung dalam membangun
-            perekonomian dan kesejahteraan masyarakat
+            Beberapa sektor utama yang menjadi kekuatan Desa Belung dalam
+            membangun perekonomian dan kesejahteraan masyarakat
           </p>
         </div>
 

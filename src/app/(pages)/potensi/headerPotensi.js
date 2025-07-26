@@ -31,8 +31,8 @@ const HeaderPotensi = () => {
         </div>
         <h1 className="text-5xl font-bold mb-6">Potensi Desa Belung</h1>
         <p className="text-xl max-w-3xl mx-auto leading-relaxed">
-          Desa yang kaya akan sumber daya alam dengan potensi pertanian, wisata,
-          dan ekonomi kreatif yang menjanjikan untuk masa depan yang
+          Desa yang kaya akan sumber daya alam dengan potensi sumber daya alam,
+          wisata, dan ekonomi kreatif yang menjanjikan untuk masa depan yang
           berkelanjutan.
         </p>
       </div>
