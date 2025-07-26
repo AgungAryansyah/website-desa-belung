@@ -40,9 +40,15 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# PocketBase data (DO NOT COMMIT)
 pocketbase/pb_data/*.db
+pocketbase/pb_data/*.db-shm
+pocketbase/pb_data/*.db-wal
 pocketbase/pb_data/backups/
 pocketbase/pb_data/storage/
 
 # But keep types
 !pocketbase/pb_data/types.d.ts
+
+# PocketBase binary 
+pocketbase/pocketbase

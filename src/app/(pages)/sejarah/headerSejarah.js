@@ -18,7 +18,6 @@ const HeaderSejarah = ({ history, children }) => {
       </h1>
       <div className="flex items-center text-sm text-gray-500 mt-1 mb-4 gap-4">
         <span>🗓 {history?.created ? new Date(history.created).toLocaleDateString('id-ID') : '5 Juli 2025'}</span>
-        <span className="ml-auto">👁 Dilihat {history?.views || 100} kali</span>
       </div>      
     </>
   );

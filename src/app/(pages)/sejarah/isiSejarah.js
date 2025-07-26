@@ -20,7 +20,7 @@ const IsiSejarah = ({ history }) => {
         <div className="mb-6">
           <Image
             src={history.cover}
-            alt={history.title}
+            alt={"Sejarah Desa Belung"}
             width={800}
             height={400}
             className="w-full h-64 object-cover rounded-lg shadow-md"
