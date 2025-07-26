@@ -1,33 +1,47 @@
-import ReactMarkdown from "react-markdown";
-import PageTemplate from "../../../templates/PageTemplate";
-import { PAGES } from "../../../lib/pages";
+import Image from "next/image";
+import DOMPurify from 'dompurify';
 
-const beritaMarkdown = `
-![Foto MMD](/Berita/k39.svg)
+const IsiSejarah = ({ history }) => {
+  if (!history) {
+    return (
+      <div className="prose prose-lg max-w-none text-gray-800">
+        <p>Loading content...</p>
+      </div>
+    );
+  }
 
-Lorem ipsum **dolor sit amet**, *consectetur* adipiscing elit.  
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quam ligula, semper vel magna quis, mollis mattis est. Vivamus vitae mi cursus, malesuada nisi vel, ultricies nisi. Suspendisse vehicula velit quis lectus molestie faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quam ligula, semper vel magna quis, mollis mattis est. Vivamus vitae mi cursus, malesuada nisi vel, ultricies nisi. Suspendisse vehicula velit quis lectus molestie faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quam ligula, semper vel magna quis, mollis mattis est. Vivamus vitae mi cursus, malesuada nisi vel, ultricies nisi. Suspendisse vehicula velit quis lectus molestie faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quam ligula, semper vel magna quis, mollis mattis est. Vivamus vitae mi cursus, malesuada nisi vel, ultricies nisi. Suspendisse vehicula velit quis lectus molestie faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quam ligula, semper vel magna quis, mollis mattis est. Vivamus vitae mi cursus, malesuada nisi vel, ultricies nisi. Suspendisse vehicula velit quis lectus molestie faucibus.
+  // Sanitize HTML content for security
+  const sanitizedContent = history.content ? DOMPurify.sanitize(history.content) : '';
 
-![Foto MMD](/Berita/k39.svg)
-
-## Kegiatan 
-
-- Sosialisasi ke warga  
-- Edukasi pertanian  
-- Pelatihan digital  
-
-[Cek desain di Figma](https://www.figma.com/design/kqHIAUMNk6lUc08lxGNyv0/Website-pakde-belungs?node-id=257-476&t=DUxPbhIUO5fesadv-0)
-
-## Penutup
-
-Terima kasih atas sambutan hangat dari warga Desa Belung 🙏
-`;
-
-const IsiSejarah = () => {
   return (
-    <div className="prose prose-lg max-w-none text-gray-800 [&_img]:rounded-lg [&_img]:shadow-md">
-      <ReactMarkdown>{beritaMarkdown}</ReactMarkdown>
+    <div className="prose prose-lg max-w-none text-gray-800">
+      {/* Main Image */}
+      {history.cover && (
+        <div className="mb-6">
+          <Image
+            src={history.cover}
+            alt={history.title}
+            width={800}
+            height={400}
+            className="w-full h-64 object-cover rounded-lg shadow-md"
+            unoptimized
+          />
+        </div>
+      )}
+
+      {/* Content as Sanitized HTML */}
+      {sanitizedContent ? (
+        <div 
+          className="content-html"
+          dangerouslySetInnerHTML={{ __html: sanitizedContent }}
+        />
+      ) : (
+        <div className="text-gray-500">
+          <p>Content not available for this article.</p>
+        </div>
+      )}
     </div>
   );
 };
+
 export default IsiSejarah;
