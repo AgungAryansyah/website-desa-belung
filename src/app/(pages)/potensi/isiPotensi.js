@@ -24,16 +24,19 @@ export const potensiData = [
       "Lahan sawah yang subur dengan hasil padi berkualitas tinggi dan sayuran segar untuk kebutuhan pasar lokal.",
     items: [
       {
-        name: "Pertanian ",
-        detail: "Produktivitas 6 ton/ha dengan sistem irigasi modern",
+        name: "Pertanian",
+        detail:
+          "Fokus pada budidaya komoditas utama seperti kubis, jagung, cabai, kol, dan sawi yang dikelola oleh masyarakat setempat.",
       },
       {
         name: "Perkebunan",
-        detail: "Cabai, tomat, mentimun untuk pasar Kabupaten Malang",
+        detail:
+          "Hasilnya didistribusikan ke pasar-pasar di wilayah Kabupaten Malang dan sekitarnya.",
       },
       {
-        name: "Tanah Subur",
-        detail: "Tanah vulkanis kaya mineral untuk pertanian",
+        name: "Sumber Mata Air",
+        detail:
+          "Mata air yang terus mengalir yang dimanfaatkan oleh warga setempat",
       },
     ],
   },
@@ -62,15 +65,12 @@ export const potensiData = [
     ),
     color: "blue",
     description:
-      "Pemandangan pegunungan yang indah dengan udara sejuk dan spot foto menarik untuk wisata keluarga.",
+      "Pemandangan pegunungan yang indah dengan udara sejuk memberikan spot foto yang menarik.",
     items: [
       {
-        name: "Agrowisata",
-        detail: "Konsep farm to table dengan edukasi pertanian",
-      },
-      {
-        name: "Budaya Lokal",
-        detail: "Seni tradisional dan kuliner khas desa",
+        name: "Taman Sayur Belung",
+        detail:
+          "Menyajikan pemandangan hijau dengan berbagai jenis sayuran segar yang dibudidayakan langsung oleh warga setempat ",
       },
     ],
   },

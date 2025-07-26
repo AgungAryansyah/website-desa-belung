@@ -10,12 +10,12 @@ const HeaderSejarah = ({ children }) => {
 
       {/* Judul & Info */}
       <h1 className="text-4xl font-bold text-gray-800">
-        MMD Filkom UB di Desa Belung
+        Sejarah Desa Belung, Kecamatan Poncokusumo, Kabupaten Malang
       </h1>
-      <div className="flex items-center text-sm text-gray-500 mt-1 mb-4 gap-4">
+      {/* <div className="flex items-center text-sm text-gray-500 mt-1 mb-4 gap-4">
         <span>🗓 5 Juli 2025</span>
         <span className="ml-auto">👁 Dilihat 100 kali</span>
-      </div>
+      </div> */}
     </>
   );
 };
