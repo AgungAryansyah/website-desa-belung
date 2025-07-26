@@ -146,23 +146,63 @@ export default function PetaMainContent() {
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [highlightDusun, setHighlightDusun] = useState(null);
 
+  const handleDusunClick = (dusunName) => {
+    // Always scroll to top, whether highlighting or removing highlight
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth' // For smooth scrolling
+    });
+
+    // Toggle highlight
+    if (highlightDusun === dusunName) {
+      setHighlightDusun(null);
+    } else {
+      setHighlightDusun(dusunName);
+    }
+  };
+
   return (
-    <div className="bg-white rounded-lg shadow-md p-8 flex flex-col gap-4">
-      {/* Breadcrumb Navigation - Removed extra background and padding */}
+    <div className="bg-white rounded-lg shadow-md p-8 flex flex-col gap-6">
+      {/* Breadcrumb Navigation */}
       <div className="flex items-center text-sm text-gray-600">
         <img src="/home.svg" alt="Home" className="w-4 h-4 mr-1" />
         <span className="mx-2">/</span>
         <span>Peta Desa Belung</span>
       </div>
 
-      {/* Left: Interactive List */}
-      <div className="flex flex-col md:flex-row gap-8">
-        <div className="md:w-1/3">
-          <h2 className="text-4xl font-black text-gray-800 mb-12 tracking-wider text-center leading-tight">
-            <span className="block text-2xl font-light mb-1">JELAJAHI</span>
-            <span className="block font-serif">DESA BELUNG</span>
-          </h2>
-          <div className="space-y-0">
+      {/* Main Title - Centered at top */}
+      <h2 className="text-4xl font-black text-gray-800 mb-1 tracking-wider text-center leading-tight">
+        <span className="block text-2xl font-light mb-1">JELAJAHI</span>
+        <span className="block font-serif">DESA BELUNG</span>
+      </h2>
+
+      {/* Map and Interactive List Container */}
+      <div className="flex flex-col md:flex-row gap-8 mb-1">
+        {/* Map Section - Larger portion */}
+        <div className="w-full md:w-4/5 flex flex-col items-center">
+          <div className="w-full aspect-video rounded-xl overflow-hidden border mb-6">
+            <LeafletMap
+              villagePolygon={villagePolygon}
+              dusunPolygons={dusunPolygons}
+              selectedLocation={selectedLocation}
+              highlightDusun={highlightDusun}
+            />
+          </div>
+          {selectedLocation && (
+            <div className="w-full flex justify-center">
+              <button
+                onClick={() => setSelectedLocation(null)}
+                className="bg-red-600 hover:bg-red-700 text-white font-medium px-6 py-2 rounded-full transition-colors"
+              >
+                Hapus pinpoint
+              </button>
+            </div>
+          )}
+        </div>
+
+        {/* Interactive List Section - Smaller portion */}
+        <div className="w-full md:w-1/5">
+          <div className="space-y-0 max-h-[485px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
             {locations.map((loc, idx) => (
               <div
                 key={idx}
@@ -178,55 +218,32 @@ export default function PetaMainContent() {
             ))}
           </div>
         </div>
-
-        {/* Right: Map and Info Cards */}
-        <div className="md:w-2/3 flex flex-col items-center">
-          <div className="w-full aspect-video rounded-xl overflow-hidden border mb-6">
-            <LeafletMap
-              villagePolygon={villagePolygon}
-              dusunPolygons={dusunPolygons}
-              selectedLocation={selectedLocation}
-              highlightDusun={highlightDusun}
-            />
-          </div>
-          {/* Clear Marker Button */}
-          {selectedLocation && (
-            <div className="w-full flex justify-center mb-6">
+      </div>
+      {/* Bottom: Info Cards */}
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4">
+        {dusunPolygons.map((dusun, idx) => (
+          <div key={idx} className="bg-white rounded-lg shadow p-4 border">
+            <div className="flex justify-between items-start mb-2">
+              <div>
+                <h3 className="font-semibold text-gray-800 text-lg mb-1">
+                  {dusun.name}
+                </h3>
+              </div>
               <button
-                onClick={() => setSelectedLocation(null)}
-                className="bg-red-600 hover:bg-red-700 text-white font-medium px-6 py-2 rounded-full transition-colors"
+                className={`inline-flex items-center font-semibold rounded-full px-4 py-1 transition ${highlightDusun === dusun.name
+                  ? 'text-red-700 border border-red-600 hover:bg-red-50'
+                  : 'text-green-700 border border-green-600 hover:bg-green-50'
+                  }`}
+                onClick={() => handleDusunClick(dusun.name)}
               >
-                Hapus pinpoint
+                {highlightDusun === dusun.name ? 'Hapus sorotan' : 'Lihat di peta'}
               </button>
             </div>
-          )}
-          {/* Bottom: Info Cards */}
-          <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4">
-            {dusunPolygons.map((dusun, idx) => (
-              <div key={idx} className="bg-white rounded-lg shadow p-4 border">
-                <div className="flex justify-between items-start mb-2">
-                  <div>
-                    <h3 className="font-semibold text-gray-800 text-lg mb-1">
-                      {dusun.name}
-                    </h3>
-                  </div>
-                  <button
-                    className={`inline-flex items-center font-semibold rounded-full px-4 py-1 transition ${highlightDusun === dusun.name
-                      ? 'text-red-700 border border-red-600 hover:bg-red-50'
-                      : 'text-green-700 border border-green-600 hover:bg-green-50'
-                      }`}
-                    onClick={() => setHighlightDusun(highlightDusun === dusun.name ? null : dusun.name)}
-                  >
-                    {highlightDusun === dusun.name ? 'Hapus sorotan' : 'Lihat di peta'}
-                  </button>
-                </div>
-                <p className="text-gray-600 text-sm mt-3">
-                  {dusun.description}
-                </p>
-              </div>
-            ))}
+            <p className="text-gray-600 text-sm mt-3">
+              {dusun.description}
+            </p>
           </div>
-        </div>
+        ))}
       </div>
     </div>
   );

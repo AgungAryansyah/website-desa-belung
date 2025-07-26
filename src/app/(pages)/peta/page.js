@@ -7,7 +7,7 @@ export default function PetaPage() {
 
   return (
     <PageTemplate >
-      <div style={{ background: 'rgba(248, 254, 247, 1)' }} className="min-h-screen w-full">
+      <div style={{ background: '#F5F7FA' }} className="min-h-screen w-full">
         <div className="container mx-auto px-4 py-16">
           {/* Main content area will be added here later */}
           <PetaMainContent />
