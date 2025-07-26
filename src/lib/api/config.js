@@ -15,4 +15,5 @@ export const COLLECTIONS = {
   GALLERY: 'gallery',
   DOCUMENTS: 'documents',
   IMAGES: 'images',
+  HISTORY: 'history',
 };
