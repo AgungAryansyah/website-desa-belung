@@ -1,6 +1,6 @@
 // PocketBase Configuration
 export const POCKETBASE_CONFIG = {
-  baseURL: process.env.NEXT_PUBLIC_POCKETBASE_URL || 'http://localhost:8080',
+  baseURL: process.env.NEXT_PUBLIC_POCKETBASE_URL,
   timeout: 10000, // 10 seconds
 };
 
