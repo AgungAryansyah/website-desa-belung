@@ -11,7 +11,6 @@ export async function getHistory() {
     perPage: 1,
   };
 
-
   const result = await getRecords(COLLECTIONS.HISTORY, options);
   console.log('History result:', result);
 
