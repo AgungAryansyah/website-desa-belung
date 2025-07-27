@@ -129,14 +129,22 @@ const dusunPolygons = [
 ];
 
 const locations = [
-  { name: "Kantor Desa", coords: [-8.032235099627089, 112.76783093101241] },
-  { name: "Cafe Belong", coords: [-8.032450360038462, 112.76760485285344] },
-  { name: "Biro Wisata Bromo", coords: [-8.026793251825048, 112.76814574113044] },
-  { name: "Kebun Kopi Java Bromo", coords: [-8.033243499715363, 112.77539189275576] },
-  { name: "Apotek Belung Sehat", coords: [-8.036580731625191, 112.76828856210173] },
+  { name: "Kantor Desa Belung", coords: [-8.032328548940779, 112.7675994567165] },
+  { name: "Polindes Desa Belung", coords: [-8.032093502179322, 112.76764103095663] },
+  { name: "Rest Area Desa Belung", coords: [-8.03254957018609, 112.76765713324899] },
+  { name: "Taman Sayur Desa Belung", coords: [-8.032514327162033, 112.76739921204768] },
+  { name: "Posko Lazisnu Desa Belung", coords: [-8.032863785773813, 112.76815850511215] },
+  { name: "MWC NU Desa Belung", coords: [-8.037015607249756, 112.76876118647255] },
   { name: "SPBU Pertamina Belung", coords: [-8.023901973106344, 112.76761490518525] },
-  { name: "Masjid TPQ Baitut Taqwa", coords: [-8.023162177681414, 112.75833083910838] },
-  { name: "Warung Ndeso Pak Wat", coords: [-8.026559665300177, 112.75519498920804] },
+  { name: "RS Uswatun Hasanah Belung", coords: [-8.0316569918577, 112.7675332396796] },
+  { name: "PAMSIMAS 1 Desa Belung", coords: [-8.02171214714971, 112.75730358873446] },
+  { name: "PAMSIMAS 2 Desa Belung", coords: [-8.024970545500233, 112.76160272241975] },
+  { name: "Goa dan Candi", coords: [-8.020100726989966, 112.75735623939168] },
+  { name: "Masjid Baitut Taqwa Belung", coords: [-8.023233314953329, 112.758231328884] },
+  { name: "TPQ Baitut Taqwa Belung", coords: [-8.023396097510071, 112.75921650624454] },
+  { name: "MA Al-Ittihad", coords: [-8.038092793544573, 112.76838129162908] },
+  { name: "Warung Ndeso Pak Wat Belung", coords: [-8.026728965009854, 112.75563006087437] },
+  { name: "Warung'e Pak D Belung", coords: [-8.027611560172474, 112.75822897235149] },
   // Add more locations as needed
 ];
 
@@ -165,8 +173,7 @@ export default function PetaMainContent() {
     <div className="bg-white rounded-lg shadow-md p-8 flex flex-col gap-6">
       {/* Breadcrumb Navigation */}
       <div className="flex items-center text-sm text-gray-600">
-        <img src="/home.svg" alt="Home" className="w-4 h-4 mr-1" />
-        <span className="mx-2">/</span>
+        🏠 <span className="mx-2">/</span>
         <span>Peta Desa Belung</span>
       </div>
 
