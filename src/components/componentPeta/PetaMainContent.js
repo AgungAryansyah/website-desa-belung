@@ -54,13 +54,14 @@ const villagePolygon = [
   [-8.019900996434032, 112.75663701406467],
   [-8.021272564817892, 112.75701911547355],
   [-8.022504647823297, 112.75778330584569],
-  [-8.022504772248197, 112.75841039209132]
+  [-8.022504772248197, 112.75841039209132],
 ];
 
 const dusunPolygons = [
   {
     name: "Dusun Buntaran",
-    description: "Dusun Buntaran terletak di bagian Barat Desa Belung. Merupakan kawasan yang dikenal dengan perkebunan kopinya yang luas.",
+    description:
+      "Dusun Buntaran terletak di bagian Barat Desa Belung. Merupakan kawasan yang dikenal dengan perkebunan kopinya yang luas.",
     coords: [
       [-8.022504647823297, 112.75841045197666],
       [-8.02326137093344, 112.76046424704532],
@@ -79,12 +80,13 @@ const dusunPolygons = [
       [-8.019900996434032, 112.75663701406467],
       [-8.021272564817892, 112.75701911547355],
       [-8.022504647823297, 112.75778330584569],
-      [-8.022504772248197, 112.75841039209132]
+      [-8.022504772248197, 112.75841039209132],
     ],
   },
   {
     name: "Dusun Krajan",
-    description: "Dusun Krajan berada di daerah pemerintahan Desa Belung. Di sini terdapat Kantor Desa dan fasilitas publik lainnya.",
+    description:
+      "Dusun Krajan berada di daerah pemerintahan Desa Belung. Di sini terdapat Kantor Desa dan fasilitas publik lainnya.",
     coords: [
       [-8.025295057310416, 112.76342553296132],
       [-8.024774812926466, 112.76481065056703],
@@ -123,7 +125,7 @@ const dusunPolygons = [
       [-8.036217634270557, 112.7593594751213],
       [-8.034751528731334, 112.7600759152624],
       [-8.02529578041542, 112.76342787473357],
-      [-8.03475648999948, 112.7600754235113]
+      [-8.03475648999948, 112.7600754235113],
     ],
   },
 ];
@@ -150,18 +152,18 @@ const locations = [
 
 const LeafletMap = dynamic(() => import("./LeafletMap"), { ssr: false });
 
+// Ganti di PetaMainContent.js - tambahkan z-index rendah ke container utama
+
 export default function PetaMainContent() {
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [highlightDusun, setHighlightDusun] = useState(null);
 
   const handleDusunClick = (dusunName) => {
-    // Always scroll to top, whether highlighting or removing highlight
     window.scrollTo({
       top: 0,
-      behavior: 'smooth' // For smooth scrolling
+      behavior: "smooth",
     });
 
-    // Toggle highlight
     if (highlightDusun === dusunName) {
       setHighlightDusun(null);
     } else {
@@ -170,24 +172,28 @@ export default function PetaMainContent() {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-8 flex flex-col gap-6">
+    <div className="bg-white rounded-lg shadow-md p-8 flex flex-col gap-6 relative z-10">
+      {" "}
+      {/* Tambahkan relative z-10 */}
       {/* Breadcrumb Navigation */}
       <div className="flex items-center text-sm text-gray-600">
         🏠 <span className="mx-2">/</span>
         <span>Peta Desa Belung</span>
       </div>
-
       {/* Main Title - Centered at top */}
       <h2 className="text-4xl font-black text-gray-800 mb-1 tracking-wider text-center leading-tight">
         <span className="block text-2xl font-light mb-1">JELAJAHI</span>
         <span className="block font-serif">DESA BELUNG</span>
       </h2>
-
       {/* Map and Interactive List Container */}
       <div className="flex flex-col md:flex-row gap-8 mb-1">
-        {/* Map Section - Larger portion */}
-        <div className="w-full md:w-4/5 flex flex-col items-center">
-          <div className="w-full aspect-video rounded-xl overflow-hidden border mb-6">
+        {/* Map Section - Tambahkan z-index rendah ke container map */}
+        <div className="w-full md:w-4/5 flex flex-col items-center relative z-0">
+          {" "}
+          {/* Tambahkan relative z-0 */}
+          <div className="w-full aspect-video rounded-xl overflow-hidden border mb-6 relative z-0">
+            {" "}
+            {/* Tambahkan relative z-0 */}
             <LeafletMap
               villagePolygon={villagePolygon}
               dusunPolygons={dusunPolygons}
@@ -237,18 +243,19 @@ export default function PetaMainContent() {
                 </h3>
               </div>
               <button
-                className={`inline-flex items-center font-semibold rounded-full px-4 py-1 transition ${highlightDusun === dusun.name
-                  ? 'text-red-700 border border-red-600 hover:bg-red-50'
-                  : 'text-green-700 border border-green-600 hover:bg-green-50'
-                  }`}
+                className={`inline-flex items-center font-semibold rounded-full px-4 py-1 transition ${
+                  highlightDusun === dusun.name
+                    ? "text-red-700 border border-red-600 hover:bg-red-50"
+                    : "text-green-700 border border-green-600 hover:bg-green-50"
+                }`}
                 onClick={() => handleDusunClick(dusun.name)}
               >
-                {highlightDusun === dusun.name ? 'Hapus sorotan' : 'Lihat di peta'}
+                {highlightDusun === dusun.name
+                  ? "Hapus sorotan"
+                  : "Lihat di peta"}
               </button>
             </div>
-            <p className="text-gray-600 text-sm mt-3">
-              {dusun.description}
-            </p>
+            <p className="text-gray-600 text-sm mt-3">{dusun.description}</p>
           </div>
         ))}
       </div>

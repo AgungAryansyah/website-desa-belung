@@ -12,12 +12,12 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       <Header />
-      <main className="bg-gray-100">
+      <main className="bg-gray-100 pt-20 md:pt-24">
         <PopUp />
         <Hero />
         <ExploreSection />
         <HistoryPreviewSection />
-        <SOTBSection />
+        {/* <SOTBSection /> */}
         <PotentialSection />
         <NewsSection />
       </main>

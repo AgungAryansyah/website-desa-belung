@@ -1,4 +1,8 @@
-const HeaderSejarah = ({ children }) => {
+import Image from 'next/image';
+
+const HeaderSejarah = ({ history, children }) => {
+  console.log('HeaderSejarah received history:', history);
+
   return (
     <>
       {/* Home*/}
@@ -10,12 +14,11 @@ const HeaderSejarah = ({ children }) => {
 
       {/* Judul & Info */}
       <h1 className="text-4xl font-bold text-gray-800">
-        MMD Filkom UB di Desa Belung
+        {history?.title || 'Sejarah Desa Belung'}
       </h1>
       <div className="flex items-center text-sm text-gray-500 mt-1 mb-4 gap-4">
-        <span>🗓 5 Juli 2025</span>
-        <span className="ml-auto">👁 Dilihat 100 kali</span>
-      </div>
+        <span>🗓 {history?.created ? new Date(history.created).toLocaleDateString('id-ID') : '5 Juli 2025'}</span>
+      </div>      
     </>
   );
 };
