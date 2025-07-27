@@ -153,24 +153,24 @@ const Header = () => {
         </div>
       </header>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu Overlay - Z-index lebih tinggi */}
       {isMenuOpen && isMobile && (
         <div
-          className="fixed inset-0 bg-black/50 z-40"
+          className="fixed inset-0 bg-black/50 z-60" // Ubah dari z-40 ke z-60
           onClick={handleMenuClose}
         />
       )}
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - Z-index paling tinggi */}
       <div
         className={`
-        fixed right-0 w-80 bg-white z-45 transform transition-transform duration-300 ease-in-out
-        ${isMenuOpen ? "translate-x-0" : "translate-x-full"}
-        md:hidden
-        `}
+  fixed right-0 w-80 bg-white z-70 transform transition-transform duration-300 ease-in-out  // Ubah dari z-45 ke z-70
+  ${isMenuOpen ? "translate-x-0" : "translate-x-full"}
+  md:hidden
+  `}
         style={{
-          top: "70px", // Mulai dari bawah header
-          height: "calc(100vh - 70px)", // Tinggi dari bawah header sampai bawah layar
+          top: "70px",
+          height: "calc(100vh - 70px)",
         }}
       >
         {/* Mobile Menu Items - Direct without header */}
