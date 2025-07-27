@@ -6,7 +6,7 @@ const NewsSection = () => {
       id: 1,
       title: "MMD Filkom UB di Desa Belung",
       excerpt:
-        "Mahasiswa Membangun Desa (MMD) Fakultas Ilmu Komputer Universitas Brawijaya hadir di Desa Belung sebagai wujud kontribusi nyata dalam pengabdian kepada masyarakat. Program ini bertujuan untuk mendampingi masyarakat desa dalam pemanfaatan teknologi dan pengembangan potensi lokal..",
+        "Mahasiswa Membangun Desa (MMD) Fakultas Ilmu Komputer Universitas Brawijaya hadir di Desa Belung sebagai wujud kontribusi nyata dalam pengabdian kepada masyarakat. Program ini bertujuan untuk mendampingi masyarakat desa dalam pemanfaatan teknologi dan pengembangan potensi lokal.",
       image: "/landing/images/news_1.png",
       tag: "FAKULTAS ILMU KOMPUTER UNIVERSITAS BRAWIJAYA MALANG",
       date: "2025-01-10",
@@ -15,7 +15,7 @@ const NewsSection = () => {
       id: 2,
       title: "MMD Filkom UB di Desa Belung",
       excerpt:
-        "Mahasiswa Membangun Desa (MMD) Fakultas Ilmu Komputer Universitas Brawijaya hadir di Desa Belung sebagai wujud kontribusi nyata dalam pengabdian kepada masyarakat. Program ini bertujuan untuk mendampingi masyarakat desa dalam pemanfaatan teknologi dan pengembangan potensi lokal..",
+        "Mahasiswa Membangun Desa (MMD) Fakultas Ilmu Komputer Universitas Brawijaya hadir di Desa Belung sebagai wujud kontribusi nyata dalam pengabdian kepada masyarakat. Program ini bertujuan untuk mendampingi masyarakat desa dalam pemanfaatan teknologi dan pengembangan potensi lokal.",
       image: "/landing/images/news_1.png",
       tag: "FAKULTAS ILMU KOMPUTER UNIVERSITAS BRAWIJAYA MALANG",
       date: "2025-01-09",
@@ -24,7 +24,7 @@ const NewsSection = () => {
       id: 3,
       title: "MMD Filkom UB di Desa Belung",
       excerpt:
-        "Mahasiswa Membangun Desa (MMD) Fakultas Ilmu Komputer Universitas Brawijaya hadir di Desa Belung sebagai wujud kontribusi nyata dalam pengabdian kepada masyarakat. Program ini bertujuan untuk mendampingi masyarakat desa dalam pemanfaatan teknologi dan pengembangan potensi lokal..",
+        "Mahasiswa Membangun Desa (MMD) Fakultas Ilmu Komputer Universitas Brawijaya hadir di Desa Belung sebagai wujud kontribusi nyata dalam pengabdian kepada masyarakat. Program ini bertujuan untuk mendampingi masyarakat desa dalam pemanfaatan teknologi dan pengembangan potensi lokal.",
       image: "/landing/images/news_1.png",
       tag: "FAKULTAS ILMU KOMPUTER UNIVERSITAS BRAWIJAYA MALANG",
       date: "2025-01-08",
@@ -33,17 +33,20 @@ const NewsSection = () => {
 
   return (
     <section className="py-16 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-black mb-4">Berita Terkini</h2>
+      <div className="container px-4 mx-auto">
+        {/* Section Heading */}
+        <div className="mb-12 text-center">
+          <h2 className="mb-4 text-4xl font-bold text-black">Berita Terkini</h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* News Grid */}
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {newsItems.map((news) => (
             <article
               key={news.id}
-              className="bg-[#D9D9D9] rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
+              className="bg-[#D9D9D9] rounded-lg shadow-md overflow-hidden transition-all duration-300 transform hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02] active:scale-95 cursor-pointer"
             >
+              {/* News Image */}
               <div className="relative aspect-video">
                 <Image
                   src={news.image}
@@ -54,24 +57,25 @@ const NewsSection = () => {
                   priority={news.id === 1}
                 />
                 <div className="absolute top-4 left-4">
-                  <span className="bg-green-400 text-white px-3 py-1 rounded-full text-xs font-medium">
+                  <span className="px-3 py-1 text-xs font-medium text-white bg-green-400 rounded-full">
                     {news.tag}
                   </span>
                 </div>
               </div>
 
+              {/* News Content */}
               <div className="p-6">
-                <h3 className="text-xl font-bold text-black mb-3 line-clamp-2">
+                <h3 className="mb-3 text-xl font-bold text-black line-clamp-2">
                   {news.title}
                 </h3>
-                <p className="text-black text-sm leading-relaxed mb-4 line-clamp-3">
+                <p className="mb-4 text-sm leading-relaxed text-black line-clamp-3">
                   {news.excerpt}
                 </p>
 
                 <div className="flex items-center justify-between">
                   <a
                     href="#"
-                    className="inline-flex items-center text-black hover:text-green-400 font-medium"
+                    className="inline-flex items-center font-medium text-black hover:text-green-400"
                   >
                     <Image
                       src="/landing/circle_arrow_black.svg"
@@ -82,7 +86,7 @@ const NewsSection = () => {
                     />
                     Pelajari lebih Lanjut
                   </a>
-                  <span className="text-gray-400 text-sm">
+                  <span className="text-sm text-gray-400">
                     {new Date(news.date).toLocaleDateString("id-ID")}
                   </span>
                 </div>
@@ -91,10 +95,11 @@ const NewsSection = () => {
           ))}
         </div>
 
-        <div className="text-center mt-12">
+        {/* See All News Button */}
+        <div className="mt-12 text-center">
           <a
             href="#"
-            className="inline-flex items-center bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 transition-colors"
+            className="inline-flex items-center px-8 py-3 text-white transition-colors bg-green-600 rounded-lg hover:bg-green-700"
           >
             Lihat Semua Berita
           </a>
