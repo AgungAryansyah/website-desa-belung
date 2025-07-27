@@ -61,9 +61,10 @@ const NewsSection = () => {
 
   return (
     <section className="py-16 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-black mb-4">Berita Terkini</h2>
+      <div className="container px-4 mx-auto">
+        {/* Section Heading */}
+        <div className="mb-12 text-center">
+          <h2 className="mb-4 text-4xl font-bold text-black">Berita Terkini</h2>
         </div>
 
         {/* Loading State */}
