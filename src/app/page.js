@@ -17,7 +17,7 @@ export default function Home() {
         <Hero />
         <ExploreSection />
         <HistoryPreviewSection />
-        <SOTBSection />
+        {/* <SOTBSection /> */}
         <PotentialSection />
         <NewsSection />
       </main>

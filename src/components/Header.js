@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { getNavigationItems } from "../lib/pages";
 import { useState, useEffect } from "react";
 
@@ -51,16 +52,19 @@ const Header = () => {
 
   return (
     <>
-      <header className="bg-green-600 text-white relative z-50">
+      <header className="bg-green-600 text-white fixed top-0 left-0 right-0 z-50 shadow-md">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between py-4">
             {/* Logo and Title */}
             <div className="flex items-center space-x-3">
               <div className="w-16 h-16 bg-transparent rounded-lg flex items-center justify-center transition-transform duration-300 hover:scale-110">
-                <img
-                  className="w-14 h-14 object-contain"
-                  src="MainFooter/Logo.svg"
+                <Image 
+                  className="w-auto h-auto" 
+                  src="/MainFooter/Logo.svg" 
                   alt="Logo Desa Belung"
+                  width={48}
+                  height={48}
+                  priority
                 />
               </div>
               <div>
@@ -158,6 +162,7 @@ const Header = () => {
         <div
           className="fixed inset-0 bg-black/50 z-60" // Ubah dari z-40 ke z-60
           onClick={handleMenuClose}
+          style={{ top: "88px" }} // Start below the fixed header
         />
       )}
 
@@ -169,8 +174,8 @@ const Header = () => {
   md:hidden
   `}
         style={{
-          top: "70px",
-          height: "calc(100vh - 70px)",
+          top: "88px", // Start below the fixed header
+          height: "calc(100vh - 88px)", // Height from below header to bottom of screen
         }}
       >
         {/* Mobile Menu Items - Direct without header */}
