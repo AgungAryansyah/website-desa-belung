@@ -26,7 +26,7 @@ services:
       - belung-pocketbase
     restart: on-failure
     environment:
-      - NEXT_PUBLIC_POCKETBASE_URL=http://belung-pocketbase:8080  # Add this line!
+      - NEXT_PUBLIC_POCKETBASE_URL=${NEXT_PUBLIC_POCKETBASE_URL}
 
 networks:
   belung-network:
