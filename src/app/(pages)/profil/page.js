@@ -1,14 +1,16 @@
+"use client"; 
+import { useState, useEffect } from 'react';
 import Image from "next/image";
 import PageTemplate from "../../../templates/PageTemplate";
 import { PAGES } from "../../../lib/pages";
 import { getVisi, getAllMisi } from "../../../lib/api/endpoints/profile";
 
-export default async function ProfilPage() {
+export default function ProfilPage() {
   const pageConfig = PAGES.PROFIL;
 
-  // Fetch data from PocketBase
-  let visiData = "Terwujudnya Desa Belung yang Maju, Mandiri, Sejahtera, dan Berakhlak Mulia Berlandaskan Gotong Royong.";
-  let misiData = [
+  // State for data and loading
+  const [visiData, setVisiData] = useState("Terwujudnya Desa Belung yang Maju, Mandiri, Sejahtera, dan Berakhlak Mulia Berlandaskan Gotong Royong.");
+  const [misiData, setMisiData] = useState([
     {
       id: 1,
       nomor: 1,
@@ -29,31 +31,68 @@ export default async function ProfilPage() {
       nomor: 4,
       text: "Meningkatkan kualitas sumber daya manusia yang berdaya saing dan berakhlak mulia melalui program pendidikan dan keagamaan.",
     },
-  ];
+  ]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  try {
-    // Fetch visi data
-    const visiResponse = await getVisi();
-    visiData = visiResponse.text;
-  } catch (error) {
-    console.error('Error fetching visi:', error);
-    // Keep default visi data if fetch fails
-  }
+  // Fetch data from PocketBase
+  useEffect(() => {
+    async function fetchProfileData() {
+      try {
+        setLoading(true);
+        
+        // Fetch both visi and misi data in parallel
+        const [visiResponse, misiResponse] = await Promise.all([
+          getVisi().catch(err => {
+            console.error('Error fetching visi:', err);
+            return null;
+          }),
+          getAllMisi().catch(err => {
+            console.error('Error fetching misi:', err);
+            return null;
+          })
+        ]);
 
-  try {
-    // Fetch misi data
-    const misiResponse = await getAllMisi();
-    if (misiResponse && misiResponse.length > 0) {
-      misiData = misiResponse;
+        // Update visi data if successfully fetched
+        if (visiResponse && visiResponse.text) {
+          setVisiData(visiResponse.text);
+        }
+
+        // Update misi data if successfully fetched
+        if (misiResponse && misiResponse.length > 0) {
+          setMisiData(misiResponse);
+        }
+
+      } catch (err) {
+        console.error('Error fetching profile data:', err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
     }
-  } catch (error) {
-    console.error('Error fetching misi:', error);
-    // Keep default misi data if fetch fails
-  }
+
+    fetchProfileData();
+  }, []);
 
   return (
     <PageTemplate className="pt-0 bg-gray-50">
       <div className="min-h-screen p-0 m-0">
+        {/* Loading State */}
+        {loading && (
+          <div className="flex justify-center items-center py-12">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600"></div>
+          </div>
+        )}
+
+        {/* Error State */}
+        {error && (
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+            <p>Error loading profile data: {error}</p>
+          </div>
+        )}
+
+        {/* Main Content - Show even when loading to prevent layout shift */}
+        <div className={loading ? "opacity-50" : ""}>
         {/* HERO SECTION */}
         <section className="relative min-h-[100px] overflow-hidden p-0 m-0">
           {/* Background Image */}
@@ -360,6 +399,7 @@ export default async function ProfilPage() {
             </div>
           </section>
         </div>
+        </div> {/* Close the main content wrapper */}
       </div>
     </PageTemplate>
   );
