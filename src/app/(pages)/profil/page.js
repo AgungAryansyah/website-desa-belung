@@ -5,6 +5,8 @@ import { PAGES } from "../../../lib/pages";
 export default function ProfilPage() {
   const pageConfig = PAGES.PROFIL;
 
+  const visiData = "Terwujudnya Desa Belung yang Maju, Mandiri, Sejahtera, dan Berakhlak Mulia Berlandaskan Gotong Royong.";
+
   const misiData = [
     {
       id: 1,
@@ -158,8 +160,7 @@ export default function ProfilPage() {
                 <h2 className="mb-8 text-3xl font-bold md:text-4xl">VISI</h2>
               </div>
               <blockquote className="max-w-4xl mx-auto text-xl italic font-medium leading-relaxed md:text-2xl">
-                "Terwujudnya Desa Belung yang Maju, Mandiri, Sejahtera, dan
-                Berakhlak Mulia Berlandaskan Gotong Royong."
+                "{visiData}"
               </blockquote>
             </div>
           </section>
