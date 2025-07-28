@@ -54,13 +54,13 @@ const Header = () => {
     <>
       <header className="bg-green-600 text-white fixed top-0 left-0 right-0 z-50 shadow-md">
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between py-4">
+          <div className="flex items-center justify-between py-[11.5px] lg:py-4">
             {/* Logo and Title */}
             <div className="flex items-center space-x-3">
               <div className="w-16 h-16 bg-transparent rounded-lg flex items-center justify-center transition-transform duration-300 hover:scale-110">
-                <Image 
-                  className="w-auto h-auto" 
-                  src="/MainFooter/Logo.svg" 
+                <Image
+                  className="w-auto h-auto"
+                  src="/MainFooter/Logo.svg"
                   alt="Logo Desa Belung"
                   width={48}
                   height={48}
