@@ -29,16 +29,20 @@ const HistoryPreviewSection = () => {
                 <h2 className="text-3xl lg:text-4xl font-bold text-black mb-6">
                   Sejarah Desa Belung
                 </h2>
-                <p className="text-black text-lg leading-relaxed mb-8">
-                  Desa Belung terletak di kaki Gunung Semeru, sebuah desa yang
-                  dikenal dengan kekayaan alamnya, terutama hasil pertaniannya
-                  yang melimpah seperti sayuran. Desa ini memiliki sejarah yang
-                  kaya, terbentuk pada tahun 1945 dan terus berkembang sebagai
-                  bagian penting dari wilayah administratif Kecamatan
-                  Poncokusumo, Kabupaten Malang, Jawa Timur. Secara geografis,
-                  Desa Belung memiliki koordinat 1.124582 LU dengan ketinggian
-                  sekitar ±1.000 meter di atas permukaan laut, menciptakan iklim
-                  yang sejuk dan kondusif untuk pertanian.
+                <p className="text-black text-justify text-lg leading-relaxed mb-8">
+                  Desa Belung, yang kini berada di Kecamatan Poncokusumo,
+                  Kabupaten Malang, memiliki sejarah panjang sejak era Kerajaan
+                  Mataram, Singasari, hingga masa kolonial Belanda. Kisah heroik
+                  Panji Pulang Jiwo, Putri Proboretno, dan Mangun Yuda mewarnai
+                  asal-usul desa, termasuk nama "Belung" yang diyakini berasal
+                  dari luka hingga batas tulang lengan atau dari banyaknya
+                  tulang di medan pertempuran. Letaknya yang strategis di kaki
+                  Gunung Semeru dan di aliran sungai suci menjadikannya penting
+                  dalam sejarah spiritual dan geopolitik lokal. Situs-situs
+                  sakral, petilasan, dan tradisi lisan tetap dijaga, memperkuat
+                  identitas warga yang menjadikan sejarah sebagai sumber
+                  kebanggaan dan kekuatan kolektif masyarakat Belung hingga
+                  kini.
                 </p>
 
                 <div className="flex items-center">

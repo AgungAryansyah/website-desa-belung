@@ -24,19 +24,108 @@ export const potensiData = [
       "Lahan sawah yang subur dengan hasil padi berkualitas tinggi dan sayuran segar untuk kebutuhan pasar lokal.",
     items: [
       {
-        name: "Pertanian",
+        name: "Pertanian dan Perkebunan",
         detail:
-          "Fokus pada budidaya komoditas utama seperti kubis, jagung, cabai, kol, dan sawi yang dikelola oleh masyarakat setempat.",
+          "Sektor pertanian dan perkebunan menjadi potensi utama desa, dengan hasil utama berupa kubis, jagung, cabai, kol, dan sawi. ",
       },
       {
-        name: "Perkebunan",
+        name: "Peternakan",
         detail:
-          "Hasilnya didistribusikan ke pasar-pasar di wilayah Kabupaten Malang dan sekitarnya.",
+          "Sektor peternakan berkembang dalam pemeliharaan sapi, kambing, dan domba yang dikelola secara mandiri oleh masyarakat lokal..",
       },
       {
         name: "Sumber Mata Air",
         detail:
           "Mata air yang terus mengalir yang dimanfaatkan oleh warga setempat",
+      },
+    ],
+  },
+  {
+    title: "Sumber Daya Manusia",
+    icon: (
+      <svg
+        className="w-8 h-8"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M4.5 6.375a4.125 4.125 0 1 1 8.25 0 4.125 4.125 0 0 1-8.25 0ZM14.25 8.625a3.375 3.375 0 1 1 6.75 0 3.375 3.375 0 0 1-6.75 0ZM1.5 19.125a7.125 7.125 0 0 1 14.25 0v.003l-.001.119a.75.75 0 0 1-.363.63 13.067 13.067 0 0 1-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 0 1-.364-.63l-.001-.122ZM17.25 19.128l-.001.144a2.25 2.25 0 0 1-.233.96 10.088 10.088 0 0 0 5.06-1.01.75.75 0 0 0 .42-.643 4.875 4.875 0 0 0-6.957-4.611 8.586 8.586 0 0 1 1.71 5.157v.003Z"
+        />
+      </svg>
+    ),
+    color: "cyan",
+    description:
+      "Masyarakat desa yang aktif, produktif, dan terlibat dalam berbagai kegiatan pembangunan serta pengembangan potensi lokal.",
+    items: [
+      {
+        name: "Karang Taruna",
+        detail:
+          "Pemuda desa aktif dalam kegiatan sosial, pendidikan, dan pengembangan kewirausahaan.",
+      },
+      {
+        name: "Kelompok Tani",
+        detail:
+          "Kelompok tani aktif dalam mengelola pertanian, meningkatkan hasil panen, serta berbagi praktik pertanian modern melalui pelatihan dan pendampingan.",
+      },
+      {
+        name: "Kelompok Ternak",
+        detail:
+          "Terdiri dari peternak lokal yang memelihara sapi, kambing, dan domba dengan sistem kolaboratif untuk peningkatan produksi dan pemasaran.",
+      },
+      {
+        name: "Jamaah Sholawat",
+        detail:
+          "Komunitas keagamaan yang rutin mengadakan kegiatan spiritual seperti pembacaan sholawat dan pengajian, memperkuat nilai religius dan sosial masyarakat.",
+      },
+      {
+        name: "Kelompok Pengolahan Air",
+        detail:
+          "Kelompok yang mengelola sumber air bersih desa, bertanggung jawab atas pemeliharaan sistem distribusi dan edukasi konservasi air.",
+      },
+    ],
+  },
+  {
+    title: "Budaya Lokal",
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="32"
+        height="32"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="text-yellow-700"
+      >
+        <path d="M10 11h.01" />
+        <path d="M14 6h.01" />
+        <path d="M18 6h.01" />
+        <path d="M6.5 13.1h.01" />
+        <path d="M22 5c0 9-4 12-6 12s-6-3-6-12c0-2 2-3 6-3s6 1 6 3" />
+        <path d="M17.4 9.9c-.8.8-2 .8-2.8 0" />
+        <path d="M10.1 7.1C9 7.2 7.7 7.7 6 8.6c-3.5 2-4.7 3.9-3.7 5.6 4.5 7.8 9.5 8.4 11.2 7.4.9-.5 1.9-2.1 1.9-4.7" />
+        <path d="M9.1 16.5c.3-1.1 1.4-1.7 2.4-1.4" />
+      </svg>
+    ),
+    color: "red",
+    description:
+      "Pelestarian nilai-nilai budaya lokal seperti tradisi, kesenian, dan kearifan lokal yang menjadi identitas desa.",
+    items: [
+      {
+        name: "Bantengan",
+        detail:
+          "Bantengan merupakan seni tradisional yang melibatkan tarian khas dengan topeng banteng, menjadi simbol keberanian dan kekuatan masyarakat desa.",
+      },
+      {
+        name: "Kuda Lumping",
+        detail:
+          "Kuda Lumping menampilkan tarian dengan iringan gamelan dan gerakan dinamis, mencerminkan nilai magis dan semangat kolektif warga desa.",
       },
     ],
   },
@@ -65,7 +154,7 @@ export const potensiData = [
     ),
     color: "blue",
     description:
-      "Pemandangan pegunungan yang indah dengan udara sejuk memberikan spot foto yang menarik.",
+      "Pemandangan yang indah dengan udara sejuk memberikan spot foto yang menarik.",
     items: [
       {
         name: "Taman Sayur Belung",
@@ -93,15 +182,16 @@ export const potensiData = [
     ),
     color: "purple",
     description:
-      "UMKM dan industri rumahan yang mengolah hasil pertanian menjadi produk bernilai tambah.",
+      "UMKM dan industri rumahan yang mengolah produk bernilai tambah.",
     items: [
       {
         name: "Makanan Olahan",
-        detail: "Keripik, dodol, dan sirup dari hasil panen lokal",
+        detail:
+          "Opak, keripik usus, serta hasil kolaborasi dengan mitra lokal dalam pengembangan usaha olahan pertanian.",
       },
       {
         name: "Produk Pertanian",
-        detail: "Kemasan premium untuk hasil pertanian",
+        detail: "Produk unggulan desa antara lain Nasi Gerit dari jagung",
       },
     ],
   },
@@ -132,6 +222,12 @@ export const getColorClasses = (color) => {
       text: "text-cyan-600",
       hover: "hover:bg-cyan-50",
       border: "border-cyan-200",
+    },
+    red: {
+      bg: "bg-red-100",
+      text: "text-red-600",
+      hover: "hover:bg-red-50",
+      border: "border-red-200",
     },
   };
   return colors[color];

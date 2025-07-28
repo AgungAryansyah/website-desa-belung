@@ -169,7 +169,7 @@ const Header = () => {
       {/* Mobile Menu - Z-index paling tinggi */}
       <div
         className={`
-  fixed right-0 w-80 bg-white z-70 transform transition-transform duration-300 ease-in-out  // Ubah dari z-45 ke z-70
+  fixed right-0 w-80 bg-white z-70 transform transition-transform duration-300 ease-in-out 
   ${isMenuOpen ? "translate-x-0" : "translate-x-full"}
   md:hidden
   `}
