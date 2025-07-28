@@ -9,7 +9,7 @@ export const COLLECTIONS = {
   NEWS: 'news',
   PROFILE: 'village_profile',
   EVENTS: 'events',
-  STRUCTURE: 'village_structure',
+  STRUCTURE: 'structure',
   POTENTIAL: 'village_potential',
   TEAM_MEMBERS: 'team_members',
   GALLERY: 'gallery',
