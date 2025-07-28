@@ -22,6 +22,14 @@ export default function ProfilPage() {
       id: 4,
       text: "Meningkatkan kualitas sumber daya manusia yang berdaya saing dan berakhlak mulia melalui program pendidikan dan keagamaan.",
     },
+    {
+      id: 5,
+      text: "Meningkatkan kualitas sumber daya manusia yang berdaya saing dan berakhlak mulia melalui program pendidikan dan keagamaan.",
+    },
+    {
+      id: 6,
+      text: "Meningkatkan kualitas sumber daya manusia yang berdaya saing dan berakhlak mulia melalui program pendidikan dan keagamaan.",
+    },
   ];
 
   return (
@@ -169,8 +177,15 @@ export default function ProfilPage() {
               </div>
 
               <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-2">
-                {misiData.map((misi) => (
-                  <div key={misi.id} className="group">
+                {misiData.map((misi, index) => (
+                  <div 
+                    key={misi.id} 
+                    className={`group ${
+                      misiData.length % 2 !== 0 && index === misiData.length - 1 
+                        ? 'md:col-span-2 md:max-w-2xl md:mx-auto' 
+                        : ''
+                    }`}
+                  >
                     <div className="h-full p-8 transition-shadow duration-300 border-l-4 border-green-500 bg-gradient-to-br from-green-50 to-green-100 rounded-2xl hover:shadow-lg">
                       <div className="flex items-start gap-6">
                         <div className="flex-shrink-0">
