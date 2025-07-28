@@ -217,14 +217,8 @@ export default function ProfilPage() {
                   VISI
                 </h2>
               </div>
-<<<<<<< HEAD
               <blockquote className="max-w-4xl mx-auto text-xl italic font-medium leading-relaxed md:text-2xl">
                 "{visiData}"
-=======
-              <blockquote className="max-w-4xl mx-auto text-lg italic font-medium leading-relaxed md:text-2xl">
-                "Terwujudnya Desa Belung yang Maju, Mandiri, Sejahtera, dan
-                Berakhlak Mulia Berlandaskan Gotong Royong."
->>>>>>> main
               </blockquote>
             </div>
           </section>
