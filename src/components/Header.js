@@ -58,9 +58,9 @@ const Header = () => {
             {/* Logo and Title */}
             <div className="flex items-center space-x-3">
               <div className="w-16 h-16 bg-transparent rounded-lg flex items-center justify-center transition-transform duration-300 hover:scale-110">
-                <Image 
-                  className="w-auto h-auto" 
-                  src="/MainFooter/Logo.svg" 
+                <Image
+                  className="w-auto h-auto"
+                  src="/MainFooter/Logo.svg"
                   alt="Logo Desa Belung"
                   width={48}
                   height={48}
@@ -169,7 +169,7 @@ const Header = () => {
       {/* Mobile Menu - Z-index paling tinggi */}
       <div
         className={`
-  fixed right-0 w-80 bg-white z-70 transform transition-transform duration-300 ease-in-out  // Ubah dari z-45 ke z-70
+  fixed right-0 w-80 bg-white z-70 transform transition-transform duration-300 ease-in-out 
   ${isMenuOpen ? "translate-x-0" : "translate-x-full"}
   md:hidden
   `}

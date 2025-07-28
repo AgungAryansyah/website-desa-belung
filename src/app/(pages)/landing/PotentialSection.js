@@ -12,15 +12,16 @@ const PotentialSection = () => {
                 <h2 className="text-3xl lg:text-4xl font-bold text-black mb-6">
                   Potensi Desa Belung
                 </h2>
-                <p className="text-black text-lg leading-relaxed mb-8">
-                  Desa Belung memiliki beragam potensi yang menjadi kekuatan
-                  utama dalam pembangunan ekonomi dan sosial masyarakatnya.
-                  Terletak di lereng Gunung Semeru, desa ini memiliki tanah yang
-                  subur dan iklim yang sejuk, menjadikannya sangat ideal untuk
-                  pertanian, terutama sayuran dataran tinggi seperti kubis,
-                  wortel, kentang, dan daun bawang. Hasil pertanian ini tidak
-                  hanya mencukupi kebutuhan lokal, tetapi juga dipasarkan ke
-                  kota-kota besar di Jawa Timur.
+                <p className="text-black text-lg text-justify leading-relaxed mb-8">
+                  Desa Belung terletak di kaki Gunung Semeru dengan iklim sejuk
+                  yang mendukung sektor pertanian dan peternakan. Warga aktif
+                  dalam kelompok tani, ternak, jamaah sholawat, hingga
+                  pengelolaan air bersih. Budaya lokal seperti Bantengan dan
+                  Kuda Lumping tetap lestari sebagai warisan generasi. Potensi
+                  ekonomi desa ditopang UMKM olahan hasil pertanian seperti nasi
+                  gerit dari jagung, opak, keripik usus, dan produk kemitraan
+                  lainnya yang terus berkembang secara mandiri dan
+                  berkelanjutan.
                 </p>
 
                 <div className="flex items-center">
@@ -49,7 +50,7 @@ const PotentialSection = () => {
                 {/* image */}
                 <div className="absolute inset-0 bg-gray-300">
                   <Image
-                    src="/landing/images/potential.png"
+                    src="/landing/images/potensi.jpg"
                     alt={` image`}
                     fill
                     priority

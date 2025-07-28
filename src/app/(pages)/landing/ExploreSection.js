@@ -5,7 +5,7 @@ const ExploreSection = () => {
     {
       id: "profil-desa",
       title: "Profil Desa",
-      image: "/landing/images/background_1.png",
+      image: "/landing/images/profil.jpg",
       link: "/profil",
     },
     {
@@ -17,13 +17,13 @@ const ExploreSection = () => {
     {
       id: "potensi-desa",
       title: "Potensi Desa",
-      image: "/landing/images/background_1.png",
+      image: "/landing/images/potential.png",
       link: "/potensi",
     },
     {
       id: "berita",
       title: "Berita",
-      image: "/landing/images/background_1.png",
+      image: "/landing/images/berita.jpg",
       link: "/berita",
     },
   ];
@@ -39,7 +39,7 @@ const ExploreSection = () => {
               <br />
               Website Ini
             </h2>
-            <p className="text-gray-600 text-base sm:text-lg leading-relaxed">
+            <p className="text-gray-600 text-justify text-base sm:text-lg leading-relaxed">
               Pada website ini, Anda dapat mengeksplorasi berbagai aspek penting
               yang berkaitan dengan Desa Belung. Mulai dari informasi umum
               hingga potensi lokal yang menjadi kebanggaan desa kami. Temukan
