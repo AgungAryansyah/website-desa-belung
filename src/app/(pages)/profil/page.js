@@ -1,38 +1,55 @@
 import Image from "next/image";
 import PageTemplate from "../../../templates/PageTemplate";
 import { PAGES } from "../../../lib/pages";
+import { getVisi, getAllMisi } from "../../../lib/api/endpoints/profile";
 
-export default function ProfilPage() {
+export default async function ProfilPage() {
   const pageConfig = PAGES.PROFIL;
 
-  const visiData = "Terwujudnya Desa Belung yang Maju, Mandiri, Sejahtera, dan Berakhlak Mulia Berlandaskan Gotong Royong.";
-
-  const misiData = [
+  // Fetch data from PocketBase
+  let visiData = "Terwujudnya Desa Belung yang Maju, Mandiri, Sejahtera, dan Berakhlak Mulia Berlandaskan Gotong Royong.";
+  let misiData = [
     {
       id: 1,
+      nomor: 1,
       text: "Meningkatkan kualitas pelayanan publik yang cepat, mudah, dan transparan bagi seluruh masyarakat desa.",
     },
     {
       id: 2,
+      nomor: 2,
       text: "Mengembangkan potensi ekonomi lokal melalui BUMDes dan pemberdayaan UMKM berbasis kearifan lokal.",
     },
     {
       id: 3,
+      nomor: 3,
       text: "Mewujudkan infrastruktur desa yang merata dan berkualitas untuk menunjang aktivitas sosial dan ekonomi warga.",
     },
     {
       id: 4,
-      text: "Meningkatkan kualitas sumber daya manusia yang berdaya saing dan berakhlak mulia melalui program pendidikan dan keagamaan.",
-    },
-    {
-      id: 5,
-      text: "Meningkatkan kualitas sumber daya manusia yang berdaya saing dan berakhlak mulia melalui program pendidikan dan keagamaan.",
-    },
-    {
-      id: 6,
+      nomor: 4,
       text: "Meningkatkan kualitas sumber daya manusia yang berdaya saing dan berakhlak mulia melalui program pendidikan dan keagamaan.",
     },
   ];
+
+  try {
+    // Fetch visi data
+    const visiResponse = await getVisi();
+    visiData = visiResponse.text;
+  } catch (error) {
+    console.error('Error fetching visi:', error);
+    // Keep default visi data if fetch fails
+  }
+
+  try {
+    // Fetch misi data
+    const misiResponse = await getAllMisi();
+    if (misiResponse && misiResponse.length > 0) {
+      misiData = misiResponse;
+    }
+  } catch (error) {
+    console.error('Error fetching misi:', error);
+    // Keep default misi data if fetch fails
+  }
 
   return (
     <PageTemplate className="pt-0 bg-gray-50">
@@ -191,7 +208,7 @@ export default function ProfilPage() {
                       <div className="flex items-start gap-6">
                         <div className="flex-shrink-0">
                           <div className="flex items-center justify-center w-12 h-12 text-xl font-bold text-white bg-green-600 rounded-full">
-                            {misi.id}
+                            {misi.nomor || misi.id}
                           </div>
                         </div>
                         <p className="flex-1 pt-2 text-lg leading-relaxed text-gray-800">
