@@ -43,7 +43,7 @@ const ContentPotensi = () => {
             </svg>
           </div>
 
-          <p className="text-gray-600 mb-4 leading-relaxed">
+          <p className="text-gray-600 mb-4 leading-relaxed text-justify">
             {potensi.description}
           </p>
 
@@ -60,8 +60,12 @@ const ContentPotensi = () => {
                 key={itemIndex}
                 className={`${colors.border} border-l-4 pl-4 py-2 ${colors.hover} transition-colors`}
               >
-                <div className="font-semibold text-gray-800">{item.name}</div>
-                <div className="text-sm text-gray-600 mt-1">{item.detail}</div>
+                <div className="font-semibold text-gray-800 text-justify">
+                  {item.name}
+                </div>
+                <div className="text-sm text-gray-600 mt-1 text-justify">
+                  {item.detail}
+                </div>
               </div>
             ))}
           </div>
@@ -81,7 +85,7 @@ const ContentPotensi = () => {
   const QuickStats = () => {
     const stats = [
       { value: "1383 Ha 577 m²", label: "Lahan Pertanian" },
-      { value: "6.470", label: "Jumlah Penduduk" },
+      { value: "6.400 ±", label: "Jumlah Penduduk" },
       { value: "1221 Ha 473 m²", label: "Lahan Perkebunan" },
     ];
 

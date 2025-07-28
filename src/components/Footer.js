@@ -128,9 +128,10 @@ const Footer = () => {
             {/* Explore */}
             <div>
               <h4 className="text-lg font-semibold mb-4">Jelajahi</h4>
-              <div className="space-y-3">
-                <p className="text-sm opacity-90">Website Jual Beli Sayur</p>
-                <p className="text-sm opacity-90">Beasiswa Desa</p>
+              <div className="space-y-3 underline">
+                <a href="https://belungmarketcenter.id">
+                  Website Jual Beli Sayur
+                </a>
               </div>
             </div>
           </div>
@@ -148,9 +149,8 @@ const Footer = () => {
             <div>
               <h3 className="text-lg font-bold mb-1">Desa Belung</h3>
               <p className="text-sm opacity-90">
-                Kabupaten Jombang, Kabupaten Malang
+                Jl. Raya Belung, No. 51 65157
               </p>
-              <p className="text-sm opacity-90">Provinsi Jawa Timur</p>
             </div>
           </div>
 
@@ -326,17 +326,6 @@ const Footer = () => {
                       <p className="text-sm opacity-90">08123456789</p>
                     </div>
                   </div>
-                  <div className="flex items-center space-x-3">
-                    <img
-                      src="MainFooter/person.svg"
-                      alt="Person"
-                      className="w-5 h-5"
-                    />
-                    <div>
-                      <p className="font-medium">Pak Kades</p>
-                      <p className="text-sm opacity-90">08123456789</p>
-                    </div>
-                  </div>
                 </div>
               )}
             </div>
@@ -368,14 +357,13 @@ const Footer = () => {
                 </svg>
               </button>
               {openSection === "explore" && (
-                <div className="pb-4 space-y-2">
+                <div className="pb-4 space-y-2 underline">
                   <p className="text-sm opacity-90">
                     •{" "}
                     <a href="https://belungmarketcenter.id">
                       Website Jual Beli Sayur
                     </a>
                   </p>
-                  <p className="text-sm opacity-90">• Beasiswa Desa</p>
                 </div>
               )}
             </div>
