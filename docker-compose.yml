@@ -10,6 +10,8 @@ services:
       - "8080:8080"
     volumes:
       - ./pocketbase/pb_data:/pb/pb_data
+    networks:
+      - belung-network 
     restart: unless-stopped
 
   belung-fe:
@@ -23,6 +25,8 @@ services:
     depends_on:
       - belung-pocketbase
     restart: on-failure
+    environment:
+      - NEXT_PUBLIC_POCKETBASE_URL=${NEXT_PUBLIC_POCKETBASE_URL}
 
 networks:
   belung-network:

@@ -16,4 +16,6 @@ export const COLLECTIONS = {
   DOCUMENTS: 'documents',
   IMAGES: 'images',
   HISTORY: 'history',
+  VISI: 'visi',
+  MISI: 'misi',
 };

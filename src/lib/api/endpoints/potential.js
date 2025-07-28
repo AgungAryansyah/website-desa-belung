@@ -1,67 +1,56 @@
-import { getRecords, getRecord, getFileUrl } from '../client';
+import { getRecords } from '../client';
 import { COLLECTIONS } from '../config';
 
 /**
- * Get village potential/resources
- * @param {Object} options - Query options
- * @returns {Promise} - Promise resolving to village potential
+ * Get village visi (vision) - single record
+ * @returns {Promise} - Promise resolving to visi data
  */
-export async function getVillagePotential(options = {}) {
-  const result = await getRecords(COLLECTIONS.POTENTIAL, {
-    sort: 'category, name',
-    ...options
-  });
+export async function getVisi() {
+  try {
+    // Get the first (and only) visi record
+    const result = await getRecords(COLLECTIONS.VISI, { perPage: 1 });
+    
+    if (result.items.length === 0) {
+      throw new Error('Visi not found');
+    }
 
-  const potentialWithImages = result.items.map(item => ({
-    ...item,
-    imageUrl: item.image ? getFileUrl(item, item.image) : null,
-    thumbnailUrl: item.image ? getFileUrl(item, item.image, '300x200') : null,
-  }));
-
-  return {
-    ...result,
-    items: potentialWithImages
-  };
+    const visi = result.items[0];
+    
+    return {
+      id: visi.id,
+      text: visi.visi,
+      created: visi.created,
+      updated: visi.updated,
+    };
+  } catch (error) {
+    console.error('Error fetching visi:', error);
+    throw error;
+  }
 }
 
 /**
- * Get economic potential
- * @param {Object} options - Query options
- * @returns {Promise} - Promise resolving to economic potential
+ * Get all misi items without pagination
+ * @returns {Promise} - Promise resolving to all misi items
  */
-export async function getEconomicPotential(options = {}) {
-  const queryOptions = {
-    filter: 'category = "economic"',
-    ...options
-  };
+export async function getAllMisi() {
+  try {
+    const result = await getRecords(COLLECTIONS.MISI, { 
+      perPage: 500, // Large number to get all records
+      sort: 'nomor' 
+    });
+    
+    // Transform the data to match expected format
+    const misiList = result.items.map(item => ({
+      id: item.id,
+      nomor: item.nomor,
+      text: item.misi,
+      created: item.created,
+      updated: item.updated,
+    }));
 
-  return getVillagePotential(queryOptions);
-}
-
-/**
- * Get tourism potential
- * @param {Object} options - Query options
- * @returns {Promise} - Promise resolving to tourism potential
- */
-export async function getTourismPotential(options = {}) {
-  const queryOptions = {
-    filter: 'category = "tourism"',
-    ...options
-  };
-
-  return getVillagePotential(queryOptions);
-}
-
-/**
- * Get agricultural potential
- * @param {Object} options - Query options
- * @returns {Promise} - Promise resolving to agricultural potential
- */
-export async function getAgriculturalPotential(options = {}) {
-  const queryOptions = {
-    filter: 'category = "agriculture"',
-    ...options
-  };
-
-  return getVillagePotential(queryOptions);
+    return misiList;
+  } catch (error) {
+    console.error('Error fetching all misi:', error);
+    throw error;
+  }
 }

@@ -1,69 +1,56 @@
-import { getRecords, getRecord, getFileUrl } from '../client';
+import { getRecords } from '../client';
 import { COLLECTIONS } from '../config';
 
 /**
- * Get village profile information
- * @returns {Promise} - Promise resolving to village profile
+ * Get village visi (vision) - single record
+ * @returns {Promise} - Promise resolving to visi data
  */
-export async function getVillageProfile() {
+export async function getVisi() {
   try {
-    // Get the first (and likely only) profile record
-    const result = await getRecords(COLLECTIONS.PROFILE, { perPage: 1 });
+    // Get the first (and only) visi record
+    const result = await getRecords(COLLECTIONS.VISI, { perPage: 1 });
     
     if (result.items.length === 0) {
-      throw new Error('Village profile not found');
+      throw new Error('Visi not found');
     }
 
-    const profile = result.items[0];
+    const visi = result.items[0];
+
+    console.log('Fetched visi:', visi);
     
     return {
-      ...profile,
-      logoUrl: profile.logo ? getFileUrl(profile, profile.logo) : null,
-      bannerUrl: profile.banner ? getFileUrl(profile, profile.banner) : null,
+      id: visi.id,
+      text: visi.visi,
     };
   } catch (error) {
-    console.error('Error fetching village profile:', error);
+    console.error('Error fetching visi:', error);
     throw error;
   }
 }
 
 /**
- * Get village history
- * @returns {Promise} - Promise resolving to village history
+ * Get all misi items without pagination
+ * @returns {Promise} - Promise resolving to all misi items
  */
-export async function getVillageHistory() {
-  const profile = await getVillageProfile();
-  return {
-    history: profile.history || '',
-    historyImages: profile.history_images ? profile.history_images.map(img => getFileUrl(profile, img)) : []
-  };
-}
+export async function getAllMisi() {
+  try {
+    const result = await getRecords(COLLECTIONS.MISI, { 
+      perPage: 500, // Large number to get all records
+      sort: 'nomor' 
+    });
+    
+    // Transform the data to match expected format
+    const misiList = result.items.map(item => ({
+      id: item.id,
+      nomor: item.nomor,
+      text: item.misi,
+    }));
 
-/**
- * Get village demographics
- * @returns {Promise} - Promise resolving to village demographics
- */
-export async function getVillageDemographics() {
-  const profile = await getVillageProfile();
-  return {
-    population: profile.population || 0,
-    households: profile.households || 0,
-    area: profile.area || 0,
-    demographics: profile.demographics || {}
-  };
-}
+    console.log('Fetched misi list:', misiList);  
 
-/**
- * Get village contact information
- * @returns {Promise} - Promise resolving to village contact
- */
-export async function getVillageContact() {
-  const profile = await getVillageProfile();
-  return {
-    address: profile.address || '',
-    phone: profile.phone || '',
-    email: profile.email || '',
-    website: profile.website || '',
-    socialMedia: profile.social_media || {}
-  };
+    return misiList;
+  } catch (error) {
+    console.error('Error fetching all misi:', error);
+    throw error;
+  }
 }

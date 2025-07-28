@@ -1,32 +1,98 @@
+"use client"; 
+import { useState, useEffect } from 'react';
 import Image from "next/image";
 import PageTemplate from "../../../templates/PageTemplate";
 import { PAGES } from "../../../lib/pages";
+import { getVisi, getAllMisi } from "../../../lib/api/endpoints/profile";
 
 export default function ProfilPage() {
   const pageConfig = PAGES.PROFIL;
 
-  const misiData = [
+  // State for data and loading
+  const [visiData, setVisiData] = useState("Terwujudnya Desa Belung yang Maju, Mandiri, Sejahtera, dan Berakhlak Mulia Berlandaskan Gotong Royong.");
+  const [misiData, setMisiData] = useState([
     {
       id: 1,
+      nomor: 1,
       text: "Meningkatkan kualitas pelayanan publik yang cepat, mudah, dan transparan bagi seluruh masyarakat desa.",
     },
     {
       id: 2,
+      nomor: 2,
       text: "Mengembangkan potensi ekonomi lokal melalui BUMDes dan pemberdayaan UMKM berbasis kearifan lokal.",
     },
     {
       id: 3,
+      nomor: 3,
       text: "Mewujudkan infrastruktur desa yang merata dan berkualitas untuk menunjang aktivitas sosial dan ekonomi warga.",
     },
     {
       id: 4,
+      nomor: 4,
       text: "Meningkatkan kualitas sumber daya manusia yang berdaya saing dan berakhlak mulia melalui program pendidikan dan keagamaan.",
     },
-  ];
+  ]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // Fetch data from PocketBase
+  useEffect(() => {
+    async function fetchProfileData() {
+      try {
+        setLoading(true);
+        
+        // Fetch both visi and misi data in parallel
+        const [visiResponse, misiResponse] = await Promise.all([
+          getVisi().catch(err => {
+            console.error('Error fetching visi:', err);
+            return null;
+          }),
+          getAllMisi().catch(err => {
+            console.error('Error fetching misi:', err);
+            return null;
+          })
+        ]);
+
+        // Update visi data if successfully fetched
+        if (visiResponse && visiResponse.text) {
+          setVisiData(visiResponse.text);
+        }
+
+        // Update misi data if successfully fetched
+        if (misiResponse && misiResponse.length > 0) {
+          setMisiData(misiResponse);
+        }
+
+      } catch (err) {
+        console.error('Error fetching profile data:', err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchProfileData();
+  }, []);
 
   return (
     <PageTemplate className="pt-0 bg-gray-50">
       <div className="min-h-screen p-0 m-0">
+        {/* Loading State */}
+        {loading && (
+          <div className="flex justify-center items-center py-12">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600"></div>
+          </div>
+        )}
+
+        {/* Error State */}
+        {error && (
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+            <p>Error loading profile data: {error}</p>
+          </div>
+        )}
+
+        {/* Main Content - Show even when loading to prevent layout shift */}
+        <div className={loading ? "opacity-50" : ""}>
         {/* HERO SECTION */}
         <section className="relative min-h-[100px] overflow-hidden p-0 m-0">
           {/* Background Image */}
@@ -151,9 +217,14 @@ export default function ProfilPage() {
                   VISI
                 </h2>
               </div>
+<<<<<<< HEAD
+              <blockquote className="max-w-4xl mx-auto text-xl italic font-medium leading-relaxed md:text-2xl">
+                "{visiData}"
+=======
               <blockquote className="max-w-4xl mx-auto text-lg italic font-medium leading-relaxed md:text-2xl">
                 "Terwujudnya Desa Belung yang Maju, Mandiri, Sejahtera, dan
                 Berakhlak Mulia Berlandaskan Gotong Royong."
+>>>>>>> main
               </blockquote>
             </div>
           </section>
@@ -170,14 +241,21 @@ export default function ProfilPage() {
                 </p>
               </div>
 
-              <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
-                {misiData.map((misi) => (
-                  <div key={misi.id} className="group">
-                    <div className="h-full p-6 transition-shadow duration-300 border-l-4 border-green-500 md:p-8 bg-gradient-to-br from-green-50 to-green-100 rounded-2xl hover:shadow-lg">
-                      <div className="flex items-start gap-4 md:gap-6">
+              <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-2">
+                {misiData.map((misi, index) => (
+                  <div 
+                    key={misi.id} 
+                    className={`group ${
+                      misiData.length % 2 !== 0 && index === misiData.length - 1 
+                        ? 'md:col-span-2 md:max-w-2xl md:mx-auto' 
+                        : ''
+                    }`}
+                  >
+                    <div className="h-full p-8 transition-shadow duration-300 border-l-4 border-green-500 bg-gradient-to-br from-green-50 to-green-100 rounded-2xl hover:shadow-lg">
+                      <div className="flex items-start gap-6">
                         <div className="flex-shrink-0">
-                          <div className="flex items-center justify-center w-10 h-10 text-lg font-bold text-white bg-green-600 rounded-full md:w-12 md:h-12 md:text-xl">
-                            {misi.id}
+                          <div className="flex items-center justify-center w-12 h-12 text-xl font-bold text-white bg-green-600 rounded-full">
+                            {misi.nomor || misi.id}
                           </div>
                         </div>
                         <p className="flex-1 pt-1 text-base text-justify leading-relaxed text-gray-800 md:pt-2 md:text-lg">
@@ -349,6 +427,7 @@ export default function ProfilPage() {
             </div>
           </section>
         </div>
+        </div> {/* Close the main content wrapper */}
       </div>
     </PageTemplate>
   );
