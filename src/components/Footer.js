@@ -18,10 +18,12 @@ const Footer = () => {
             {/* Logo and Info */}
             <div className="lg:col-span-1">
               <div className="flex items-start space-x-4 mb-6">
-                <img
+                <Image
                   className="w-24 h-24 flex-shrink-0"
-                  src="MainFooter/Logo.svg"
+                  src="/MainFooter/Logo.svg"
                   alt="Logo Desa Belung"
+                  width={96}
+                  height={96}
                 />
                 <div>
                   <h3 className="text-xl font-bold mb-1">
@@ -42,7 +44,6 @@ const Footer = () => {
                   <span>📧</span>
                   <span>pemdesbelung@gmail.com</span>
                 </div>
-
                 <div className="flex flex-wrap justify-center sm:justify-start gap-4 items-center">
                   <a
                     href="https://www.instagram.com/pemerintahdesabelung?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
@@ -50,23 +51,25 @@ const Footer = () => {
                     rel="noopener noreferrer"
                     className="transition hover:opacity-80"
                   >
-                    <img
+                    <Image
                       src="/MainFooter/Insta.svg"
                       alt="Instagram"
                       className="w-7 h-7 sm:w-6 sm:h-6 object-contain"
+                      width={28}
+                      height={28}
                     />
                   </a>
-
-                  <a
                     href="https://www.youtube.com/@pemdesbelung4396"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="transition hover:opacity-80"
                   >
-                    <img
+                    <Image
                       src="/MainFooter/Yt.svg"
                       alt="YouTube"
                       className="w-7 h-7 sm:w-6 sm:h-6 object-contain"
+                      width={28}
+                      height={28}
                     />
                   </a>
                 </div>
@@ -105,10 +108,12 @@ const Footer = () => {
         <div className="lg:hidden">
           {/* Logo and Village Info - Always visible on mobile */}
           <div className="flex items-start space-x-4 mb-6">
-            <img
+            <Image
               className="w-16 h-16 flex-shrink-0"
-              src="MainFooter/Logo.svg"
+              src="/MainFooter/Logo.svg"
               alt="Logo Desa Belung"
+              width={64}
+              height={64}
             />
             <div>
               <h3 className="text-lg font-bold mb-1">Desa Belung</h3>
@@ -204,23 +209,26 @@ const Footer = () => {
                       rel="noopener noreferrer"
                       className="transition hover:opacity-80"
                     >
-                      <img
+                      <Image
                         src="/MainFooter/Insta.svg"
                         alt="Instagram"
                         className="w-8 h-8 object-contain"
+                        width={32}
+                        height={32}
                       />
                     </a>
-
                     <a
                       href="https://www.youtube.com/@pemdesbelung4396"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="transition hover:opacity-80"
                     >
-                      <img
+                      <Image
                         src="/MainFooter/Yt.svg"
                         alt="YouTube"
                         className="w-8 h-8 object-contain"
+                        width={32}
+                        height={32}
                       />
                     </a>
                   </div>
