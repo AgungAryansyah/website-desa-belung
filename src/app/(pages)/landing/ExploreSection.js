@@ -34,10 +34,8 @@ const ExploreSection = () => {
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
           {/* Left Content */}
           <div className="lg:w-1/3 flex-shrink-0">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-800 mb-4 lg:mb-6">
-              Jelajahi
-              <br />
-              Website Ini
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl text-center font-bold text-gray-800 mb-4 lg:mb-6">
+              Jelajah Website Ini
             </h2>
             <p className="text-gray-600 text-justify text-base sm:text-lg leading-relaxed">
               Pada website ini, Anda dapat mengeksplorasi berbagai aspek penting

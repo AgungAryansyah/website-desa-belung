@@ -44,28 +44,9 @@ const Footer = () => {
                   <span>📧</span>
                   <span>pemdesbelung@gmail.com</span>
                 </div>
-                <div className="flex items-center space-x-2">
-                  <span>📞</span>
-                  <span>0812-1234-5678</span>
-                </div>
                 <div className="flex flex-wrap justify-center sm:justify-start gap-4 items-center">
                   <a
-                    href="https://www.facebook.com/profile.php?id=100069073334964"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="transition hover:opacity-80"
-                  >
-                    <Image
-                      src="/MainFooter/Fb.svg"
-                      alt="Facebook"
-                      className="w-7 h-7 sm:w-6 sm:h-6 object-contain"
-                      width={28}
-                      height={28}
-                    />
-                  </a>
-
-                  <a
-                    href="https://www.instagram.com/belung.punyacerita?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                    href="https://www.instagram.com/pemerintahdesabelung?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                     target="_blank"
                     rel="noopener noreferrer"
                     className="transition hover:opacity-80"
@@ -78,23 +59,6 @@ const Footer = () => {
                       height={28}
                     />
                   </a>
-
-                  <a
-                    href="https://www.tiktok.com/@desabelung"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="transition hover:opacity-80"
-                  >
-                    <Image
-                      src="/MainFooter/Tiktok.svg"
-                      alt="TikTok"
-                      className="w-7 h-7 sm:w-6 sm:h-6 object-contain"
-                      width={28}
-                      height={28}
-                    />
-                  </a>
-
-                  <a
                     href="https://www.youtube.com/@pemdesbelung4396"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -122,19 +86,7 @@ const Footer = () => {
                   <span>🚨</span>
                   <div>
                     <p className="font-medium">Ambulance</p>
-                    <p className="text-sm opacity-90">08123456789</p>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Image 
-                    src="/MainFooter/person.svg" 
-                    alt="Person" 
-                    width={20}
-                    height={20}
-                  />
-                  <div>
-                    <p className="font-medium">Pak Kades</p>
-                    <p className="text-sm opacity-90">08123456789</p>
+                    <p className="text-sm opacity-90">085850629503</p>
                   </div>
                 </div>
               </div>
@@ -181,7 +133,7 @@ const Footer = () => {
               >
                 <div className="flex items-center space-x-3">
                   <span>📞</span>
-                  <span className="font-medium">Kontak Desa</span>
+                  <span className="font-medium">Hubungi Kami</span>
                 </div>
                 <svg
                   className={`w-5 h-5 transition-transform duration-200 ${
@@ -202,12 +154,8 @@ const Footer = () => {
               {openSection === "contact" && (
                 <div className="pb-4 space-y-3">
                   <div className="flex items-center space-x-3">
-                    <span>📞</span>
-                    <span>08128881234</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
                     <span>📧</span>
-                    <span>pemdesabelung@gmail.com</span>
+                    <span>pemdesbelung@gmail.com</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <span>🕒</span>
@@ -256,20 +204,6 @@ const Footer = () => {
                 <div className="pb-4">
                   <div className="flex gap-4 items-center">
                     <a
-                      href="https://www.facebook.com/profile.php?id=100069073334964"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="transition hover:opacity-80"
-                    >
-                      <Image
-                        src="/MainFooter/Fb.svg"
-                        alt="Facebook"
-                        className="w-8 h-8 object-contain"
-                        width={32}
-                        height={32}
-                      />
-                    </a>
-                    <a
                       href="https://www.instagram.com/belung.punyacerita?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                       target="_blank"
                       rel="noopener noreferrer"
@@ -278,20 +212,6 @@ const Footer = () => {
                       <Image
                         src="/MainFooter/Insta.svg"
                         alt="Instagram"
-                        className="w-8 h-8 object-contain"
-                        width={32}
-                        height={32}
-                      />
-                    </a>
-                    <a
-                      href="https://www.tiktok.com/@desabelung"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="transition hover:opacity-80"
-                    >
-                      <Image
-                        src="/MainFooter/Tiktok.svg"
-                        alt="TikTok"
                         className="w-8 h-8 object-contain"
                         width={32}
                         height={32}
@@ -348,7 +268,7 @@ const Footer = () => {
                     <span>🚨</span>
                     <div>
                       <p className="font-medium">Ambulance</p>
-                      <p className="text-sm opacity-90">08123456789</p>
+                      <p className="text-sm opacity-90">08585062950</p>
                     </div>
                   </div>
                 </div>
