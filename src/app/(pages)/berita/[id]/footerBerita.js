@@ -6,7 +6,7 @@ const FooterBerita = ({ berita }) => {
 
     const url = encodeURIComponent(window.location.href);
     const title = encodeURIComponent(berita.title);
-    const text = encodeURIComponent(berita.excerpt || berita.title);
+    const text = encodeURIComponent(berita.ringkasan || berita.title);
 
     let shareUrl = "";
 

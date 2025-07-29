@@ -130,7 +130,7 @@ export default function BeritaPage() {
                   <div className="p-4 flex flex-col justify-between flex-grow">
                     <div>
                       <h3 className="text-md font-bold text-gray-800">{berita.title}</h3>
-                      <p className="text-sm text-gray-600 mt-1 line-clamp-3">{berita.excerpt}</p>
+                      <p className="text-sm text-gray-600 mt-1 line-clamp-3">{berita.ringkasan}</p>
                     </div>
                     <div className="flex justify-between items-center mt-4">
                       <div className="text-sm text-gray-500 flex items-center gap-1">

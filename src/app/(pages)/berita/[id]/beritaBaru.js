@@ -55,10 +55,10 @@ const BeritaBaru = () => {
     return title.length > maxLength ? title.substring(0, maxLength) + '...' : title;
   };
 
-  // Helper function to truncate excerpt
-  const truncateExcerpt = (excerpt, maxLength = 80) => {
-    if (!excerpt) return '';
-    return excerpt.length > maxLength ? excerpt.substring(0, maxLength) + '...' : excerpt;
+  // Helper function to truncate ringkasan
+  const truncateRingkasan = (ringkasan, maxLength = 80) => {
+    if (!ringkasan) return '';
+    return ringkasan.length > maxLength ? ringkasan.substring(0, maxLength) + '...' : ringkasan;
   };
 
   return (
@@ -122,10 +122,10 @@ const BeritaBaru = () => {
                   {truncateTitle(news.title || 'Untitled')}
                 </h3>
                 
-                {/* Excerpt */}
-                {news.excerpt && (
+                {/* ringkasan */}
+                {news.ringkasan && (
                   <p className="text-xs text-gray-600 leading-relaxed line-clamp-2">
-                    {truncateExcerpt(news.excerpt)}
+                    {truncateRingkasan(news.ringkasan)}
                   </p>
                 )}
                 
