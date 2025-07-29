@@ -27,7 +27,7 @@ export async function getAllStructure(options = {}) {
     
     // Transform data to include full image URLs from the images collection
     const personnelWithImages = await Promise.all(result.items.map(async (person) => {
-      let fotoUrl = '/person.svg'; // Default image
+      let fotoUrl = '/PPdefault.svg'; // Default image
 
       if (person.foto) {
         try {
@@ -70,7 +70,7 @@ export async function getStructureByCategory(kategori) {
     
     // Transform data to include full image URLs from the images collection
     const personnelWithImages = await Promise.all(result.items.map(async (person) => {
-      let fotoUrl = '/person.svg'; // Default image
+      let fotoUrl = '/PPdefault.svg'; // Default image
 
       if (person.foto) {
         try {
@@ -104,7 +104,7 @@ export async function getPersonnelById(id) {
   try {
     const person = await getRecord(COLLECTIONS.STRUCTURE, id);
     
-    let fotoUrl = '/person.svg'; // Default image
+    let fotoUrl = '/PPdefault.svg'; // Default image
 
     if (person.foto) {
       try {
@@ -157,7 +157,7 @@ export async function getStructureGrouped() {
     
     // Transform data to include full image URLs from the images collection
     const personnelWithImages = await Promise.all(result.items.map(async (person) => {
-      let fotoUrl = '/person.svg'; // Default image
+      let fotoUrl = '/PPdefault.svg'; // Default image
 
       if (person.foto) {
         try {
@@ -206,7 +206,7 @@ export async function searchPersonnel(query) {
     
     // Transform data to include full image URLs from the images collection
     const personnelWithImages = await Promise.all(result.items.map(async (person) => {
-      let fotoUrl = '/person.svg'; // Default image
+      let fotoUrl = '/PPdefault.svg'; // Default image
 
       if (person.foto) {
         try {
