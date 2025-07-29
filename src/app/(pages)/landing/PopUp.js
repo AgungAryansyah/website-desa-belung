@@ -1,5 +1,18 @@
 "use client";
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import { getPopupNews } from "../../../lib/api";
+
+// Move default news outside component to prevent recreation on every render
+const DEFAULT_NEWS = [
+  "🏗️ Pembangunan infrastruktur jalan raya Desa Belung senilai Rp 3,2 miliar telah dimulai",
+  "🌾 Program bantuan benih padi gratis untuk 200 petani telah dibuka pendaftaran",
+  "🏥 Klinik kesehatan desa dengan fasilitas modern akan beroperasi bulan September",
+  "🎓 Beasiswa pendidikan untuk siswa berprestasi tersedia dengan total dana Rp 500 juta",
+  "💻 Layanan digital village tersedia 24/7 untuk kemudahan administrasi warga",
+  "🏪 Festival UMKM dan produk lokal akan digelar tanggal 20-22 Agustus 2025",
+  "🍚 Distribusi bantuan pangan untuk keluarga pra-sejahtera dimulai minggu depan",
+  "📚 Perpustakaan desa dengan koleksi 5000 buku telah resmi dibuka untuk umum",
+];
 
 const PopUp = ({
   initialNews = [],
@@ -10,20 +23,9 @@ const PopUp = ({
   labelText = "🔥 BREAKING NEWS",
   labelColor = "#ef4444",
 }) => {
-  const [newsItems, setNewsItems] = useState(
-    initialNews.length > 0
-      ? initialNews
-      : [
-          "🏗️ Pembangunan infrastruktur jalan raya Desa Belung senilai Rp 3,2 miliar telah dimulai",
-          "🌾 Program bantuan benih padi gratis untuk 200 petani telah dibuka pendaftaran",
-          "🏥 Klinik kesehatan desa dengan fasilitas modern akan beroperasi bulan September",
-          "🎓 Beasiswa pendidikan untuk siswa berprestasi tersedia dengan total dana Rp 500 juta",
-          "💻 Layanan digital village tersedia 24/7 untuk kemudahan administrasi warga",
-          "🏪 Festival UMKM dan produk lokal akan digelar tanggal 20-22 Agustus 2025",
-          "🍚 Distribusi bantuan pangan untuk keluarga pra-sejahtera dimulai minggu depan",
-          "📚 Perpustakaan desa dengan koleksi 5000 buku telah resmi dibuka untuk umum",
-        ]
-  );
+  const [newsItems, setNewsItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
@@ -34,6 +36,76 @@ const PopUp = ({
   const animationRef = useRef(null);
   const positionRef = useRef(0);
   const isInitialized = useRef(false);
+  const hasFetched = useRef(false); // Prevent multiple API calls
+
+  // Fetch popup news from API - only run once
+  useEffect(() => {
+    async function fetchPopupNews() {
+      // Prevent multiple calls
+      if (hasFetched.current) return;
+      hasFetched.current = true;
+
+      try {
+        setLoading(true);
+        
+        // Use initialNews if provided, otherwise fetch from API
+        if (initialNews.length > 0) {
+          setNewsItems(initialNews);
+          setLoading(false);
+          return;
+        }
+
+        const result = await getPopupNews({ limit: 10 });
+        console.log('Fetched popup news:', result);
+        
+        if (result && result.items && result.items.length > 0) {
+          // Extract text content from popup news items
+          const newsTexts = result.items.map(item => item.text || 'Breaking news update')
+            .filter(text => text && text.trim() !== '');
+          
+          setNewsItems(newsTexts.length > 0 ? newsTexts : DEFAULT_NEWS);
+        } else {
+          // Fallback to default news if no API data
+          setNewsItems(DEFAULT_NEWS);
+        }
+        
+      } catch (err) {
+        console.error('Error fetching popup news:', err);
+        setError(err.message);
+        // Use default news on error
+        setNewsItems(DEFAULT_NEWS);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchPopupNews();
+  }, []); // Empty dependency array - only run once on mount
+
+  // Refresh popup news every 5 minutes
+  useEffect(() => {
+    // Don't start refresh if using manual news
+    if (initialNews.length > 0) return;
+
+    const refreshInterval = setInterval(async () => {
+      try {
+        const result = await getPopupNews({ limit: 10 });
+        if (result && result.items && result.items.length > 0) {
+          const newsTexts = result.items.map(item => item.text || 'Breaking news update')
+            .filter(text => text && text.trim() !== '');
+          
+          if (newsTexts.length > 0) {
+            setNewsItems(newsTexts);
+          }
+        }
+      } catch (err) {
+        console.log('Background refresh failed:', err);
+        // Don't update on refresh failure, keep current news
+      }
+    }, 5 * 60 * 1000); // 5 minutes
+
+    return () => clearInterval(refreshInterval);
+  }, [initialNews.length]); // Only depend on length to avoid recreating interval
 
   // Detect mobile screen size
   useEffect(() => {
@@ -208,6 +280,48 @@ const PopUp = ({
   };
 
   const styles = getResponsiveStyles();
+
+  // Show loading state
+  if (loading) {
+    return (
+      <div style={styles.tickerContainer}>
+        <div style={styles.tickerWrapper}>
+          <div style={styles.tickerLabel}>
+            {isMobile ? "LOADING..." : "🔄 LOADING NEWS"}
+            <div style={styles.labelArrow}></div>
+          </div>
+          <div style={styles.tickerContent}>
+            <div style={{ ...styles.tickerItems, position: 'static' }}>
+              <div style={styles.tickerItem}>
+                Memuat berita terbaru...
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Show error state briefly, then show default news
+  if (error && newsItems.length === 0) {
+    return (
+      <div style={styles.tickerContainer}>
+        <div style={styles.tickerWrapper}>
+          <div style={styles.tickerLabel}>
+            {isMobile ? "OFFLINE" : "📡 OFFLINE MODE"}
+            <div style={styles.labelArrow}></div>
+          </div>
+          <div style={styles.tickerContent}>
+            <div style={{ ...styles.tickerItems, position: 'static' }}>
+              <div style={styles.tickerItem}>
+                Menggunakan berita cadangan...
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div style={styles.tickerContainer}>

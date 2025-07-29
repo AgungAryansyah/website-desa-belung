@@ -164,19 +164,21 @@ export async function getPopupNews({ page = 1, limit = 10 } = {}) {
   const options = {
     page,
     perPage: limit,
-    sort: '-created', // Sort by newest first
   };
 
   const result = await getRecords(COLLECTIONS.BERITA_POPUP, options);
   
-  // Transform data to include full news data with images
-  const popupNewsWithData = await Promise.all(result.items.map(async (popupItem) => {
-    let newsData = null;
-  }));
+  // Transform data - berita field contains direct text content
+  const popupNewsItems = result.items.map((popupItem) => {
+    return {
+      id: popupItem.id,
+      text: popupItem.berita || 'Breaking news update',
+    };
+  });
 
   return {
     ...result,
-    items: popupNewsWithData
+    items: popupNewsItems
   };
 }
 
