@@ -87,7 +87,7 @@ export async function searchNews(query, options = {}) {
   const searchOptions = {
     page: options.page || 1,
     perPage: options.limit || 10,
-    filter: `title ~ "${query}" || excerpt ~ "${query}" || content ~ "${query}"`,
+    filter: `title ~ "${query}" || ringkasan ~ "${query}" || content ~ "${query}"`,
     sort: '-created',
     expand: 'image_id',
   };

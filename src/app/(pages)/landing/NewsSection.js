@@ -131,7 +131,7 @@ const NewsSection = () => {
                       {news.title || "Untitled"}
                     </h3>
                     <p className="text-black text-sm leading-relaxed mb-4 line-clamp-3">
-                      {truncateText(news.excerpt) || "No excerpt available"}
+                      {truncateText(news.ringkasan) || "No ringkasan available"}
                     </p>
 
                     <div className="flex items-center justify-between">
