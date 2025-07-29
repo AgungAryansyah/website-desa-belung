@@ -18,10 +18,12 @@ const Footer = () => {
             {/* Logo and Info */}
             <div className="lg:col-span-1">
               <div className="flex items-start space-x-4 mb-6">
-                <img
+                <Image
                   className="w-24 h-24 flex-shrink-0"
-                  src="MainFooter/Logo.svg"
+                  src="/MainFooter/Logo.svg"
                   alt="Logo Desa Belung"
+                  width={96}
+                  height={96}
                 />
                 <div>
                   <h3 className="text-xl font-bold mb-1">
@@ -53,10 +55,12 @@ const Footer = () => {
                     rel="noopener noreferrer"
                     className="transition hover:opacity-80"
                   >
-                    <img
+                    <Image
                       src="/MainFooter/Fb.svg"
                       alt="Facebook"
                       className="w-7 h-7 sm:w-6 sm:h-6 object-contain"
+                      width={28}
+                      height={28}
                     />
                   </a>
 
@@ -66,10 +70,12 @@ const Footer = () => {
                     rel="noopener noreferrer"
                     className="transition hover:opacity-80"
                   >
-                    <img
+                    <Image
                       src="/MainFooter/Insta.svg"
                       alt="Instagram"
                       className="w-7 h-7 sm:w-6 sm:h-6 object-contain"
+                      width={28}
+                      height={28}
                     />
                   </a>
 
@@ -79,10 +85,12 @@ const Footer = () => {
                     rel="noopener noreferrer"
                     className="transition hover:opacity-80"
                   >
-                    <img
+                    <Image
                       src="/MainFooter/Tiktok.svg"
                       alt="TikTok"
                       className="w-7 h-7 sm:w-6 sm:h-6 object-contain"
+                      width={28}
+                      height={28}
                     />
                   </a>
 
@@ -92,10 +100,12 @@ const Footer = () => {
                     rel="noopener noreferrer"
                     className="transition hover:opacity-80"
                   >
-                    <img
+                    <Image
                       src="/MainFooter/Yt.svg"
                       alt="YouTube"
                       className="w-7 h-7 sm:w-6 sm:h-6 object-contain"
+                      width={28}
+                      height={28}
                     />
                   </a>
                 </div>
@@ -116,7 +126,12 @@ const Footer = () => {
                   </div>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <img src="MainFooter/person.svg" alt="Person" />
+                  <Image 
+                    src="/MainFooter/person.svg" 
+                    alt="Person" 
+                    width={20}
+                    height={20}
+                  />
                   <div>
                     <p className="font-medium">Pak Kades</p>
                     <p className="text-sm opacity-90">08123456789</p>
@@ -141,10 +156,12 @@ const Footer = () => {
         <div className="lg:hidden">
           {/* Logo and Village Info - Always visible on mobile */}
           <div className="flex items-start space-x-4 mb-6">
-            <img
+            <Image
               className="w-16 h-16 flex-shrink-0"
-              src="MainFooter/Logo.svg"
+              src="/MainFooter/Logo.svg"
               alt="Logo Desa Belung"
+              width={64}
+              height={64}
             />
             <div>
               <h3 className="text-lg font-bold mb-1">Desa Belung</h3>
@@ -244,10 +261,12 @@ const Footer = () => {
                       rel="noopener noreferrer"
                       className="transition hover:opacity-80"
                     >
-                      <img
+                      <Image
                         src="/MainFooter/Fb.svg"
                         alt="Facebook"
                         className="w-8 h-8 object-contain"
+                        width={32}
+                        height={32}
                       />
                     </a>
                     <a
@@ -256,10 +275,12 @@ const Footer = () => {
                       rel="noopener noreferrer"
                       className="transition hover:opacity-80"
                     >
-                      <img
+                      <Image
                         src="/MainFooter/Insta.svg"
                         alt="Instagram"
                         className="w-8 h-8 object-contain"
+                        width={32}
+                        height={32}
                       />
                     </a>
                     <a
@@ -268,10 +289,12 @@ const Footer = () => {
                       rel="noopener noreferrer"
                       className="transition hover:opacity-80"
                     >
-                      <img
+                      <Image
                         src="/MainFooter/Tiktok.svg"
                         alt="TikTok"
                         className="w-8 h-8 object-contain"
+                        width={32}
+                        height={32}
                       />
                     </a>
                     <a
@@ -280,10 +303,12 @@ const Footer = () => {
                       rel="noopener noreferrer"
                       className="transition hover:opacity-80"
                     >
-                      <img
+                      <Image
                         src="/MainFooter/Yt.svg"
                         alt="YouTube"
                         className="w-8 h-8 object-contain"
+                        width={32}
+                        height={32}
                       />
                     </a>
                   </div>
