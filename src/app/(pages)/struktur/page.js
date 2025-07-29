@@ -1,153 +1,205 @@
-import React from 'react';
+'use client';
+import Image from 'next/image';
+import React, { useState, useEffect } from 'react';
 import PageTemplate from '../../../templates/PageTemplate';
 import { PAGES } from '../../../lib/pages';
+import { getStructureGrouped } from '../../../lib/api';
 import PropTypes from 'prop-types';
 
-// Kartu individu
-const PersonCard = ({ photo, position, name }) => (
+const PersonCard = ({ fotoUrl, posisi, nama }) => (
   <div className="bg-white border rounded-lg p-4 flex flex-col items-center shadow-md w-full max-w-[160px] min-h-[180px] mx-auto transform transition duration-300 ease-in-out hover:scale-105 hover:shadow-xl hover:-translate-y-1">
-    <img
-      src={photo}
-      alt={position}
-      className="object-cover w-16 h-20 mb-2 bg-gray-200 rounded"
-    />
-    <div className="mb-1 text-sm font-semibold text-center text-black">{position}</div>
-    <div className="text-xs text-center text-black">{name}</div>
+    <div className="relative w-16 h-20 mb-2 bg-gray-200 rounded overflow-hidden">
+      <Image
+        src={fotoUrl || '/MainFooter/MainFooter/MainFooter/MainFooter/person.svg'}
+        alt={`Foto ${nama} - ${posisi}`}
+        fill
+        className="object-cover"
+        onError={(e) => {
+          e.currentTarget.src = '/MainFooter/MainFooter/MainFooter/MainFooter/person.svg';
+        }}
+        sizes="64px"
+      />
+    </div>
+    <div className="mb-1 text-sm font-semibold text-center text-black">{posisi}</div>
+    <div className="text-xs text-center text-black">{nama}</div>
   </div>
 );
 
-
 PersonCard.propTypes = {
-  photo: PropTypes.string.isRequired,
-  position: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
+  fotoUrl: PropTypes.string.isRequired,
+  posisi: PropTypes.string.isRequired,
+  nama: PropTypes.string.isRequired,
 };
 
 export default function StrukturPage() {
   const pageConfig = PAGES.STRUKTUR;
 
- const perangkatDesa = {
-  kepala: {
-    photo: '/PPdefault.svg',
-    position: 'KEPALA DESA',
-    name: 'Sudarman'
-  },
-  sekretaris: {
-    photo: '/PPdefault.svg',
-    position: 'SEKRETARIS DESA',
-    name: 'M.Farid Adriyanto'
-  },
-  bendahara: {
-    photo: '/PPdefault.svg',
-    position: 'BENDAHARA',
-    name: 'Linda Febriana'
-  },
-  kasi: [
-    { photo: '/PPdefault.svg', position: 'KASI UMUM', name: 'Zaini' },
-    { photo: '/PPdefault.svg', position: 'KASI PEMERINTAHAN', name: 'Haris Nasa’i' },
-    { photo: '/PPdefault.svg', position: 'KASI KESEJAHTERAAN', name: 'Edi Sampurno' },
-    { photo: '/PPdefault.svg', position: 'KASI PERENCANAAN', name: 'Luqman Anwar' },
-    { photo: '/PPdefault.svg', position: 'KASI PELAYANAN', name: 'Hafid Rifa’i' }
-  ],
-  kadus: [
-    { photo: '/PPdefault.svg', position: 'KADUS BELUNG KRAJAN', name: 'Shulhan Hadi Wijaya' },
-    { photo: '/PPdefault.svg', position: 'KADUS BELUNG BUNTARAN', name: 'Totok Slamet Harwono' }
-  ]
-};
+  // State for data and loading
+  const [structureData, setStructureData] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-const bumdes = {
-  kepala: {
-    photo: '/PPdefault.svg',
-    position: 'Kepala BUMDES',
-    name: 'Ahmad Zaini'
-  },
-  staff: [
-    { photo: '/PPdefault.svg', position: 'Sekretaris', name: 'Nasrul Ma’ali' },
-    { photo: '/PPdefault.svg', position: 'Bendahara', name: 'Mashudi' },
-    { photo: '/PPdefault.svg', position: 'Administrasi', name: 'Eko' }
-  ]
-};
+  // Default fallback data
+  const defaultData = {
+    'Perangkat Desa': [
+      { id: 1, nama: 'Sudarman', posisi: 'Kepala Desa', fotoUrl: '/MainFooter/person.svg' },
+      { id: 2, nama: 'M.Farid Adriyanto', posisi: 'Sekretaris DESA', fotoUrl: '/MainFooter/person.svg' },
+      { id: 3, nama: 'Linda Febriana', posisi: 'Bendahara', fotoUrl: '/MainFooter/person.svg' },
+      { id: 4, nama: 'Zaini', posisi: 'KADUS Belung Buntaran UMUM', fotoUrl: '/MainFooter/person.svg' },
+      { id: 5, nama: "Haris Nasa'i", posisi: 'KASI Pemerintahan', fotoUrl: '/MainFooter/person.svg' },
+      { id: 6, nama: 'Edi Sampurno', posisi: 'KASI Kesejahteraan', fotoUrl: '/MainFooter/person.svg' },
+      { id: 7, nama: 'Luqman Anwar', posisi: 'KASI Perencanaan', fotoUrl: '/MainFooter/person.svg' },
+      { id: 8, nama: "Hafid Rifa'i", posisi: 'KASI Pelayanan', fotoUrl: '/MainFooter/person.svg' }
+    ],
+    'Kepala Dusun': [
+      { id: 9, nama: 'Shulhan Hadi Wijaya', posisi: 'KADUS Belung Krajan', fotoUrl: '/MainFooter/person.svg' },
+      { id: 10, nama: 'Totok Slamet Harwono', posisi: 'KADUS Belung Buntaran', fotoUrl: '/MainFooter/person.svg' }
+    ],
+    'BUMDES': [
+      { id: 11, nama: 'Ahmad Zaini', posisi: 'KEPALA BUMDES', fotoUrl: '/MainFooter/person.svg' },
+      { id: 12, nama: "Nasrul Ma'ali", posisi: 'Sekretaris', fotoUrl: '/MainFooter/person.svg' },
+      { id: 13, nama: 'Mashudi', posisi: 'Bendahara', fotoUrl: '/MainFooter/person.svg' },
+      { id: 14, nama: 'Eko', posisi: 'ADMINISTRASI', fotoUrl: '/MainFooter/person.svg' }
+    ],
+    'BPD': [
+      { id: 15, nama: 'Imam Sayuti', posisi: 'Ketua', fotoUrl: '/MainFooter/person.svg' },
+      { id: 16, nama: 'Roni Widianto', posisi: 'Sekretaris', fotoUrl: '/MainFooter/person.svg' },
+      { id: 17, nama: 'Endah Lestari', posisi: 'Bendahara', fotoUrl: '/MainFooter/person.svg' },
+      { id: 18, nama: 'Sofwan Hadi', posisi: 'Anggota', fotoUrl: '/MainFooter/person.svg' },
+      { id: 19, nama: 'Zainuri', posisi: 'Anggota', fotoUrl: 'MainFooter/person.svg' },
+      { id: 20, nama: 'Imron Mahmudi', posisi: 'Anggota', fotoUrl: '/MainFooter/person.svg' },
+      { id: 21, nama: 'Satune Gatau Lupa', posisi: 'Anggota', fotoUrl: 'MainFooter/person.svg' }
+    ]
+  };
 
-const bpd = {
-  inti: [
-    { photo: '/PPdefault.svg', position: 'KETUA', name: 'Imam Sayuti' },
-    { photo: '/PPdefault.svg', position: 'SEKRETARIS', name: 'Roni Widianto' },
-    { photo: '/PPdefault.svg', position: 'BENDAHARA', name: 'Endah Lestari' }
-  ],
-  anggota: [
-    { photo: '/PPdefault.svg', position: 'ANGGOTA', name: 'Sofwan Hadi' },
-    { photo: '/PPdefault.svg', position: 'ANGGOTA', name: 'Zainuri' },
-    { photo: '/PPdefault.svg', position: 'ANGGOTA', name: 'Imron Mahmudi' },
-    { photo: '/PPdefault.svg', position: 'ANGGOTA', name: 'Satune Gatau Lupa' }
-  ]
-};
+  // Fetch data from PocketBase
+useEffect(() => {
+  async function fetchStructureData() {
+    try {
+      setLoading(true);
+      
+      const result = await getStructureGrouped();
+      console.log('Fetched structure data:', result);
+      
+      if (result && Object.keys(result).length > 0) {
+        setStructureData(result);
+      } else {
+        setStructureData(defaultData);
+      }
+      
+    } catch (err) {
+      console.error('Error fetching structure data:', err);
+      setError(err.message);
+      setStructureData(defaultData);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  fetchStructureData();
+}, []); // Empty dependency array - only run once on mount
+
+  // Helper functions to get specific positions
+  const getPersonByPosition = (category, position) => {
+    const categoryData = structureData[category] || [];
+    return categoryData.find(person => person.posisi === position);
+  };
+
+  const getPersonsByCategory = (category, excludePositions = []) => {
+    const categoryData = structureData[category] || [];
+    return categoryData.filter(person => !excludePositions.includes(person.posisi));
+  };
 
   return (
     <PageTemplate className="bg-slate-800">
       <div className="container px-4 py-10 mx-auto text-black">
         <h2 className="mb-10 text-3xl font-bold text-center">Struktur Organisasi Desa</h2>
 
-        {/* Kepala Desa */}
-        <div className="flex justify-center mb-6">
-          <PersonCard {...perangkatDesa.kepala} />
-        </div>
+        {/* Loading State */}
+        {loading && (
+          <div className="flex justify-center items-center py-12">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600"></div>
+          </div>
+        )}
 
-        {/* Sekdes & Bendahara */}
-        <div className="flex justify-center gap-10 mb-6">
-          <PersonCard {...perangkatDesa.sekretaris} />
-          <PersonCard {...perangkatDesa.bendahara} />
-        </div>
+        {/* Error State */}
+        {error && (
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+            <p>Error loading structure data: {error}</p>
+          </div>
+        )}
 
-        {/* Garis horizontal */}
-        <div className="w-full my-6 border-t border-black" />
+        {/* Main Content - Show even when loading to prevent layout shift */}
+        <div className={loading ? "opacity-50" : ""}>
+          {/* Kepala Desa */}
+          {getPersonByPosition('Perangkat Desa', 'Kepala Desa') && (
+            <div className="flex justify-center mb-6">
+              <PersonCard {...getPersonByPosition('Perangkat Desa', 'Kepala Desa')} />
+            </div>
+          )}
 
-        {/* KAUR & KASI */}
-        <div className="flex flex-wrap justify-center gap-6 mb-6">
-          {perangkatDesa.kasi.map((person, idx) => (
-            <PersonCard key={`kasi-${idx}`} {...person} />
-          ))}
-        </div>
+          {/* Sekdes & Bendahara */}
+          <div className="flex justify-center gap-10 mb-6">
+            {getPersonByPosition('Perangkat Desa', 'Sekretaris DESA') && (
+              <PersonCard {...getPersonByPosition('Perangkat Desa', 'Sekretaris DESA')} />
+            )}
+            {getPersonByPosition('Perangkat Desa', 'Bendahara') && (
+              <PersonCard {...getPersonByPosition('Perangkat Desa', 'Bendahara')} />
+            )}
+          </div>
 
-        {/* Garis horizontal */}
-        <div className="w-full my-6 border-t border-black" />
+          {/* Garis horizontal */}
+          <div className="w-full my-6 border-t border-black" />
 
-        {/* Kadus */}
-        <h3 className="mb-2 text-2xl font-bold text-center">KEPALA DUSUN</h3>
-        <div className="flex flex-wrap justify-center gap-10 mb-6">
-          {perangkatDesa.kadus.map((person, idx) => (
-            <PersonCard key={`kadus-${idx}`} {...person} />
-          ))}
-        </div>
+          {/* KAUR & KASI */}
+          <div className="flex flex-wrap justify-center gap-6 mb-6">
+            {getPersonsByCategory('Perangkat Desa', ['Kepala Desa', 'Sekretaris DESA', 'Bendahara']).map((person) => (
+              <PersonCard key={person.id} {...person} />
+            ))}
+          </div>
 
+          {/* Garis horizontal */}
+          <div className="w-full my-6 border-t border-black" />
 
-        {/* Garis horizontal */}
-        <div className="w-full my-6 border-t border-black" />
+          {/* Kadus */}
+          <h3 className="mb-2 text-2xl font-bold text-center">Kepala Dusun</h3>
+          <div className="flex flex-wrap justify-center gap-10 mb-6">
+            {(structureData['Kepala Dusun'] || []).map((person) => (
+              <PersonCard key={person.id} {...person} />
+            ))}
+          </div>
 
-        {/* BUMDES */}
-        <h3 className="mb-2 text-2xl font-bold text-center">BUMDES</h3>
-        <div className="flex flex-wrap justify-center gap-10 mb-6">
-          <PersonCard {...bumdes.kepala} />
-        </div>
-        <div className="flex flex-wrap justify-center gap-6 mb-6">
-          {bumdes.staff.map((person, idx) => (
-            <PersonCard key={`bumdes-staff-${idx}`} {...person} />
-          ))}
-        </div>
+          {/* Garis horizontal */}
+          <div className="w-full my-6 border-t border-black" />
 
-        {/* Garis horizontal */}
-        <div className="w-full my-6 border-t border-black" />
+          {/* BUMDES */}
+          <h3 className="mb-2 text-2xl font-bold text-center">BUMDES</h3>
+          <div className="flex flex-wrap justify-center gap-10 mb-6">
+            {getPersonByPosition('BUMDES', 'KEPALA BUMDES') && (
+              <PersonCard {...getPersonByPosition('BUMDES', 'KEPALA BUMDES')} />
+            )}
+          </div>
+          <div className="flex flex-wrap justify-center gap-6 mb-6">
+            {getPersonsByCategory('BUMDES', ['KEPALA BUMDES']).map((person) => (
+              <PersonCard key={person.id} {...person} />
+            ))}
+          </div>
 
-        {/* BPD */}
-        <h3 className="mb-2 text-2xl font-bold text-center">BPD</h3>
-        <div className="flex flex-wrap justify-center gap-10 mb-6">
-          {bpd.inti.map((person, idx) => (
-            <PersonCard key={`bpd-inti-${idx}`} {...person} />
-          ))}
-        </div>
-        <div className="flex flex-wrap justify-center gap-6">
-          {bpd.anggota.map((person, idx) => (
-            <PersonCard key={`bpd-anggota-${idx}`} {...person} />
-          ))}
+          {/* Garis horizontal */}
+          <div className="w-full my-6 border-t border-black" />
+
+          {/* BPD */}
+          <h3 className="mb-2 text-2xl font-bold text-center">BPD</h3>
+          <div className="flex flex-wrap justify-center gap-10 mb-6">
+            {(structureData['BPD'] || []).filter(person => ['Ketua', 'Sekretaris', 'Bendahara'].includes(person.posisi)).map((person) => (
+              <PersonCard key={person.id} {...person} />
+            ))}
+          </div>
+          <div className="flex flex-wrap justify-center gap-6">
+            {(structureData['BPD'] || []).filter(person => person.posisi === 'Anggota').map((person) => (
+              <PersonCard key={person.id} {...person} />
+            ))}
+          </div>
         </div>
       </div>
     </PageTemplate>
