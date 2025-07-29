@@ -46,7 +46,7 @@ export default function StrukturPage() {
       { id: 1, nama: 'Sudarman', posisi: 'Kepala Desa', fotoUrl: 'PPdefault.jpg' },
       { id: 2, nama: 'M.Farid Adriyanto', posisi: 'Sekretaris Desa', fotoUrl: 'PPdefault.jpg' },
       { id: 3, nama: 'Linda Febriana', posisi: 'Bendahara Desa', fotoUrl: 'PPdefault.jpg' },
-      { id: 4, nama: 'Zaini', posisi: 'KADUS Belung Buntaran UMUM', fotoUrl: 'PPdefault.jpg' },
+      { id: 4, nama: 'Zaini', posisi: 'KASI UMUM', fotoUrl: 'PPdefault.jpg' },
       { id: 5, nama: "Haris Nasa'i", posisi: 'KASI Pemerintahan', fotoUrl: 'PPdefault.jpg' },
       { id: 6, nama: 'Edi Sampurno', posisi: 'KASI Kesejahteraan', fotoUrl: 'PPdefault.jpg' },
       { id: 7, nama: 'Luqman Anwar', posisi: 'KASI Perencanaan', fotoUrl: 'PPdefault.jpg' },
@@ -176,12 +176,12 @@ useEffect(() => {
           {/* BUMDES */}
           <h3 className="mb-2 text-2xl font-bold text-center">BUMDES</h3>
           <div className="flex flex-wrap justify-center gap-10 mb-6">
-            {getPersonByPosition('BUMDES', 'KEPALA BUMDES') && (
-              <PersonCard {...getPersonByPosition('BUMDES', 'KEPALA BUMDES')} />
+            {getPersonByPosition('BUMDES', 'Kepala') && (
+              <PersonCard {...getPersonByPosition('BUMDES', 'Kepala')} />
             )}
           </div>
           <div className="flex flex-wrap justify-center gap-6 mb-6">
-            {getPersonsByCategory('BUMDES', ['KEPALA BUMDES']).map((person) => (
+            {getPersonsByCategory('BUMDES', ['Kepala']).map((person) => (
               <PersonCard key={person.id} {...person} />
             ))}
           </div>
