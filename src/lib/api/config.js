@@ -12,4 +12,5 @@ export const COLLECTIONS = {
   HISTORY: 'sejarah',
   VISI: 'visi',
   MISI: 'misi',
+  BERITA_POPUP: 'berita_popup',
 };

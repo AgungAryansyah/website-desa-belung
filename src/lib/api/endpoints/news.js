@@ -155,3 +155,37 @@ export async function getLatestNews(limit = 5) {
   return getNews({ limit });
 }
 
+/**
+ * Get popup news articles
+ * @param {Object} options - Query options
+ * @returns {Promise} - Promise resolving to popup news
+ */
+export async function getPopupNews({ page = 1, limit = 10 } = {}) {
+  const options = {
+    page,
+    perPage: limit,
+    sort: '-created', // Sort by newest first
+  };
+
+  const result = await getRecords(COLLECTIONS.BERITA_POPUP, options);
+  
+  // Transform data to include full news data with images
+  const popupNewsWithData = await Promise.all(result.items.map(async (popupItem) => {
+    let newsData = null;
+  }));
+
+  return {
+    ...result,
+    items: popupNewsWithData
+  };
+}
+
+/**
+ * Get active popup news (most recent)
+ * @returns {Promise} - Promise resolving to active popup news
+ */
+export async function getActivePopupNews() {
+  const result = await getPopupNews({ limit: 1 });
+  return result.items.length > 0 ? result.items[0] : null;
+}
+
