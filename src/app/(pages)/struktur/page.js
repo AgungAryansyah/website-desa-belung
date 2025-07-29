@@ -10,12 +10,13 @@ const PersonCard = ({ fotoUrl, posisi, nama }) => (
   <div className="bg-white border rounded-lg p-4 flex flex-col items-center shadow-md w-full max-w-[160px] min-h-[180px] mx-auto transform transition duration-300 ease-in-out hover:scale-105 hover:shadow-xl hover:-translate-y-1">
     <div className="relative w-16 h-20 mb-2 bg-gray-200 rounded overflow-hidden">
       <Image
-        src={fotoUrl || '/MainFooter/MainFooter/MainFooter/MainFooter/person.svg'}
+        src={fotoUrl || 'PPdefault.jpg'}
         alt={`Foto ${nama} - ${posisi}`}
         fill
         className="object-cover"
+        unoptimized={true}
         onError={(e) => {
-          e.currentTarget.src = '/MainFooter/MainFooter/MainFooter/MainFooter/person.svg';
+          e.currentTarget.src = 'PPdefault.jpg';
         }}
         sizes="64px"
       />
@@ -42,33 +43,33 @@ export default function StrukturPage() {
   // Default fallback data
   const defaultData = {
     'Perangkat Desa': [
-      { id: 1, nama: 'Sudarman', posisi: 'Kepala Desa', fotoUrl: '/MainFooter/person.svg' },
-      { id: 2, nama: 'M.Farid Adriyanto', posisi: 'Sekretaris DESA', fotoUrl: '/MainFooter/person.svg' },
-      { id: 3, nama: 'Linda Febriana', posisi: 'Bendahara', fotoUrl: '/MainFooter/person.svg' },
-      { id: 4, nama: 'Zaini', posisi: 'KADUS Belung Buntaran UMUM', fotoUrl: '/MainFooter/person.svg' },
-      { id: 5, nama: "Haris Nasa'i", posisi: 'KASI Pemerintahan', fotoUrl: '/MainFooter/person.svg' },
-      { id: 6, nama: 'Edi Sampurno', posisi: 'KASI Kesejahteraan', fotoUrl: '/MainFooter/person.svg' },
-      { id: 7, nama: 'Luqman Anwar', posisi: 'KASI Perencanaan', fotoUrl: '/MainFooter/person.svg' },
-      { id: 8, nama: "Hafid Rifa'i", posisi: 'KASI Pelayanan', fotoUrl: '/MainFooter/person.svg' }
+      { id: 1, nama: 'Sudarman', posisi: 'Kepala Desa', fotoUrl: 'PPdefault.jpg' },
+      { id: 2, nama: 'M.Farid Adriyanto', posisi: 'Sekretaris Desa', fotoUrl: 'PPdefault.jpg' },
+      { id: 3, nama: 'Linda Febriana', posisi: 'Bendahara Desa', fotoUrl: 'PPdefault.jpg' },
+      { id: 4, nama: 'Zaini', posisi: 'KADUS Belung Buntaran UMUM', fotoUrl: 'PPdefault.jpg' },
+      { id: 5, nama: "Haris Nasa'i", posisi: 'KASI Pemerintahan', fotoUrl: 'PPdefault.jpg' },
+      { id: 6, nama: 'Edi Sampurno', posisi: 'KASI Kesejahteraan', fotoUrl: 'PPdefault.jpg' },
+      { id: 7, nama: 'Luqman Anwar', posisi: 'KASI Perencanaan', fotoUrl: 'PPdefault.jpg' },
+      { id: 8, nama: "Hafid Rifa'i", posisi: 'KASI Pelayanan', fotoUrl: 'PPdefault.jpg' }
     ],
     'Kepala Dusun': [
-      { id: 9, nama: 'Shulhan Hadi Wijaya', posisi: 'KADUS Belung Krajan', fotoUrl: '/MainFooter/person.svg' },
-      { id: 10, nama: 'Totok Slamet Harwono', posisi: 'KADUS Belung Buntaran', fotoUrl: '/MainFooter/person.svg' }
+      { id: 9, nama: 'Shulhan Hadi Wijaya', posisi: 'KADUS Belung Krajan', fotoUrl: 'PPdefault.jpg' },
+      { id: 10, nama: 'Totok Slamet Harwono', posisi: 'KADUS Belung Buntaran', fotoUrl: 'PPdefault.jpg' }
     ],
     'BUMDES': [
-      { id: 11, nama: 'Ahmad Zaini', posisi: 'KEPALA BUMDES', fotoUrl: '/MainFooter/person.svg' },
-      { id: 12, nama: "Nasrul Ma'ali", posisi: 'Sekretaris', fotoUrl: '/MainFooter/person.svg' },
-      { id: 13, nama: 'Mashudi', posisi: 'Bendahara', fotoUrl: '/MainFooter/person.svg' },
-      { id: 14, nama: 'Eko', posisi: 'ADMINISTRASI', fotoUrl: '/MainFooter/person.svg' }
+      { id: 11, nama: 'Ahmad Zaini', posisi: 'KEPALA BUMDES', fotoUrl: 'PPdefault.jpg' },
+      { id: 12, nama: "Nasrul Ma'ali", posisi: 'Sekretaris', fotoUrl: 'PPdefault.jpg' },
+      { id: 13, nama: 'Mashudi', posisi: 'Bendahara Desa', fotoUrl: 'PPdefault.jpg' },
+      { id: 14, nama: 'Eko', posisi: 'ADMINISTRASI', fotoUrl: 'PPdefault.jpg' }
     ],
     'BPD': [
-      { id: 15, nama: 'Imam Sayuti', posisi: 'Ketua', fotoUrl: '/MainFooter/person.svg' },
-      { id: 16, nama: 'Roni Widianto', posisi: 'Sekretaris', fotoUrl: '/MainFooter/person.svg' },
-      { id: 17, nama: 'Endah Lestari', posisi: 'Bendahara', fotoUrl: '/MainFooter/person.svg' },
-      { id: 18, nama: 'Sofwan Hadi', posisi: 'Anggota', fotoUrl: '/MainFooter/person.svg' },
-      { id: 19, nama: 'Zainuri', posisi: 'Anggota', fotoUrl: 'MainFooter/person.svg' },
-      { id: 20, nama: 'Imron Mahmudi', posisi: 'Anggota', fotoUrl: '/MainFooter/person.svg' },
-      { id: 21, nama: 'Satune Gatau Lupa', posisi: 'Anggota', fotoUrl: 'MainFooter/person.svg' }
+      { id: 15, nama: 'Imam Sayuti', posisi: 'Ketua', fotoUrl: 'PPdefault.jpg' },
+      { id: 16, nama: 'Roni Widianto', posisi: 'Sekretaris', fotoUrl: 'PPdefault.jpg' },
+      { id: 17, nama: 'Endah Lestari', posisi: 'Bendahara Desa', fotoUrl: 'PPdefault.jpg' },
+      { id: 18, nama: 'Sofwan Hadi', posisi: 'Anggota', fotoUrl: 'PPdefault.jpg' },
+      { id: 19, nama: 'Zainuri', posisi: 'Anggota', fotoUrl: 'MainFooter/person.jpg' },
+      { id: 20, nama: 'Imron Mahmudi', posisi: 'Anggota', fotoUrl: 'PPdefault.jpg' },
+      { id: 21, nama: 'Satune Gatau Lupa', posisi: 'Anggota', fotoUrl: 'MainFooter/person.jpg' }
     ]
   };
 
@@ -140,11 +141,11 @@ useEffect(() => {
 
           {/* Sekdes & Bendahara */}
           <div className="flex justify-center gap-10 mb-6">
-            {getPersonByPosition('Perangkat Desa', 'Sekretaris DESA') && (
-              <PersonCard {...getPersonByPosition('Perangkat Desa', 'Sekretaris DESA')} />
+            {getPersonByPosition('Perangkat Desa', 'Sekretaris Desa') && (
+              <PersonCard {...getPersonByPosition('Perangkat Desa', 'Sekretaris Desa')} />
             )}
-            {getPersonByPosition('Perangkat Desa', 'Bendahara') && (
-              <PersonCard {...getPersonByPosition('Perangkat Desa', 'Bendahara')} />
+            {getPersonByPosition('Perangkat Desa', 'Bendahara Desa') && (
+              <PersonCard {...getPersonByPosition('Perangkat Desa', 'Bendahara Desa')} />
             )}
           </div>
 
@@ -153,7 +154,7 @@ useEffect(() => {
 
           {/* KAUR & KASI */}
           <div className="flex flex-wrap justify-center gap-6 mb-6">
-            {getPersonsByCategory('Perangkat Desa', ['Kepala Desa', 'Sekretaris DESA', 'Bendahara']).map((person) => (
+            {getPersonsByCategory('Perangkat Desa', ['Kepala Desa', 'Sekretaris Desa', 'Bendahara Desa']).map((person) => (
               <PersonCard key={person.id} {...person} />
             ))}
           </div>
