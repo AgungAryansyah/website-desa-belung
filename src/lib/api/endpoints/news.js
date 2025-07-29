@@ -155,3 +155,39 @@ export async function getLatestNews(limit = 5) {
   return getNews({ limit });
 }
 
+/**
+ * Get popup news articles
+ * @param {Object} options - Query options
+ * @returns {Promise} - Promise resolving to popup news
+ */
+export async function getPopupNews({ page = 1, limit = 10 } = {}) {
+  const options = {
+    page,
+    perPage: limit,
+  };
+
+  const result = await getRecords(COLLECTIONS.BERITA_POPUP, options);
+  
+  // Transform data - berita field contains direct text content
+  const popupNewsItems = result.items.map((popupItem) => {
+    return {
+      id: popupItem.id,
+      text: popupItem.berita || 'Breaking news update',
+    };
+  });
+
+  return {
+    ...result,
+    items: popupNewsItems
+  };
+}
+
+/**
+ * Get active popup news (most recent)
+ * @returns {Promise} - Promise resolving to active popup news
+ */
+export async function getActivePopupNews() {
+  const result = await getPopupNews({ limit: 1 });
+  return result.items.length > 0 ? result.items[0] : null;
+}
+
