@@ -58,13 +58,13 @@ export default function StrukturPage() {
 const bumdes = {
   kepala: {
     photo: '/PPdefault.svg',
-    position: 'KEPALA BUMDES',
+    position: 'Kepala BUMDES',
     name: 'Ahmad Zaini'
   },
   staff: [
-    { photo: '/PPdefault.svg', position: 'SEKRETARIS', name: 'Nasrul Ma’ali' },
-    { photo: '/PPdefault.svg', position: 'BENDAHARA', name: 'Mashudi' },
-    { photo: '/PPdefault.svg', position: 'ADMINISTRASI', name: 'Eko' }
+    { photo: '/PPdefault.svg', position: 'Sekretaris', name: 'Nasrul Ma’ali' },
+    { photo: '/PPdefault.svg', position: 'Bendahara', name: 'Mashudi' },
+    { photo: '/PPdefault.svg', position: 'Administrasi', name: 'Eko' }
   ]
 };
 
