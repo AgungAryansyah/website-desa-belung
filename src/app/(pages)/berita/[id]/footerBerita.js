@@ -62,7 +62,7 @@ const FooterBerita = ({ berita }) => {
           className="transition hover:opacity-80"
         >
           <Image
-            src="/Berita/Instagram.svg"
+            src="/Berita/twitter.png"
             alt="Instagram"
             width={24}
             height={24}

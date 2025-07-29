@@ -48,20 +48,7 @@ const Footer = () => {
                 </div>
                 <div className="flex flex-wrap justify-center sm:justify-start gap-4 items-center">
                   <a
-                    href="https://www.facebook.com/profile.php?id=100069073334964"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="transition hover:opacity-80"
-                  >
-                    <img
-                      src="/MainFooter/Fb.svg"
-                      alt="Facebook"
-                      className="w-7 h-7 sm:w-6 sm:h-6 object-contain"
-                    />
-                  </a>
-
-                  <a
-                    href="https://www.instagram.com/belung.punyacerita?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                    href="https://www.instagram.com/pemerintahdesabelung?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                     target="_blank"
                     rel="noopener noreferrer"
                     className="transition hover:opacity-80"
@@ -69,19 +56,6 @@ const Footer = () => {
                     <img
                       src="/MainFooter/Insta.svg"
                       alt="Instagram"
-                      className="w-7 h-7 sm:w-6 sm:h-6 object-contain"
-                    />
-                  </a>
-
-                  <a
-                    href="https://www.tiktok.com/@desabelung"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="transition hover:opacity-80"
-                  >
-                    <img
-                      src="/MainFooter/Tiktok.svg"
-                      alt="TikTok"
                       className="w-7 h-7 sm:w-6 sm:h-6 object-contain"
                     />
                   </a>
@@ -112,13 +86,6 @@ const Footer = () => {
                   <span>🚨</span>
                   <div>
                     <p className="font-medium">Ambulance</p>
-                    <p className="text-sm opacity-90">08123456789</p>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <img src="MainFooter/person.svg" alt="Person" />
-                  <div>
-                    <p className="font-medium">Pak Kades</p>
                     <p className="text-sm opacity-90">08123456789</p>
                   </div>
                 </div>
@@ -239,18 +206,6 @@ const Footer = () => {
                 <div className="pb-4">
                   <div className="flex gap-4 items-center">
                     <a
-                      href="https://www.facebook.com/profile.php?id=100069073334964"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="transition hover:opacity-80"
-                    >
-                      <img
-                        src="/MainFooter/Fb.svg"
-                        alt="Facebook"
-                        className="w-8 h-8 object-contain"
-                      />
-                    </a>
-                    <a
                       href="https://www.instagram.com/belung.punyacerita?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                       target="_blank"
                       rel="noopener noreferrer"
@@ -262,18 +217,7 @@ const Footer = () => {
                         className="w-8 h-8 object-contain"
                       />
                     </a>
-                    <a
-                      href="https://www.tiktok.com/@desabelung"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="transition hover:opacity-80"
-                    >
-                      <img
-                        src="/MainFooter/Tiktok.svg"
-                        alt="TikTok"
-                        className="w-8 h-8 object-contain"
-                      />
-                    </a>
+
                     <a
                       href="https://www.youtube.com/@pemdesbelung4396"
                       target="_blank"
