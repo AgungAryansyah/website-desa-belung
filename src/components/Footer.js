@@ -59,6 +59,7 @@ const Footer = () => {
                       height={28}
                     />
                   </a>
+                  <a
                     href="https://www.youtube.com/@pemdesbelung4396"
                     target="_blank"
                     rel="noopener noreferrer"
