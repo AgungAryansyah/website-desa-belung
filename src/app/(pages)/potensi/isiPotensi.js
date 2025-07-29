@@ -187,7 +187,7 @@ export const potensiData = [
       {
         name: "Makanan Olahan",
         detail:
-          "Opak, keripik usus, serta hasil kolaborasi dengan mitra lokal dalam pengembangan usaha olahan pertanian.",
+          "Opak, Keripik Usus, Tempe ,serta hasil kolaborasi dengan mitra lokal dalam pengembangan usaha olahan makanan lainnya.",
       },
       {
         name: "Produk Pertanian",
