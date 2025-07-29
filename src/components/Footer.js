@@ -42,10 +42,7 @@ const Footer = () => {
                   <span>📧</span>
                   <span>pemdesbelung@gmail.com</span>
                 </div>
-                <div className="flex items-center space-x-2">
-                  <span>📞</span>
-                  <span>0812-1234-5678</span>
-                </div>
+
                 <div className="flex flex-wrap justify-center sm:justify-start gap-4 items-center">
                   <a
                     href="https://www.instagram.com/pemerintahdesabelung?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
@@ -86,7 +83,7 @@ const Footer = () => {
                   <span>🚨</span>
                   <div>
                     <p className="font-medium">Ambulance</p>
-                    <p className="text-sm opacity-90">08123456789</p>
+                    <p className="text-sm opacity-90">085850629503</p>
                   </div>
                 </div>
               </div>
@@ -131,7 +128,7 @@ const Footer = () => {
               >
                 <div className="flex items-center space-x-3">
                   <span>📞</span>
-                  <span className="font-medium">Kontak Desa</span>
+                  <span className="font-medium">Hubungi Kami</span>
                 </div>
                 <svg
                   className={`w-5 h-5 transition-transform duration-200 ${
@@ -152,12 +149,8 @@ const Footer = () => {
               {openSection === "contact" && (
                 <div className="pb-4 space-y-3">
                   <div className="flex items-center space-x-3">
-                    <span>📞</span>
-                    <span>08128881234</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
                     <span>📧</span>
-                    <span>pemdesabelung@gmail.com</span>
+                    <span>pemdesbelung@gmail.com</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <span>🕒</span>
@@ -267,7 +260,7 @@ const Footer = () => {
                     <span>🚨</span>
                     <div>
                       <p className="font-medium">Ambulance</p>
-                      <p className="text-sm opacity-90">08123456789</p>
+                      <p className="text-sm opacity-90">08585062950</p>
                     </div>
                   </div>
                 </div>
