@@ -31,7 +31,7 @@ RUN npm ci --omit=dev && npm cache clean --force
 # Copy the built application from the builder stage
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
-COPY --from=builder /app/next.config.js ./next.config.js
+COPY --from=builder /app/next.config.mjs ./next.config.mjs
 
 # Copy your .env file to production container
 COPY .env ./
