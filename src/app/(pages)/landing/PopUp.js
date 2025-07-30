@@ -80,7 +80,7 @@ const PopUp = ({
     }
 
     fetchPopupNews();
-  }, [initialNewss]); // Empty dependency array - only run once on mount
+  }, [initialNews]); // Empty dependency array - only run once on mount
 
   // Refresh popup news every 5 minutes
   useEffect(() => {
