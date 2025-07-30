@@ -12,6 +12,8 @@ services:
       - ./pocketbase/pb_data:/pb/pb_data
     networks:
       - belung-network 
+    environment:
+      - PB_PUBLIC_URL=${NEXT_PUBLIC_POCKETBASE_URL}
     restart: unless-stopped
 
   belung-fe:
