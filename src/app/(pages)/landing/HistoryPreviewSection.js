@@ -34,7 +34,7 @@ const HistoryPreviewSection = () => {
                   Kabupaten Malang, memiliki sejarah panjang sejak era Kerajaan
                   Mataram, Singasari, hingga masa kolonial Belanda. Kisah heroik
                   Panji Pulang Jiwo, Putri Proboretno, dan Mangun Yuda mewarnai
-                  asal-usul desa, termasuk nama "Belung" yang diyakini berasal
+                  asal-usul desa, termasuk nama &quot;Belung&quot; yang diyakini berasal
                   dari luka hingga batas tulang lengan atau dari banyaknya
                   tulang di medan pertempuran. Letaknya yang strategis di kaki
                   Gunung Semeru dan di aliran sungai suci menjadikannya penting

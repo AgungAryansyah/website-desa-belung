@@ -87,7 +87,6 @@ const Footer = () => {
                   <span>🚨</span>
                   <div>
                     <p className="font-medium">Ambulance</p>
-                    <p className="text-sm opacity-90">085850629503</p>
                   </div>
                 </div>
               </div>
@@ -162,7 +161,7 @@ const Footer = () => {
                     <span>🕒</span>
                     <div>
                       <p className="text-sm">Senin - Kamis (08.00 - 15.00) &</p>
-                      <p className="text-sm">Jum'at (08.00 - 11.00)</p>
+                      <p className="text-sm">Jum&apos;at (08.00 - 11.00)</p>
                     </div>
                   </div>
                   <div className="flex items-center space-x-3">

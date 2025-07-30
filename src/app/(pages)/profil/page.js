@@ -218,7 +218,7 @@ export default function ProfilPage() {
                 </h2>
               </div>
               <blockquote className="max-w-4xl mx-auto text-xl italic font-medium leading-relaxed md:text-2xl">
-                "{visiData}"
+                 &quot;{visiData}&quot;
               </blockquote>
             </div>
           </section>

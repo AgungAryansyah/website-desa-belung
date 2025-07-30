@@ -32,6 +32,39 @@ PersonCard.propTypes = {
   nama: PropTypes.string.isRequired,
 };
 
+// Move defaultData outside component to prevent recreation on every render
+const DEFAULT_STRUCTURE_DATA = {
+  'Perangkat Desa': [
+    { id: 1, nama: 'Sudarman', posisi: 'Kepala Desa', fotoUrl: 'PPdefault.jpg' },
+    { id: 2, nama: 'M.Farid Adriyanto', posisi: 'Sekretaris Desa', fotoUrl: 'PPdefault.jpg' },
+    { id: 3, nama: 'Linda Febriana', posisi: 'Bendahara Desa', fotoUrl: 'PPdefault.jpg' },
+    { id: 4, nama: 'Zaini', posisi: 'KASI UMUM', fotoUrl: 'PPdefault.jpg' },
+    { id: 5, nama: "Haris Nasa'i", posisi: 'KASI Pemerintahan', fotoUrl: 'PPdefault.jpg' },
+    { id: 6, nama: 'Edi Sampurno', posisi: 'KASI Kesejahteraan', fotoUrl: 'PPdefault.jpg' },
+    { id: 7, nama: 'Luqman Anwar', posisi: 'KASI Perencanaan', fotoUrl: 'PPdefault.jpg' },
+    { id: 8, nama: "Hafid Rifa'i", posisi: 'KASI Pelayanan', fotoUrl: 'PPdefault.jpg' }
+  ],
+  'Kepala Dusun': [
+    { id: 9, nama: 'Shulhan Hadi Wijaya', posisi: 'KADUS Belung Krajan', fotoUrl: 'PPdefault.jpg' },
+    { id: 10, nama: 'Totok Slamet Harwono', posisi: 'KADUS Belung Buntaran', fotoUrl: 'PPdefault.jpg' }
+  ],
+  'BUMDES': [
+    { id: 11, nama: 'Ahmad Zaini', posisi: 'KEPALA BUMDES', fotoUrl: 'PPdefault.jpg' },
+    { id: 12, nama: "Nasrul Ma'ali", posisi: 'Sekretaris', fotoUrl: 'PPdefault.jpg' },
+    { id: 13, nama: 'Mashudi', posisi: 'Bendahara Desa', fotoUrl: 'PPdefault.jpg' },
+    { id: 14, nama: 'Eko', posisi: 'ADMINISTRASI', fotoUrl: 'PPdefault.jpg' }
+  ],
+  'BPD': [
+    { id: 15, nama: 'Imam Sayuti', posisi: 'Ketua', fotoUrl: 'PPdefault.jpg' },
+    { id: 16, nama: 'Roni Widianto', posisi: 'Sekretaris', fotoUrl: 'PPdefault.jpg' },
+    { id: 17, nama: 'Endah Lestari', posisi: 'Bendahara Desa', fotoUrl: 'PPdefault.jpg' },
+    { id: 18, nama: 'Sofwan Hadi', posisi: 'Anggota', fotoUrl: 'PPdefault.jpg' },
+    { id: 19, nama: 'Zainuri', posisi: 'Anggota', fotoUrl: 'MainFooter/person.jpg' },
+    { id: 20, nama: 'Imron Mahmudi', posisi: 'Anggota', fotoUrl: 'PPdefault.jpg' },
+    { id: 21, nama: 'Satune Gatau Lupa', posisi: 'Anggota', fotoUrl: 'MainFooter/person.jpg' }
+  ]
+};
+
 export default function StrukturPage() {
   const pageConfig = PAGES.STRUKTUR;
 
@@ -40,65 +73,32 @@ export default function StrukturPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Default fallback data
-  const defaultData = {
-    'Perangkat Desa': [
-      { id: 1, nama: 'Sudarman', posisi: 'Kepala Desa', fotoUrl: 'PPdefault.jpg' },
-      { id: 2, nama: 'M.Farid Adriyanto', posisi: 'Sekretaris Desa', fotoUrl: 'PPdefault.jpg' },
-      { id: 3, nama: 'Linda Febriana', posisi: 'Bendahara Desa', fotoUrl: 'PPdefault.jpg' },
-      { id: 4, nama: 'Zaini', posisi: 'KASI UMUM', fotoUrl: 'PPdefault.jpg' },
-      { id: 5, nama: "Haris Nasa'i", posisi: 'KASI Pemerintahan', fotoUrl: 'PPdefault.jpg' },
-      { id: 6, nama: 'Edi Sampurno', posisi: 'KASI Kesejahteraan', fotoUrl: 'PPdefault.jpg' },
-      { id: 7, nama: 'Luqman Anwar', posisi: 'KASI Perencanaan', fotoUrl: 'PPdefault.jpg' },
-      { id: 8, nama: "Hafid Rifa'i", posisi: 'KASI Pelayanan', fotoUrl: 'PPdefault.jpg' }
-    ],
-    'Kepala Dusun': [
-      { id: 9, nama: 'Shulhan Hadi Wijaya', posisi: 'KADUS Belung Krajan', fotoUrl: 'PPdefault.jpg' },
-      { id: 10, nama: 'Totok Slamet Harwono', posisi: 'KADUS Belung Buntaran', fotoUrl: 'PPdefault.jpg' }
-    ],
-    'BUMDES': [
-      { id: 11, nama: 'Ahmad Zaini', posisi: 'KEPALA BUMDES', fotoUrl: 'PPdefault.jpg' },
-      { id: 12, nama: "Nasrul Ma'ali", posisi: 'Sekretaris', fotoUrl: 'PPdefault.jpg' },
-      { id: 13, nama: 'Mashudi', posisi: 'Bendahara Desa', fotoUrl: 'PPdefault.jpg' },
-      { id: 14, nama: 'Eko', posisi: 'ADMINISTRASI', fotoUrl: 'PPdefault.jpg' }
-    ],
-    'BPD': [
-      { id: 15, nama: 'Imam Sayuti', posisi: 'Ketua', fotoUrl: 'PPdefault.jpg' },
-      { id: 16, nama: 'Roni Widianto', posisi: 'Sekretaris', fotoUrl: 'PPdefault.jpg' },
-      { id: 17, nama: 'Endah Lestari', posisi: 'Bendahara Desa', fotoUrl: 'PPdefault.jpg' },
-      { id: 18, nama: 'Sofwan Hadi', posisi: 'Anggota', fotoUrl: 'PPdefault.jpg' },
-      { id: 19, nama: 'Zainuri', posisi: 'Anggota', fotoUrl: 'MainFooter/person.jpg' },
-      { id: 20, nama: 'Imron Mahmudi', posisi: 'Anggota', fotoUrl: 'PPdefault.jpg' },
-      { id: 21, nama: 'Satune Gatau Lupa', posisi: 'Anggota', fotoUrl: 'MainFooter/person.jpg' }
-    ]
-  };
-
   // Fetch data from PocketBase
-useEffect(() => {
-  async function fetchStructureData() {
-    try {
-      setLoading(true);
-      
-      const result = await getStructureGrouped();
-      console.log('Fetched structure data:', result);
-      
-      if (result && Object.keys(result).length > 0) {
-        setStructureData(result);
-      } else {
-        setStructureData(defaultData);
+  useEffect(() => {
+    async function fetchStructureData() {
+      try {
+        setLoading(true);
+        
+        const result = await getStructureGrouped();
+        console.log('Fetched structure data:', result);
+        
+        if (result && Object.keys(result).length > 0) {
+          setStructureData(result);
+        } else {
+          setStructureData(DEFAULT_STRUCTURE_DATA);
+        }
+        
+      } catch (err) {
+        console.error('Error fetching structure data:', err);
+        setError(err.message);
+        setStructureData(DEFAULT_STRUCTURE_DATA);
+      } finally {
+        setLoading(false);
       }
-      
-    } catch (err) {
-      console.error('Error fetching structure data:', err);
-      setError(err.message);
-      setStructureData(defaultData);
-    } finally {
-      setLoading(false);
     }
-  }
 
-  fetchStructureData();
-}, []); // Empty dependency array - only run once on mount
+    fetchStructureData();
+  }, []); // Empty dependency array - only run once on mount
 
   // Helper functions to get specific positions
   const getPersonByPosition = (category, position) => {
