@@ -80,7 +80,32 @@ const PopUp = ({
     }
 
     fetchPopupNews();
-  }, []); // Empty dependency array - only run once on mount
+  }, [initialNewss]); // Empty dependency array - only run once on mount
+
+  // Refresh popup news every 5 minutes
+  useEffect(() => {
+    // Don't start refresh if using manual news
+    if (initialNews.length > 0) return;
+
+    const refreshInterval = setInterval(async () => {
+      try {
+        const result = await getPopupNews({ limit: 10 });
+        if (result && result.items && result.items.length > 0) {
+          const newsTexts = result.items.map(item => item.text || 'Breaking news update')
+            .filter(text => text && text.trim() !== '');
+          
+          if (newsTexts.length > 0) {
+            setNewsItems(newsTexts);
+          }
+        }
+      } catch (err) {
+        console.log('Background refresh failed:', err);
+        // Don't update on refresh failure, keep current news
+      }
+    }, 5 * 60 * 1000); // 5 minutes
+
+    return () => clearInterval(refreshInterval);
+  }, [initialNews]); // Include initialNews dependency
 
   // Detect mobile screen size
   useEffect(() => {
