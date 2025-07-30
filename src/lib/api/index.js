@@ -2,7 +2,6 @@
 export * from './endpoints/news';
 export * from './endpoints/profile';
 export * from './endpoints/structure';
-export * from './endpoints/potential';
 export * from './endpoints/history';
 
 // Export client functions for direct access if needed
