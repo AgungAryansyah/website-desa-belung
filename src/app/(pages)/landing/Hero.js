@@ -6,17 +6,17 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 const heroImages = [
   {
     id: 1,
-    src: "/landing/images/background_3.png",
+    src: "/landing/images/background_3.webp",
     alt: "Pemandangan Desa Belung 1",
   },
   {
     id: 2,
-    src: "/landing/images/background_2.png", // Ganti dengan path gambar Anda yang lain
+    src: "/landing/images/background_2.webp", // Ganti dengan path gambar Anda yang lain
     alt: "Pemandangan Desa Belung 2",
   },
   {
     id: 3,
-    src: "/landing/images/background_1.png", // Ganti dengan path gambar Anda yang lain
+    src: "/landing/images/background_1.webp", // Ganti dengan path gambar Anda yang lain
     alt: "Pemandangan Desa Belung 3",
   },
 ];

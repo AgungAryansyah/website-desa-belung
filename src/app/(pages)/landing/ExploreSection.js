@@ -5,25 +5,25 @@ const ExploreSection = () => {
     {
       id: "profil-desa",
       title: "Profil Desa",
-      image: "/landing/images/profil.jpg",
+      image: "/landing/images/profil.webp",
       link: "/profil",
     },
     {
       id: "struktur-desa",
       title: "Struktur Desa",
-      image: "/landing/images/background_1.png",
+      image: "/landing/images/background_1.webp",
       link: "/struktur",
     },
     {
       id: "potensi-desa",
       title: "Potensi Desa",
-      image: "/landing/images/potential.png",
+      image: "/landing/images/potensi.webp",
       link: "/potensi",
     },
     {
       id: "berita",
       title: "Berita",
-      image: "/landing/images/berita.jpg",
+      image: "/landing/images/berita.webp",
       link: "/berita",
     },
   ];

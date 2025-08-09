@@ -12,7 +12,7 @@ const HistoryPreviewSection = () => {
                 {/* image */}
                 <div className="absolute inset-0 bg-gray-300">
                   <Image
-                    src="/landing/images/bg_sejarah.png"
+                    src="/landing/images/background_3.webp"
                     alt={` image`}
                     fill
                     priority
