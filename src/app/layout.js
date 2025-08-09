@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Desa Belung - Kabupaten Karangasem",
-  description: "Website resmi Desa Belung, Kabupaten Karangasem, Bali",
+  title: "Desa Belung - Kecamatan Poncokusumo",
+  description: "Website resmi Desa Belung, Kecamatan Poncokusumo, Kabupaten Malang, Jawa Timur",
 };
 
 export default function RootLayout({ children }) {
